@@ -1,0 +1,980 @@
+{
+  "active": true,
+  "connections": {
+    "Calendly Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get call uuid",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get call uuid": {
+      "main": [
+        [
+          {
+            "node": "Find Setting Call",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Find Closing Call",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable1": {
+      "main": [
+        []
+      ]
+    },
+    "Find Setting Call": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Closing Call": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "set table id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "set table id1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Airtable1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set table id": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set table id1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-02T12:11:35.526Z",
+  "id": "g14wE2ip6U1uW6Fc",
+  "meta": null,
+  "name": "Calendly -> Event Canceled",
+  "nodes": [
+    {
+      "parameters": {
+        "scope": "organization",
+        "events": [
+          "invitee.canceled"
+        ]
+      },
+      "type": "n8n-nodes-base.calendlyTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8bdd6851-88e3-456d-800f-3674fcc80a6a",
+      "name": "Calendly Trigger",
+      "webhookId": "85566d07-40d5-48c6-9411-62fd2163ccaf",
+      "credentials": {
+        "calendlyApi": {
+          "id": "gARNKTkzLCPnpO4h",
+          "name": "Calendly account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b5242db9-c6c2-4108-b52e-5c9a2ddef79c",
+              "name": "uuid",
+              "value": "={{ $('Calendly Trigger').item.json.payload.uri.split('/invitees/')[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        300,
+        0
+      ],
+      "id": "35d005f3-a0e9-428a-88ed-e910efbda9fe",
+      "name": "Get call uuid",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "={{ $json.tableId\n }}",
+          "mode": "id"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.id }}",
+            "Termin Status": "Canceled",
+            "Cancelled at": "={{ $('Calendly Trigger').item.json.created_at }}",
+            "Count": 0
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Setting Call Herkunft",
+              "displayName": "Setting Call Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Termin Status",
+              "displayName": "Termin Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Canceled",
+                  "value": "Canceled"
+                },
+                {
+                  "name": "Scheduled",
+                  "value": "Scheduled"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Scheduled Start Time",
+              "displayName": "Scheduled Start Time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Scheduled End Time",
+              "displayName": "Scheduled End Time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Cancelled at",
+              "displayName": "Cancelled at",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vollständiger Name",
+              "displayName": "Vollständiger Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Handynummer",
+              "displayName": "Handynummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Setter",
+              "displayName": "Setter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft Last",
+              "displayName": "Lead Herkunft Last",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Lead Herkunft Datum",
+              "displayName": "Last Lead Herkunft Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "One Call Close",
+              "displayName": "One Call Close",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Berechnung",
+              "displayName": "Berechnung",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "uuid",
+              "displayName": "uuid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1940,
+        40
+      ],
+      "id": "cc152e87-141f-4176-af3b-b8131ce5372a",
+      "name": "Airtable1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "ZxaATuaCa4odOcuW",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblioqtfDkDrlbOdl",
+          "mode": "list",
+          "cachedResultName": "Setting Call",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblioqtfDkDrlbOdl"
+        },
+        "filterByFormula": "={uuid} = '{{ $json.uuid }}'",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        760,
+        -140
+      ],
+      "id": "51ef9ec0-845a-4142-896a-4a2f9c927767",
+      "name": "Find Setting Call",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "ZxaATuaCa4odOcuW",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl2Ssa9Dl3Rbi6Cf",
+          "mode": "list",
+          "cachedResultName": "Closing Call",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tbl2Ssa9Dl3Rbi6Cf"
+        },
+        "filterByFormula": "={uuid} = '{{ $json.uuid }}'",
+        "returnAll": false,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        760,
+        160
+      ],
+      "id": "fff8259e-3fc5-43ae-88da-3d01a614f42f",
+      "name": "Find Closing Call",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "ZxaATuaCa4odOcuW",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8265a451-2d2b-4a3c-9469-850577bceb9d",
+              "leftValue": "={{ Object.keys($json).length > 0 }}",
+              "rightValue": "=true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1000,
+        -140
+      ],
+      "id": "bb011d18-b686-4631-bea6-90c19866e707",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8265a451-2d2b-4a3c-9469-850577bceb9d",
+              "leftValue": "={{ Object.keys($json).length > 0 }}",
+              "rightValue": "=true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1020,
+        160
+      ],
+      "id": "51af7833-acf4-465e-a7df-4714bb7bccdb",
+      "name": "If1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1600,
+        40
+      ],
+      "id": "13426e4d-8911-438a-908c-0231203780b3",
+      "name": "Merge",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "04bd8845-38e8-402f-b0c2-66be51f79ed9",
+              "name": "tableId",
+              "value": "tblioqtfDkDrlbOdl",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1260,
+        -100
+      ],
+      "id": "27960406-7883-4ecd-9fa8-8ef4a52ae866",
+      "name": "set table id"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "04bd8845-38e8-402f-b0c2-66be51f79ed9",
+              "name": "tableId",
+              "value": "tbl2Ssa9Dl3Rbi6Cf",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1280,
+        140
+      ],
+      "id": "51d07638-e4d2-4a6a-be8e-8f75c7de7360",
+      "name": "set table id1"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "email",
+              "value": "={{ $json.payload.email }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1,
+      "position": [
+        280,
+        -200
+      ],
+      "id": "5c54a70d-b38a-48e8-9965-71585a0e04e2",
+      "name": "Execution Data"
+    }
+  ],
+  "pinData": {
+    "Calendly Trigger": [
+      {
+        "json": {
+          "created_at": "2025-06-02T12:22:20.000000Z",
+          "created_by": "https://api.calendly.com/users/206d8c5a-43f1-4e0d-84ce-f17938d72013",
+          "event": "invitee.canceled",
+          "payload": {
+            "cancel_url": "https://calendly.com/cancellations/60114a08-06a0-477c-b17f-ad56984c36a7",
+            "cancellation": {
+              "canceled_by": "MyMiaPage",
+              "canceler_type": "host",
+              "created_at": "2025-06-02T12:22:19.933322Z",
+              "reason": "test"
+            },
+            "created_at": "2025-06-02T12:21:33.710775Z",
+            "email": "daniel@eyl-marketing.de",
+            "event": "https://api.calendly.com/scheduled_events/c664ba83-21ce-41cc-8c9a-0b7aba5699fc",
+            "first_name": "Daniel",
+            "invitee_scheduled_by": "https://api.calendly.com/users/206d8c5a-43f1-4e0d-84ce-f17938d72013",
+            "last_name": "Formanek",
+            "name": "Daniel Formanek",
+            "new_invitee": null,
+            "no_show": null,
+            "old_invitee": null,
+            "payment": null,
+            "questions_and_answers": [
+              {
+                "answer": "+43 666 49249894",
+                "position": 0,
+                "question": "Deine Telefonnummer"
+              }
+            ],
+            "reconfirmation": null,
+            "reschedule_url": "https://calendly.com/reschedulings/60114a08-06a0-477c-b17f-ad56984c36a7",
+            "rescheduled": false,
+            "routing_form_submission": null,
+            "scheduled_event": {
+              "cancellation": {
+                "canceled_by": "MyMiaPage",
+                "canceler_type": "host",
+                "created_at": "2025-06-02T12:22:19.933322Z",
+                "reason": "test"
+              },
+              "created_at": "2025-06-02T12:21:33.696904Z",
+              "end_time": "2025-06-05T08:30:00.000000Z",
+              "event_guests": [],
+              "event_memberships": [
+                {
+                  "user": "https://api.calendly.com/users/e2f1d3a0-8fbb-46f9-a8ae-57c85513835d",
+                  "user_email": "shayan@mymiapage.de",
+                  "user_name": "Shayan Jamil"
+                }
+              ],
+              "event_type": "https://api.calendly.com/event_types/185deefb-ff3f-4fe4-a326-102f7a408616",
+              "invitees_counter": {
+                "total": 1,
+                "active": 0,
+                "limit": 1
+              },
+              "location": {
+                "location": "Anruf",
+                "type": "custom"
+              },
+              "meeting_notes_html": null,
+              "meeting_notes_plain": null,
+              "name": "Dein Kennenlerngespräch mit Mias Team  💖 ",
+              "start_time": "2025-06-05T08:00:00.000000Z",
+              "status": "canceled",
+              "updated_at": "2025-06-02T12:22:20.153803Z",
+              "uri": "https://api.calendly.com/scheduled_events/c664ba83-21ce-41cc-8c9a-0b7aba5699fc"
+            },
+            "scheduling_method": null,
+            "status": "canceled",
+            "text_reminder_number": null,
+            "timezone": "Europe/Berlin",
+            "tracking": {
+              "utm_campaign": null,
+              "utm_source": null,
+              "utm_medium": null,
+              "utm_content": null,
+              "utm_term": null,
+              "salesforce_uuid": null
+            },
+            "updated_at": "2025-06-02T12:22:20.307283Z",
+            "uri": "https://api.calendly.com/scheduled_events/c664ba83-21ce-41cc-8c9a-0b7aba5699fc/invitees/60114a08-06a0-477c-b17f-ad56984c36a7"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD"
+  },
+  "staticData": {
+    "node:Calendly Trigger": {
+      "webhookURI": "https://api.calendly.com/webhook_subscriptions/e73ba507-9686-4496-8f27-0cc34f77db40"
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-11T14:51:53.890Z",
+  "versionId": "7e043de2-7709-42fd-a2c2-91ab15fee908"
+}
