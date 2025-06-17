@@ -1,0 +1,711 @@
+{
+  "active": true,
+  "connections": {
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "If record exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If record exists": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ActiveCampaign2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Airtable1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable1": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign2": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign5": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-06T07:17:16.705Z",
+  "id": "MCUnEmIaH1fIOYGJ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[WF-DF-00010] Social Media Days - Certificate",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appT9Q0lTbgTyRrHE",
+          "mode": "list",
+          "cachedResultName": "MP LIVE EVENTS",
+          "cachedResultUrl": "https://airtable.com/appT9Q0lTbgTyRrHE"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWLy8iXGxhOEra5",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/appT9Q0lTbgTyRrHE/tblWLy8iXGxhOEra5"
+        },
+        "filterByFormula": "={E-Mail} = \"{{ $json.body.data.data.contact.email }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "view": {
+            "__rl": true,
+            "value": "viwABmfzzCFfoU9tw",
+            "mode": "list",
+            "cachedResultName": "Certificates",
+            "cachedResultUrl": "https://airtable.com/appT9Q0lTbgTyRrHE/tblWLy8iXGxhOEra5/viwABmfzzCFfoU9tw"
+          }
+        }
+      },
+      "id": "822d48f4-6df9-47a9-8f11-c13a97003021",
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -60,
+        640
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "17617246-3f7f-486e-bb1e-e557f7b2c621",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "14f07c0e-4850-47ad-821d-5719c0bad676",
+      "name": "If record exists",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        200,
+        640
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://certificate.thesocialmediadays.de/webhook",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"firstName\": \"{{ $json.Vorname }}\",\n    \"lastName\": \"{{ $json.Nachname }}\"\n} ",
+        "options": {}
+      },
+      "id": "c0c186bf-5561-4a84-a07f-d27a64c7ffcd",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "base": {
+          "__rl": true,
+          "value": "appT9Q0lTbgTyRrHE",
+          "mode": "list",
+          "cachedResultName": "MP LIVE EVENTS",
+          "cachedResultUrl": "https://airtable.com/appT9Q0lTbgTyRrHE"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWLy8iXGxhOEra5",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/appT9Q0lTbgTyRrHE/tblWLy8iXGxhOEra5"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "CertificateUrl": "={{ $json.certificateLink }}",
+            "id": "={{ $('Airtable').item.json.id }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "FirstName",
+              "displayName": "FirstName",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "LastName",
+              "displayName": "LastName",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "CertificateUrl",
+              "displayName": "CertificateUrl",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3fbe6734-6458-4e3b-a70d-cd903d67e1f9",
+      "name": "Airtable1",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        720,
+        460
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.fields['E-Mail'] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "23",
+                "value": "={{ $json.fields.CertificateUrl }}"
+              },
+              {
+                "field": "24",
+                "value": "Yes"
+              }
+            ]
+          },
+          "firstName": "={{ $json.fields.Vorname }}",
+          "lastName": "={{ $json.fields.Nachname }}"
+        }
+      },
+      "id": "c3e2bd2b-a0a3-4295-a065-5e289407455d",
+      "name": "ActiveCampaign",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        460
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "162",
+        "contactId": "={{ $json.id }}"
+      },
+      "id": "886821af-a56f-4fc1-a5be-617c9627b360",
+      "name": "ActiveCampaign1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1440,
+        460
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $('Webhook').item.json.body.data.data.contact.email }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "24",
+                "value": "No"
+              }
+            ]
+          }
+        }
+      },
+      "id": "07c03246-c0b0-4a58-95db-28b370e668c9",
+      "name": "ActiveCampaign2",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        520,
+        680
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 10,
+        "unit": "minutes"
+      },
+      "id": "6f73b144-1643-4f5a-babd-b6c4777b5504",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1140,
+        680
+      ],
+      "webhookId": "d8c69df0-9b40-4d92-a94d-9abd4db4dcd9"
+    },
+    {
+      "parameters": {
+        "amount": 10,
+        "unit": "minutes"
+      },
+      "id": "06418681-1a48-497e-9993-6fe43b456b33",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1820,
+        460
+      ],
+      "webhookId": "d8c69df0-9b40-4d92-a94d-9abd4db4dcd9"
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "operation": "remove",
+        "contactTagId": "={{ $json.id }}"
+      },
+      "id": "cf296333-05f1-4760-ba19-5d95844ef649",
+      "name": "ActiveCampaign3",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        460
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "162",
+        "contactId": "={{ $json.id }}"
+      },
+      "id": "580b2897-4c8d-458c-9b57-8a74bb3ea9a7",
+      "name": "ActiveCampaign5",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        820,
+        680
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "operation": "remove",
+        "contactTagId": "={{ $json.id }}"
+      },
+      "id": "3d062edd-cbe5-411b-93cb-635c32b88bb4",
+      "name": "ActiveCampaign4",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        680
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "https://www.thesocialmediadays.de/certificate",
+        "height": 91.62790697674423,
+        "width": 323.75581395348865
+      },
+      "id": "4a43991b-1ecb-4c70-9262-1f9e6092907e",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1806b34a-8bd4-4170-9e53-9fef35e016e1",
+              "leftValue": "={{ $json.body.page.id }}",
+              "rightValue": 14522418,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1bcbc0b9-8ff9-425d-9d17-ef9b4faecd14",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -280,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "9bc7c999-a6ea-41fe-a88f-70ae937ed530",
+        "options": {}
+      },
+      "id": "41124b6f-db8f-4f6c-b347-4f153cc2ac3f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -500,
+        640
+      ],
+      "webhookId": "9bc7c999-a6ea-41fe-a88f-70ae937ed530"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "accept": "*/*",
+            "user-agent": "Ruby",
+            "host": "n8n-mymiapage.fly.dev",
+            "content-type": "application/json",
+            "traceparent": "00-dab1a3cba0cc077d68cf6d4be784676f-f74adb4c572a7af1-00",
+            "tracestate": "2882645@nr=0-0-3154619-1494295268-f74adb4c572a7af1-fc051d4fe38e6c5d-0-0.738879-1729591422045",
+            "newrelic": "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkFwcCIsImFjIjoiMzE1NDYxOSIsImFwIjoiMTQ5NDI5NTI2OCIsInR4IjoiZmMwNTFkNGZlMzhlNmM1ZCIsInRyIjoiZGFiMWEzY2JhMGNjMDc3ZDY4Y2Y2ZDRiZTc4NDY3NmYiLCJzYSI6ZmFsc2UsInByIjowLjczODg3OSwidGkiOjE3Mjk1OTE0MjIwNDUsImlkIjoiZjc0YWRiNGM1NzJhN2FmMSIsInRrIjoiMjg4MjY0NSJ9fQ==",
+            "x-request-start": "t=1729591422076371",
+            "content-length": "698",
+            "fly-client-ip": "52.7.123.226",
+            "x-forwarded-for": "52.7.123.226, 66.241.125.249",
+            "fly-forwarded-proto": "https",
+            "x-forwarded-proto": "https",
+            "fly-forwarded-ssl": "on",
+            "x-forwarded-ssl": "on",
+            "fly-forwarded-port": "443",
+            "x-forwarded-port": "443",
+            "fly-region": "iad",
+            "fly-request-id": "01JASTXB3WXDBFNNGS76BQJDM6-iad",
+            "via": "1.1 fly.io"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "id": 25884050,
+              "data": {
+                "contact": {
+                  "email": "daniel@eyl-marketing.de"
+                },
+                "redirect_to": "https://www.thesocialmediadays.de/thank-you-certificate"
+              },
+              "page_id": 14522418,
+              "public_id": "ExKxDz",
+              "contact_id": 364381647,
+              "created_at": "2024-10-22T10:03:33.099Z",
+              "updated_at": "2024-10-22T10:03:33.115Z",
+              "workspace_id": 156577
+            },
+            "page": {
+              "id": 14522418,
+              "name": "Copy of Aufzeichnung Tag 1",
+              "public_id": "GqGnNE"
+            },
+            "funnel": {
+              "id": 516919,
+              "name": "Days Of Social Media Funnel",
+              "public_id": "YwpQQB"
+            },
+            "event_id": "3e50516e-e5bb-46fc-9030-01d39740c2fd",
+            "created_at": "2024-10-22T10:03:33.268Z",
+            "event_type": "form_submission.created",
+            "subject_id": 25884050,
+            "api_version": 2,
+            "subject_type": "FormSubmission",
+            "workspace_id": 156577
+          },
+          "webhookUrl": "https://n8n-mymiapage.fly.dev/webhook-test/9bc7c999-a6ea-41fe-a88f-70ae937ed530",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-18T13:42:59.907Z",
+      "updatedAt": "2024-12-18T13:42:59.907Z",
+      "id": "mWBdY8N7iM4hbx1S",
+      "name": "webhook"
+    },
+    {
+      "createdAt": "2024-12-10T15:27:46.642Z",
+      "updatedAt": "2024-12-10T15:27:46.642Z",
+      "id": "VvwxOzqj9tBZMm7s",
+      "name": "airtable"
+    },
+    {
+      "createdAt": "2024-12-10T15:27:43.788Z",
+      "updatedAt": "2024-12-10T15:27:43.788Z",
+      "id": "CKO2xAwHg9nnscdV",
+      "name": "active campaign"
+    },
+    {
+      "createdAt": "2024-12-10T15:28:43.960Z",
+      "updatedAt": "2024-12-18T13:58:28.274Z",
+      "id": "SkhmLcamNU2Kyeph",
+      "name": "clickfunnel_optin"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T13:44:47.504Z",
+  "versionId": "9e9626fc-fbb0-4bc5-91fc-2c73d3125d8e"
+}
