@@ -1,0 +1,106 @@
+{
+  "active": false,
+  "connections": {
+    "Bewertung versenden": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign": {
+      "main": [
+        []
+      ]
+    },
+    "ActiveCampaign1": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-27T15:09:42.870Z",
+  "id": "nU0GkCN9MnMpTDpm",
+  "meta": null,
+  "name": "Clickup -> Trustpilot | Bewertung erhalten",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c0df336a-21da-410b-8a8a-eadf8341b5f2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -320,
+        -220
+      ],
+      "id": "c1001197-31bc-4c55-8021-187776600c60",
+      "name": "Bewertung versenden",
+      "webhookId": "c0df336a-21da-410b-8a8a-eadf8341b5f2",
+      "notes": "https://app.clickup.com/9015284078/v/l/6-901502108774-1?pr=90150901171"
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "227",
+        "contactId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -220
+      ],
+      "id": "572ff2a9-5efb-490b-8f9c-fa0fa88c6faf",
+      "name": "ActiveCampaign",
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.body.payload.fields[1].value }}",
+        "updateIfExists": true,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        -100,
+        -220
+      ],
+      "id": "60cd2b92-466b-4b2f-a053-483ed5ccde0f",
+      "name": "ActiveCampaign1",
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-27T15:10:30.155Z",
+  "versionId": "81d4eef3-2c20-4bca-a0b9-0cc86f0e580f"
+}
