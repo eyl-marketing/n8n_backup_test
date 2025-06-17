@@ -1,0 +1,470 @@
+{
+  "active": false,
+  "connections": {
+    "Calendly Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get event type uuid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get event type uuid": {
+      "main": [
+        [
+          {
+            "node": "Get event type details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get event type details": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Seach Record (Last Click)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Seach Record (Last Click)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Seach Record (Last Click)": {
+      "main": [
+        [
+          {
+            "node": "Delete Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Seach Record (Last Click)1": {
+      "main": [
+        [
+          {
+            "node": "Delete Record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-15T03:53:48.357Z",
+  "id": "HQN3Ay59xYFqs3u8",
+  "meta": null,
+  "name": "[WF-DF-0014] Delete Airtable Record if Setting/Closing is canceled or rescheduled",
+  "nodes": [
+    {
+      "parameters": {
+        "scope": "organization",
+        "events": [
+          "invitee.canceled"
+        ]
+      },
+      "id": "47eeae4b-e0a1-4195-b184-d4f910e495e8",
+      "name": "Calendly Trigger",
+      "type": "n8n-nodes-base.calendlyTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "5a532b64-b4bc-4f0b-bbcf-3c7a5aaaf362",
+      "credentials": {
+        "calendlyApi": {
+          "id": "gARNKTkzLCPnpO4h",
+          "name": "Calendly account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Holen des Werts von \"event_type\" aus dem JSON-Objekt\nconst url = $json.payload.scheduled_event.event_type;\n\n// Extrahieren der UUID am Ende der URL\nconst extractedCode = url.split('/').pop();\n\nreturn {\n    data: extractedCode\n};"
+      },
+      "id": "96d4d0a9-14ae-4219-84f8-194cd3fdd223",
+      "name": "Get event type uuid",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        180,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.calendly.com/event_types/{{ $json.data }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "calendlyApi",
+        "options": {}
+      },
+      "id": "b2899719-e37e-4dd0-9435-978d02b465f4",
+      "name": "Get event type details",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        360,
+        0
+      ],
+      "credentials": {
+        "calendlyApi": {
+          "id": "gARNKTkzLCPnpO4h",
+          "name": "Calendly account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.resource.internal_note }}",
+                    "rightValue": "Setting",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Setting"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "dd2cdada-b7b2-425a-92a2-4eff65258c32",
+                    "leftValue": "={{ $json.resource.internal_note }}",
+                    "rightValue": "Closing",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Closing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        580,
+        0
+      ],
+      "id": "2b039e06-c9f3-457f-8ea8-388724c3fe27",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblioqtfDkDrlbOdl",
+          "mode": "list",
+          "cachedResultName": "Setting Call",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblioqtfDkDrlbOdl"
+        },
+        "filterByFormula": "={E-mail} = \"{{ $('Calendly Trigger').item.json.payload.email }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "view": {
+            "__rl": true,
+            "value": "viwKbldSwD77dbhd0",
+            "mode": "list",
+            "cachedResultName": "Last Click",
+            "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblioqtfDkDrlbOdl/viwKbldSwD77dbhd0"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        840,
+        -180
+      ],
+      "id": "cf44a5f0-a748-4825-8e73-07ef3517baa1",
+      "name": "Seach Record (Last Click)",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteRecord",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblioqtfDkDrlbOdl",
+          "mode": "list",
+          "cachedResultName": "Setting Call",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblioqtfDkDrlbOdl"
+        },
+        "id": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1060,
+        -180
+      ],
+      "id": "a4a859f9-e80d-441f-9527-1a3f99279bb3",
+      "name": "Delete Record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl2Ssa9Dl3Rbi6Cf",
+          "mode": "list",
+          "cachedResultName": "Closing Call",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tbl2Ssa9Dl3Rbi6Cf"
+        },
+        "filterByFormula": "={E-mail} = \"{{ $('Calendly Trigger').item.json.payload.email }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "view": {
+            "__rl": true,
+            "value": "viw4Vg3qYqOwCCADh",
+            "mode": "list",
+            "cachedResultName": "Last Click",
+            "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tbl2Ssa9Dl3Rbi6Cf/viw4Vg3qYqOwCCADh"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        840,
+        100
+      ],
+      "id": "dfcd0bb0-5291-4a7e-8a22-fe5b3c4c1a89",
+      "name": "Seach Record (Last Click)1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteRecord",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl2Ssa9Dl3Rbi6Cf",
+          "mode": "list",
+          "cachedResultName": "Closing Call",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tbl2Ssa9Dl3Rbi6Cf"
+        },
+        "id": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1060,
+        100
+      ],
+      "id": "a31e4086-c29a-47d4-bee3-c5ecfd84f363",
+      "name": "Delete Record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Calendly Trigger": [
+      {
+        "json": {
+          "created_at": "2024-11-14T09:58:25.000000Z",
+          "created_by": "https://api.calendly.com/users/206d8c5a-43f1-4e0d-84ce-f17938d72013",
+          "event": "invitee.created",
+          "payload": {
+            "cancel_url": "https://calendly.com/cancellations/713a8472-cee6-4d69-ba47-9797da955282",
+            "created_at": "2024-11-14T09:58:24.367748Z",
+            "email": "daniel@eyl-marketing.de",
+            "event": "https://api.calendly.com/scheduled_events/6df15678-24c7-48fd-8cdb-d1d0e58331f4",
+            "first_name": "Daniel",
+            "invitee_scheduled_by": "https://api.calendly.com/users/206d8c5a-43f1-4e0d-84ce-f17938d72013",
+            "last_name": "Formanek",
+            "name": "Daniel Formanek",
+            "new_invitee": null,
+            "no_show": null,
+            "old_invitee": null,
+            "payment": null,
+            "questions_and_answers": [
+              {
+                "answer": "+43 664 9246896",
+                "position": 0,
+                "question": "Deine Telefonnummer"
+              }
+            ],
+            "reconfirmation": null,
+            "reschedule_url": "https://calendly.com/reschedulings/713a8472-cee6-4d69-ba47-9797da955282",
+            "rescheduled": false,
+            "routing_form_submission": null,
+            "scheduled_event": {
+              "created_at": "2024-11-14T09:58:24.336896Z",
+              "end_time": "2024-11-15T09:30:00.000000Z",
+              "event_guests": [],
+              "event_memberships": [
+                {
+                  "user": "https://api.calendly.com/users/cff8368e-87fc-468b-ac07-2f557460d6a3",
+                  "user_email": "julia@mymiapage.de",
+                  "user_name": "Julia Kargl"
+                }
+              ],
+              "event_type": "https://api.calendly.com/event_types/7fd38f48-83d6-4878-9ff1-8b3e3a8cfe40",
+              "invitees_counter": {
+                "total": 1,
+                "active": 1,
+                "limit": 1
+              },
+              "location": {
+                "location": null,
+                "type": "custom"
+              },
+              "meeting_notes_html": null,
+              "meeting_notes_plain": null,
+              "name": "Dein Kennenlerngespräch mit Mias Team  💖 ",
+              "start_time": "2024-11-15T09:00:00.000000Z",
+              "status": "active",
+              "updated_at": "2024-11-14T09:58:24.336896Z",
+              "uri": "https://api.calendly.com/scheduled_events/6df15678-24c7-48fd-8cdb-d1d0e58331f4"
+            },
+            "scheduling_method": null,
+            "status": "active",
+            "text_reminder_number": null,
+            "timezone": "Europe/Berlin",
+            "tracking": {
+              "utm_campaign": null,
+              "utm_source": "source",
+              "utm_medium": null,
+              "utm_content": null,
+              "utm_term": null,
+              "salesforce_uuid": null
+            },
+            "updated_at": "2024-11-14T09:58:24.367748Z",
+            "uri": "https://api.calendly.com/scheduled_events/6df15678-24c7-48fd-8cdb-d1d0e58331f4/invitees/713a8472-cee6-4d69-ba47-9797da955282"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD",
+    "timezone": "Europe/Berlin"
+  },
+  "staticData": {
+    "node:Calendly Trigger": {}
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-18T07:36:51.068Z",
+      "updatedAt": "2024-12-18T07:36:51.068Z",
+      "id": "xxGbabVuKUsHN1Mu",
+      "name": "calendly"
+    },
+    {
+      "createdAt": "2024-12-10T15:27:46.642Z",
+      "updatedAt": "2024-12-10T15:27:46.642Z",
+      "id": "VvwxOzqj9tBZMm7s",
+      "name": "airtable"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-10T19:23:04.198Z",
+  "versionId": "abdb4b71-0095-4b9a-bcec-9d591b838846"
+}
