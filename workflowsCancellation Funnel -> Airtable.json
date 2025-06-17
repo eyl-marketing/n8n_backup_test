@@ -1,0 +1,345 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-15T10:24:01.644Z",
+  "id": "piltNNKXuZ4j416c",
+  "meta": null,
+  "name": "Cancellation Funnel -> Airtable",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "b2275077-e2db-454a-b4ed-c8ac96672546",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "28d343f7-714c-419f-8602-dcf1afcc0922",
+      "name": "Webhook",
+      "webhookId": "b2275077-e2db-454a-b4ed-c8ac96672546",
+      "notes": "bracket-experience-pocket.heyflow.site/cancellation-funnel---soul-of-woman"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7PqKIhu9ypyIBX",
+          "mode": "list",
+          "cachedResultName": "Umfragen",
+          "cachedResultUrl": "https://airtable.com/app7PqKIhu9ypyIBX"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblQJemzFmiTrCCXb",
+          "mode": "list",
+          "cachedResultName": "Soul of Woman Club Cancellation",
+          "cachedResultUrl": "https://airtable.com/app7PqKIhu9ypyIBX/tblQJemzFmiTrCCXb"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Heyflow ID": "={{ $json.body.id }}",
+            "E-mail": "={{ $json.body.fields.email }}",
+            "Phone": "={{ $json.body.fields.phone }}",
+            "Vorname": "={{ $json.body.fields.firstname }}",
+            "Nachname": "={{ $json.body.fields.lastname }}",
+            "Warum möchtest du dein Abonnement kündigen": "={{ $json.body.fields['Warum möchtest du dein Abonnement kündigen'] }}",
+            "Wie zufrieden warst du insgesamt mit dem Soul Of Woman Club (Skala von 1 bis 10)": "={{ $json.body.fields['Wie zufrieden warst du insgesamt mit dem Soul Of Woman Club (Skala von 1 bis 10)'] }}",
+            "Hattest du Schwierigkeiten bei der Nutzung der Plattform oder des Services": "={{ $json.body.fields['Hattest du Schwierigkeiten bei der Nutzung der Plattform oder des Services'] }}",
+            "Welche Schwierigkeiten hattest du": "={{ $json.body.fields['Welche Schwierigkeiten hattest du'] }}",
+            "Hast du alle angebotenen Inhalte genutzt": "={{ $json.body.fields['Hast du alle angebotenen Inhalte genutzt'] }}",
+            "Was können wir tun, um dich zum Bleiben zu überzeugen": "={{ $json.body.fields['Was können wir tun, um dich zum Bleiben zu überzeugen'] }}",
+            "Wie häufig hast du den Soul Of Woman Club in den letzten 30 Tagen genutzt": "={{ $json.body.fields['Wie häufig hast du den Soul Of Woman Club in den letzten 30 Tagen genutzt'] }}",
+            "Würdest du den Soul Of Woman Club weiterempfehlen": "={{ $json.body.fields['Würdest du den Soul Of Woman Club weiterempfehlen'] }}",
+            "Aus welchem Grund würdest du den Soul of Woman Club nicht weiterempfehlen": "={{ $json.body.fields['Aus welchem Grund würdest du den Soul of Woman Club nicht weiterempfehlen'] }}",
+            "Was hat dir am Soul Of Woman Club am besten gefallen?": "={{ $json.body.fields['Was hat dir am Soul Of Woman Club am besten gefallen?'] }}",
+            "Was hat dir am Soul Of Woman Club nicht gefallen": "={{ $json.body.fields['Was hat dir am Soul Of Woman Club nicht gefallen'] }}",
+            "Gibt es noch etwas, das du uns mitteilen möchtest": "={{ $json.body.fields['Gibt es noch etwas, das du uns mitteilen möchtest'] }}",
+            "Bist du sicher, dass du dein Abonnement kündigen möchtest": "={{ $json.body.fields['Bist du sicher, dass du dein Abonnement kündigen möchtest'] }}",
+            "Datum": "={{ $json.body.createdAt }}",
+            "Status": "Nicht gekündigt"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Gekündigt",
+                  "value": "Gekündigt"
+                },
+                {
+                  "name": "Nicht gekündigt",
+                  "value": "Nicht gekündigt"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-mail",
+              "displayName": "E-mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Warum möchtest du dein Abonnement kündigen",
+              "displayName": "Warum möchtest du dein Abonnement kündigen",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Wie zufrieden warst du insgesamt mit dem Soul Of Woman Club (Skala von 1 bis 10)",
+              "displayName": "Wie zufrieden warst du insgesamt mit dem Soul Of Woman Club (Skala von 1 bis 10)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Hattest du Schwierigkeiten bei der Nutzung der Plattform oder des Services",
+              "displayName": "Hattest du Schwierigkeiten bei der Nutzung der Plattform oder des Services",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Welche Schwierigkeiten hattest du",
+              "displayName": "Welche Schwierigkeiten hattest du",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Hast du alle angebotenen Inhalte genutzt",
+              "displayName": "Hast du alle angebotenen Inhalte genutzt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Was können wir tun, um dich zum Bleiben zu überzeugen",
+              "displayName": "Was können wir tun, um dich zum Bleiben zu überzeugen",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Wie häufig hast du den Soul Of Woman Club in den letzten 30 Tagen genutzt",
+              "displayName": "Wie häufig hast du den Soul Of Woman Club in den letzten 30 Tagen genutzt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Würdest du den Soul Of Woman Club weiterempfehlen",
+              "displayName": "Würdest du den Soul Of Woman Club weiterempfehlen",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Aus welchem Grund würdest du den Soul of Woman Club nicht weiterempfehlen",
+              "displayName": "Aus welchem Grund würdest du den Soul of Woman Club nicht weiterempfehlen",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Was hat dir am Soul Of Woman Club am besten gefallen?",
+              "displayName": "Was hat dir am Soul Of Woman Club am besten gefallen?",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Was hat dir am Soul Of Woman Club nicht gefallen",
+              "displayName": "Was hat dir am Soul Of Woman Club nicht gefallen",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Gibt es noch etwas, das du uns mitteilen möchtest",
+              "displayName": "Gibt es noch etwas, das du uns mitteilen möchtest",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Bist du sicher, dass du dein Abonnement kündigen möchtest",
+              "displayName": "Bist du sicher, dass du dein Abonnement kündigen möchtest",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Heyflow ID",
+              "displayName": "Heyflow ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "8f0b1c40-6676-42c2-b1b8-ea6c0f6005f1",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T13:43:45.910Z",
+  "versionId": "09366b81-4830-484c-a10d-2a87e4526d6d"
+}
