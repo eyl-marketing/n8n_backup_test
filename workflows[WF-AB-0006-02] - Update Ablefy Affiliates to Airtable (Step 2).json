@@ -1,0 +1,380 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Records": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create Record",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Search Records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Record": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Record": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-04T22:01:40.169Z",
+  "id": "35pk1lRHR4LL7DlQ",
+  "meta": null,
+  "name": "[WF-AB-0006-02] - Update Ablefy Affiliates to Airtable (Step 2)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        840,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Hole die Daten dynamisch aus den Nodes\nconst airtableRawData = $node[\"Search Records\"].json || []; // JSON aus Airtable Node\nconst elopageData = $node[\"Loop Over Items\"].json || {}; // JSON aus Elopage Node oder leeres Objekt\n\n// Debugging: Logge die Rohdaten zur Überprüfung\nconsole.log(\"Airtable Raw Data:\", airtableRawData);\nconsole.log(\"Elopage Raw Data:\", elopageData);\n\n// Falls die Daten aus Airtable kein Array sind, mache sie zu einem\nconst airtableRecords = Array.isArray(airtableRawData) ? airtableRawData : [airtableRawData];\n\n// Extrahiere alle `prid`-Werte aus Airtable und konvertiere in Strings\nlet airtableProgramIds = [];\nairtableRecords.forEach(record => {\n    if (Array.isArray(record.prid)) {\n        airtableProgramIds = airtableProgramIds.concat(record.prid.map(id => id.toString())); // IDs sammeln und zu Strings konvertieren\n    }\n});\n\n// Extrahiere die `program_ids` aus Elopage und konvertiere in Strings\nconst elopageProgramIds = Array.isArray(elopageData.program_ids)\n    ? elopageData.program_ids.map(id => id.toString()) // Konvertiere zu Strings\n    : []; // Fallback: Leeres Array, wenn program_ids nicht existiert\n\n// Debugging: Logge die Arrays zur Überprüfung\nconsole.log(\"Airtable Program IDs (Strings):\", airtableProgramIds);\nconsole.log(\"Elopage Program IDs (Strings):\", elopageProgramIds);\n\n// Finde fehlende IDs in Airtable\nconst missingInAirtable = elopageProgramIds.filter(id => !airtableProgramIds.includes(id));\n\n// Debugging: Logge die fehlenden IDs\nconsole.log(\"Missing in Airtable:\", missingInAirtable);\n\n// Kombiniere bestehende und fehlende IDs für das Update\nconst combinedProgramIds = [...new Set([...airtableProgramIds, ...missingInAirtable])]; // Alle IDs zusammenführen und Duplikate entfernen\n\n// Formatiere die IDs in den gewünschten Textstring\nconst formattedProgramIds = combinedProgramIds.map(id => `\"${id}\"`).join(\", \");\n\n// Debugging: Logge den formatierten String\nconsole.log(\"Formatted Program IDs for Airtable:\", formattedProgramIds);\n\n// Ergebnis erstellen\nconst isEqual = missingInAirtable.length === 0;\n\n// Rückgabe des Ergebnisses\nreturn [{\n    json: {\n        isEqual,\n        missingInAirtable, // IDs, die in Airtable fehlen\n        existingInAirtable: airtableProgramIds, // IDs, die bereits in Airtable sind\n        formattedProgramIds, // Kombinierter und formatierter String für Airtable-Update\n        message: isEqual \n            ? \"Alle Program IDs aus Elopage sind in Airtable vorhanden.\" \n            : `Fehlende Program IDs in Airtable: ${missingInAirtable.join(\", \")}`\n    }\n}];"
+      },
+      "id": "671d2f12-acff-4cc0-9e0c-bf4cc9f22043",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        620
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "22a5b77b-edad-4481-b092-2430bbb4b37b",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2300,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message }}",
+                    "rightValue": "=Alle Program IDs aus Elopage sind in Airtable vorhanden.",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Equal"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "48e6ce94-518d-44c0-bd70-e34502645fa2",
+                    "leftValue": "={{ $json.message }}",
+                    "rightValue": "Fehlende Program IDs in Airtable:",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Not equal"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4d750124-660f-4945-b186-48f4edc47671",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1820,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.airtable.com/v0/app7bQ0CiN5j1RECH/tblqn3Op1katuyS9s",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer patQ2d7ubuSJVavXz.c21034ff60dbcca6a5750778d7b282f4cedfd334ab33bf12e04ea4b6fb02b410"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"Datum\": \"{{new Date().toISOString().split('T')[0]}}\",\n    \"Vorname\": \"{{ $('Loop Over Items').item.json.first_name }}\",\n    \"Nachname\": \"{{ $('Loop Over Items').item.json.last_name }}\",\n    \"Vollständiger Name\": \"{{ $('Loop Over Items').item.json.first_name }} {{ $('Loop Over Items').item.json.last_name }}\",\n    \"E-Mail\": \"{{ $('Loop Over Items').item.json.email }}\",\n    \"pid\": \"{{ $('Loop Over Items').item.json.id }}\",\n    \"prid\": [{{ $('Code').item.json.formattedProgramIds }}]\n  },\n  \"typecast\": true\n}",
+        "options": {}
+      },
+      "id": "3bdc0966-7e6a-4947-9b63-d8c658b103d8",
+      "name": "Create Record",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2300,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblqn3Op1katuyS9s",
+          "mode": "list",
+          "cachedResultName": "Elopage Affiliates",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblqn3Op1katuyS9s"
+        },
+        "filterByFormula": "={E-Mail}=\"{{ $('Loop Over Items').item.json.email }}\"",
+        "options": {}
+      },
+      "id": "10a00b72-307f-4a23-8084-852ae28289c4",
+      "name": "Search Records",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1320,
+        620
+      ],
+      "alwaysOutputData": true,
+      "executeOnce": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.airtable.com/v0/app7bQ0CiN5j1RECH/tblqn3Op1katuyS9s/{{ $('Search Records').item.json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer patQ2d7ubuSJVavXz.c21034ff60dbcca6a5750778d7b282f4cedfd334ab33bf12e04ea4b6fb02b410"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"prid\": [{{ $('Code').item.json.formattedProgramIds }}]\n  },\n  \"typecast\": true\n}",
+        "options": {}
+      },
+      "id": "1a1b1b66-1f5a-4c6d-bd03-140c26cd9e24",
+      "name": "Update Record",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2300,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2508fe9c-2391-49f7-b88a-abcde13b07bd",
+              "leftValue": "={{ $('Search Records').item.json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2040,
+        720
+      ],
+      "id": "fc20ddda-6425-4546-b5c9-bf052d5a75d7",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1060,
+        620
+      ],
+      "id": "ef72acbd-2c57-4896-b023-7745983912a5",
+      "name": "Loop Over Items"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD",
+    "timezone": "Europe/Berlin"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-10T15:27:46.642Z",
+      "updatedAt": "2024-12-10T15:27:46.642Z",
+      "id": "VvwxOzqj9tBZMm7s",
+      "name": "airtable"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T13:43:59.502Z",
+  "versionId": "e86eba63-395d-4562-b836-3ea84693106a"
+}
