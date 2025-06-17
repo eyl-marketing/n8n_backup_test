@@ -1,0 +1,90 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-05T15:51:13.322Z",
+  "id": "zwVmjda7oPTTXCQD",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[WF-DF-0015] Error > Slack",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "fff9de49-7254-4c73-aa74-0cd3db3078fd",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C06DN9JR9MW",
+          "mode": "list",
+          "cachedResultName": "19-mymiapage-zapier-error"
+        },
+        "text": "=🚨🚨🚨 \n*n8n Error*\n\n{{ $json.workflow.name }}\n{{ $json.execution.error.message }}\n{{ $json.execution.url }}\nRun ID: {{ $json.execution.id }}\n\n<@U05ULP4CLCT> <@U07RC36HQ4C> ",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "link_names": true,
+          "mrkdwn": true,
+          "unfurl_links": true
+        }
+      },
+      "id": "dceafefd-b54b-4098-8579-6b2c86cf83a8",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        460
+      ],
+      "webhookId": "bd01cf9b-8f35-492e-9880-995a114225c0",
+      "credentials": {
+        "slackApi": {
+          "id": "1GGJtRl8QfMYffLr",
+          "name": "Slack account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-18T13:45:36.129Z",
+      "updatedAt": "2024-12-18T13:45:36.129Z",
+      "id": "YW7dba2ursqAJaXw",
+      "name": "n8n"
+    },
+    {
+      "createdAt": "2024-12-18T07:35:15.922Z",
+      "updatedAt": "2024-12-18T07:35:15.922Z",
+      "id": "yRjgjbjXdZFJQQD7",
+      "name": "slack"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-04-01T12:28:52.059Z",
+  "versionId": "be8a97f6-46c9-40ff-a7d2-4210376da8cf"
+}
