@@ -1,0 +1,1342 @@
+{
+  "active": true,
+  "connections": {
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "Create Partner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create/Update Lead in Close4": {
+      "main": [
+        [
+          {
+            "node": "Update About field | Close API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Typeform Trigger": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add to List (Gesamte Liste)1": {
+      "main": [
+        [
+          {
+            "node": "Add to List (Partnerprogramm Liste)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Tag [Lead] Manifestationskurs": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add to List (Partnerprogramm Liste)": {
+      "main": [
+        [
+          {
+            "node": "Extract of selected courses",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create/Update Lead in Close4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract of selected courses": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Add Tag [Lead] Manifestationskurs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update About field | Close API": {
+      "main": [
+        [
+          {
+            "node": "Extract of selected courses1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post Notice| Close API1": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract of selected courses1": {
+      "main": [
+        [
+          {
+            "node": "Post Notice| Close API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Partner": {
+      "main": [
+        [
+          {
+            "node": "Search referral",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search referral": {
+      "main": [
+        [
+          {
+            "node": "Update referral",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update referral": {
+      "main": [
+        [
+          {
+            "node": "Add to List (Gesamte Liste)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-06T07:09:10.542Z",
+  "id": "7trpDowgjRhe4VzS",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[WF-DF-0004] - Premium Partnerprogramm",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "E-Mail": "={{ $json.form_response.answers[7].email }}",
+            "Lead Herkunft": "🔗 Partnerprogramm",
+            "Vorname": "={{ $json.form_response.answers[4].text }}",
+            "Nachname": "={{ $json.form_response.answers[5].text }}",
+            "Telefonnummer": "={{ $json.form_response.answers[8].phone_number }}",
+            "utm_source": "={{ $json.form_response.hidden.utm_source }}",
+            "utm_campaign": "={{ $json.form_response.hidden.utm_campaign }}",
+            "utm_medium": "={{ $json.form_response.hidden.utm_medium }}",
+            "utm_term": "={{ $json.form_response.hidden.utm_term }}",
+            "utm_content": "={{ $json.form_response.hidden.utm_content }}",
+            "Count": 1,
+            "URL Path": "partnerprogramm",
+            "first_utm_campaign": "=",
+            "first_utm_medium": "=",
+            "first_utm_term": "=",
+            "first_utm_content": "=",
+            "Full Name": "={{ $json.form_response.answers[4].text }} {{ $json.form_response.answers[5].text }}",
+            "Affiliate": "🔗 Partnerprogramm",
+            "Empfehlungsgeber_E-Mail": "={{ $json.form_response.answers[2].email }}",
+            "Empfehlungsgeber_Name": "={{ $json.form_response.answers[0].text }} {{ $json.form_response.answers[1].text }}",
+            "Empfehlungsgeber_Phone": "={{ $json.form_response.answers[3].phone_number }}",
+            "Datum": "={{ $json.form_response.submitted_at }}"
+          },
+          "matchingColumns": [
+            "E-Mail"
+          ],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c30c7d9c-a760-45d6-b314-da2b4826d141",
+      "name": "Airtable",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -1040,
+        800
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      },
+      "notes": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB/viwRUwql6zWIK7TAV/reczqLZuYMc4oN48W?blocks=hide"
+    },
+    {
+      "parameters": {
+        "content": "https://admin.typeform.com/form/MWqHXnHP/results#insights",
+        "height": 80,
+        "width": 453.3798187153565
+      },
+      "id": "6e165484-23d9-41ae-981a-af1702a84d52",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1740,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us-central1-crm-server-mymiapage.cloudfunctions.net/Create_Update_Lead_in_Close",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "=name",
+              "value": "={{ $('Airtable').item.json.fields['Full Name'] }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('Airtable').item.json.fields.Telefonnummer }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Airtable').item.json.fields['E-Mail'] }}"
+            },
+            {
+              "name": "kampagne",
+              "value": "🔗 Partnerprogramm"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $('Airtable').item.json.fields.utm_source }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('Airtable').item.json.fields.utm_medium }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('Airtable').item.json.fields.utm_campaign }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('Airtable').item.json.fields.utm_term }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('Airtable').item.json.fields.utm_content }}"
+            },
+            {
+              "name": "description",
+              "value": "🔗 Partnerprogramm"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "06fe7e76-cafb-43e0-a703-ff4c22862c37",
+      "name": "Create/Update Lead in Close4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "formId": "MWqHXnHP",
+        "simplifyAnswers": false,
+        "onlyAnswers": false
+      },
+      "id": "0f9d9d31-bea8-4d25-a393-89205a392e83",
+      "name": "Typeform Trigger",
+      "type": "n8n-nodes-base.typeformTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1240,
+        800
+      ],
+      "webhookId": "f147b876-83cf-4bdc-9973-34fde434b61a",
+      "credentials": {
+        "typeformApi": {
+          "id": "WNBjA8Z9BvJjPQzb",
+          "name": "Typeform account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactList",
+        "listId": 12,
+        "contactId": "={{ $json.id }}"
+      },
+      "id": "217bfde4-b51e-4759-b086-7aa9b5b0b10b",
+      "name": "Add to List (Gesamte Liste)1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        800
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "={{ $json[\"id\"] }}",
+        "contactId": "={{ $('Create Partner').first().json.id }}"
+      },
+      "id": "721be4c5-3c06-4ef6-b8eb-bc0d0f0a89c4",
+      "name": "Add Tag [Lead] Manifestationskurs",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        840,
+        820
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactList",
+        "listId": 40,
+        "contactId": "={{ $('Create Partner').item.json.id }}"
+      },
+      "id": "4630a027-895e-4a48-8012-6832716bbbc6",
+      "name": "Add to List (Partnerprogramm Liste)",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        800
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $node[\"Typeform Trigger\"].json;\nconst answer6 = data.form_response.answers[6];\n\n// Überprüfen, ob die labels vorhanden sind und sie als Array extrahieren\nconst labels = answer6.choices.labels || []; // Fallback auf leeres Array, falls keine labels vorhanden sind\n\n// IDs manuell zu den Labels zuordnen\nconst labelIdMapping = {\n    \"Weiblichkeitskurs\": 88,      // Active Campaign ID\n    \"Manifestationskurs\": 88,     // Active Campaign ID\n    \"Eleganzkurs\": 88,            // Active Campaign ID\n    \"Anstatt-zu-sagen\": 88,       // Active Campaign ID\n    \"Göttinen Mentoring\": 88,     // Active Campaign ID\n    \"Social Chronicles\": 89,      // Active Campaign ID\n    \"Soul of Woman Club\": 88      // Active Campaign ID\n};\n\n// Füge die Active Campaign IDs zu den Labels hinzu und erstelle eine Liste der ausgewählten IDs\nconst selectedIds = labels.map(label => labelIdMapping[label]).filter(id => id !== undefined);\n\n// Rückgabe eines Arrays der IDs für die Schleife\nreturn selectedIds.map(id => ({ json: { id } }));"
+      },
+      "id": "c59078a9-7210-424d-b079-eaa20bcebb1d",
+      "name": "Extract of selected courses",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": "="
+        }
+      },
+      "id": "ec75214a-8280-46ed-80c2-723d3ab46a4b",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        420,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.close.com/api/v1/lead/{{ $json.lead_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "Basic YXBpXzA1TXl4T3A3UExMTnZEc2k5eGtkZGYuMUtRMjg0OXY3aUVOa0pOQjhyZFR5Mg=="
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"description\": \"🔗 Partnerprogramm\"\n}",
+        "options": {}
+      },
+      "id": "eedac424-978d-4de2-b61e-36a26a47ff1d",
+      "name": "Update About field | Close API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        680,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.close.com/api/v1/activity/note",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "Basic YXBpXzR1ZlNCZWdwYW1TUFRBRkdnS1REQkEuNHRkc2VBRmNkRjViTnRuR3hyb29iUzo="
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "note_html",
+              "value": "=<body><p><strong>Empfehlung von:</strong> {{ $('Airtable').item.json.fields.Empfehlungsgeber_Name }} </p><p><strong>Email:</strong> {{ $('Airtable').item.json.fields['Empfehlungsgeber_E-Mail'] }}</p><p><strong>Telefonnummer:</strong> {{ $('Typeform Trigger').item.json.form_response.answers[3].phone_number }}</p><p><strong>Programme:</strong> {{ $json.html }}</p>\n<p><strong>Das möchte die Person noch mitteilen: </strong>{{ $('Typeform Trigger').item.json.form_response.answers[9].text }}</p>\n</body>\n"
+            },
+            {
+              "name": "lead_id",
+              "value": "={{ $('Create/Update Lead in Close4').item.json.lead_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a8177daf-6876-4951-a037-156dc70318fb",
+      "name": "Post Notice| Close API1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1140,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $node[\"Typeform Trigger\"].json;\nconst answer6 = data.form_response.answers[6];\n\n// Überprüfen, ob die labels vorhanden sind und sie als Array extrahieren\nconst labels = answer6.choices.labels || []; // Fallback auf leeres Array, falls keine labels vorhanden sind\n\n// Erstelle den HTML-String mit einem Aufzählungszeichen und `<span>` mit Zeilenumbruch\nconst htmlOutput = labels.map(label => `<span style=\"display: block;\">• ${label}</span>`).join(\"\");\n\n// Erstelle den Text-String mit Komma-Trennung\nconst textOutput = labels.join(\", \");\n\n// Rückgabe als HTML-String und Text-String\nreturn {\n    html: htmlOutput,\n    text: textOutput\n};"
+      },
+      "id": "c53f4e45-a9f9-4adf-a943-d1000fdbefab",
+      "name": "Extract of selected courses1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C07U38ZA2NR",
+          "mode": "list",
+          "cachedResultName": "19-mymiapage-partnerprogramm"
+        },
+        "text": "=🎉 *New Partner Registration Alert* 🔥🔥🔥  \n*Name:* {{ $('Airtable').item.json.fields['Full Name'] }}\n*E-Mail:* {{ $('Airtable').item.json.fields['E-Mail'] }}\n*Telefonnummer:* {{ $('Airtable').item.json.fields.Telefonnummer }}\n\n*Programme:* {{ $('Extract of selected courses1').item.json.text }}\n\n*Empfehlungsgeber Name:* {{ $('Airtable').item.json.fields.Empfehlungsgeber_Name }}\n*Empfehlungsgeber Email:* {{ $('Airtable').item.json.fields['Empfehlungsgeber_E-Mail'] }}\n*Empfehlungsgeber Telefonnummer:* {{ $('Airtable').item.json.fields.Empfehlungsgeber_Phone }}",
+        "otherOptions": {
+          "includeLinkToWorkflow": false
+        }
+      },
+      "id": "88cb5fdc-3879-4efc-9a6e-995d19c3ec9e",
+      "name": "Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [
+        1320,
+        460
+      ],
+      "webhookId": "3f882e11-3821-46b0-a6ea-467caaac376e",
+      "credentials": {
+        "slackApi": {
+          "id": "1GGJtRl8QfMYffLr",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.fields['E-Mail'] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "1",
+                "value": "={{ $json.fields.utm_source }}"
+              },
+              {
+                "field": "2",
+                "value": "={{ $json.fields.utm_campaign }}"
+              },
+              {
+                "field": "3",
+                "value": "={{ $json.fields.utm_medium }}"
+              },
+              {
+                "field": "4",
+                "value": "={{ $json.fields.utm_term }}"
+              },
+              {
+                "field": "6",
+                "value": "={{ $json.fields.utm_content }}"
+              }
+            ]
+          },
+          "firstName": "={{ $json.fields.Vorname }}",
+          "lastName": "={{ $json.fields.Nachname }}"
+        }
+      },
+      "id": "0bc597b8-1fe7-4e52-a41a-8c140dd79731",
+      "name": "Create Partner",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        -840,
+        800
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "limit": 1,
+        "additionalFields": {
+          "email": "={{ $('Airtable').item.json.fields['Empfehlungsgeber_E-Mail'] }}"
+        }
+      },
+      "id": "c6b5ccf3-0c4b-49d5-8464-044153aff123",
+      "name": "Search referral",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        800
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "contactId": "={{ $json.id }}",
+        "updateFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "26",
+                "value": "={{ $('Create Partner').item.json.firstName }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "118f4f21-0a29-498f-902b-6853e2127e50",
+      "name": "Update referral",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        -500,
+        800
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Typeform Trigger": [
+      {
+        "json": {
+          "event_id": "01JAZB625HAA3Q6VH84J5E06ZF",
+          "event_type": "form_response",
+          "form_response": {
+            "form_id": "MWqHXnHP",
+            "token": "jcsmlpypgqw6ljcsfob13s1j7rf02mx8",
+            "landed_at": "2024-10-24T13:23:25Z",
+            "submitted_at": "2024-10-24T13:24:17Z",
+            "hidden": {
+              "utm_campaign": "xxxxx",
+              "utm_content": "xxxxx",
+              "utm_medium": "xxxxx",
+              "utm_source": "xxxxx",
+              "utm_term": "xxxxx"
+            },
+            "definition": {
+              "id": "MWqHXnHP",
+              "title": "Premium Partnerprogramm Formular",
+              "fields": [
+                {
+                  "id": "e41MPEFuif94",
+                  "ref": "8d4115ed-b65e-4a52-8376-2021492fb311",
+                  "type": "long_text",
+                  "title": "Wie lautet dein Vorname?",
+                  "properties": {}
+                },
+                {
+                  "id": "yn1CIPxn8qbb",
+                  "ref": "decb547f-cbeb-4f93-84fe-5f81505e2c03",
+                  "type": "long_text",
+                  "title": "Und dein Nachname?",
+                  "properties": {}
+                },
+                {
+                  "id": "kxtporekLKvY",
+                  "ref": "a9827283-0391-4de7-9f06-309cd1a8284f",
+                  "type": "email",
+                  "title": "Welche E-Mail Adresse verwendest du unserer Community? ",
+                  "properties": {}
+                },
+                {
+                  "id": "hXvmkCRvbU4X",
+                  "ref": "6a9967b7-c63d-4b93-be8f-6e3ac757fc6f",
+                  "type": "phone_number",
+                  "title": "Wie lautet deine Telefonnummer?",
+                  "properties": {}
+                },
+                {
+                  "id": "AXPqGj2EvgGV",
+                  "ref": "5ed2a2f1-679b-4bb1-9cb0-545e286a638f",
+                  "type": "long_text",
+                  "title": "Wie lautet der *Vorname der Person*, die du empfehlen möchtest?",
+                  "properties": {}
+                },
+                {
+                  "id": "gfVQHOoKin15",
+                  "ref": "c0c8fddc-ebcd-42b8-9668-2eedad3bf1ae",
+                  "type": "long_text",
+                  "title": "Und der *Nachname der Person*?",
+                  "properties": {}
+                },
+                {
+                  "id": "NDS77PzuzICC",
+                  "ref": "59891435-cfbc-461a-b4b7-a58c8456b027",
+                  "type": "multiple_choice",
+                  "title": "Welches Programm möchtest du deinem Freund bzw. deiner Freundin empfehlen?",
+                  "properties": {},
+                  "allow_multiple_selections": true,
+                  "choices": [
+                    {
+                      "id": "uZtDpQmfrruC",
+                      "ref": "d165ce3a-1033-48d9-86ad-79eece91c8c9",
+                      "label": "Weiblichkeitskurs"
+                    },
+                    {
+                      "id": "TBMFivxBasJY",
+                      "ref": "46ef0272-1a73-4c6c-8d18-6c6fab360861",
+                      "label": "Manifestationskurs"
+                    },
+                    {
+                      "id": "RUSUtVzM5s9p",
+                      "ref": "40f801fb-13c5-4562-ad48-f5dabea973c9",
+                      "label": "Eleganzkurs"
+                    },
+                    {
+                      "id": "9nZlBGgdwcw8",
+                      "ref": "13e8061b-e216-4f64-a97d-1ec2f25bc89f",
+                      "label": "Anstatt-zu-sagen"
+                    },
+                    {
+                      "id": "zT6D5P6JlXRc",
+                      "ref": "e2fd48e7-e8c4-4670-8341-c3a3cae4df20",
+                      "label": "Göttinen Mentoring"
+                    },
+                    {
+                      "id": "cTJXgDTaqfDS",
+                      "ref": "7c62a61c-88be-4aff-b8b5-121d38621bd7",
+                      "label": "Social Chronicles"
+                    },
+                    {
+                      "id": "cXl2V4WKu2AY",
+                      "ref": "2c690ec0-dd96-4a5e-af0c-0e73bb6304b1",
+                      "label": "Soul of Woman Club"
+                    }
+                  ]
+                },
+                {
+                  "id": "DSgDa0k7YMTL",
+                  "ref": "f1747e4f-9738-4179-a540-b04c26f37a95",
+                  "type": "email",
+                  "title": "Wie lautet die *E-Mail Adresse deines Freundes bzw. Freundin?*",
+                  "properties": {}
+                },
+                {
+                  "id": "BYyTpHQaHcrf",
+                  "ref": "deabb6de-e0ac-43fc-852c-e42e313eb999",
+                  "type": "phone_number",
+                  "title": "Wie lautet die *Telefonnummer deines Freundes bzw. Freundin?*",
+                  "properties": {}
+                },
+                {
+                  "id": "jofGtpkbHDm3",
+                  "ref": "0eb1b24f-7974-4483-9966-c39e25b1c37c",
+                  "type": "long_text",
+                  "title": "Gibt es etwas, das du uns noch mitteilen möchtest?",
+                  "properties": {}
+                },
+                {
+                  "id": "oNU7io04rOKs",
+                  "ref": "fbafa1ad-281b-4fad-8608-b34a9ad207f6",
+                  "type": "yes_no",
+                  "title": "Weiß die betreffende Person, dass wir den Kontakt zu ihr/ihm aufnehmen werden?",
+                  "properties": {}
+                },
+                {
+                  "id": "1kTQMCpqbJJE",
+                  "ref": "d9c42c7a-b445-481d-8c5b-e09f442fb1db",
+                  "type": "legal",
+                  "title": "Wir benötigen deine Zustimmung zur Datenverarbeitung:",
+                  "properties": {}
+                }
+              ],
+              "endings": [
+                {
+                  "id": "ebhRoRwOYO9f",
+                  "ref": "605e9a0d-2549-4ac2-b353-1a1e698508d8",
+                  "title": "https://click.mymiapage.de/danke",
+                  "type": "url_redirect",
+                  "properties": {
+                    "redirect_url": "https://click.mymiapage.de/danke"
+                  }
+                }
+              ]
+            },
+            "answers": [
+              {
+                "type": "text",
+                "text": "Daniel",
+                "field": {
+                  "id": "e41MPEFuif94",
+                  "type": "long_text",
+                  "ref": "8d4115ed-b65e-4a52-8376-2021492fb311"
+                }
+              },
+              {
+                "type": "text",
+                "text": "Formanek",
+                "field": {
+                  "id": "yn1CIPxn8qbb",
+                  "type": "long_text",
+                  "ref": "decb547f-cbeb-4f93-84fe-5f81505e2c03"
+                }
+              },
+              {
+                "type": "email",
+                "email": "daniel@eyl-marketing.de",
+                "field": {
+                  "id": "kxtporekLKvY",
+                  "type": "email",
+                  "ref": "a9827283-0391-4de7-9f06-309cd1a8284f"
+                }
+              },
+              {
+                "type": "phone_number",
+                "phone_number": "+436649246896",
+                "field": {
+                  "id": "hXvmkCRvbU4X",
+                  "type": "phone_number",
+                  "ref": "6a9967b7-c63d-4b93-be8f-6e3ac757fc6f"
+                }
+              },
+              {
+                "type": "text",
+                "text": "Alexander",
+                "field": {
+                  "id": "AXPqGj2EvgGV",
+                  "type": "long_text",
+                  "ref": "5ed2a2f1-679b-4bb1-9cb0-545e286a638f"
+                }
+              },
+              {
+                "type": "text",
+                "text": "Beutl",
+                "field": {
+                  "id": "gfVQHOoKin15",
+                  "type": "long_text",
+                  "ref": "c0c8fddc-ebcd-42b8-9668-2eedad3bf1ae"
+                }
+              },
+              {
+                "type": "choices",
+                "choices": {
+                  "ids": [
+                    "TBMFivxBasJY",
+                    "cXl2V4WKu2AY"
+                  ],
+                  "labels": [
+                    "Manifestationskurs",
+                    "Soul of Woman Club"
+                  ],
+                  "refs": [
+                    "46ef0272-1a73-4c6c-8d18-6c6fab360861",
+                    "2c690ec0-dd96-4a5e-af0c-0e73bb6304b1"
+                  ]
+                },
+                "field": {
+                  "id": "NDS77PzuzICC",
+                  "type": "multiple_choice",
+                  "ref": "59891435-cfbc-461a-b4b7-a58c8456b027"
+                }
+              },
+              {
+                "type": "email",
+                "email": "partner@eyl-marketing.de",
+                "field": {
+                  "id": "DSgDa0k7YMTL",
+                  "type": "email",
+                  "ref": "f1747e4f-9738-4179-a540-b04c26f37a95"
+                }
+              },
+              {
+                "type": "phone_number",
+                "phone_number": "+494565454654",
+                "field": {
+                  "id": "BYyTpHQaHcrf",
+                  "type": "phone_number",
+                  "ref": "deabb6de-e0ac-43fc-852c-e42e313eb999"
+                }
+              },
+              {
+                "type": "text",
+                "text": "Nein",
+                "field": {
+                  "id": "jofGtpkbHDm3",
+                  "type": "long_text",
+                  "ref": "0eb1b24f-7974-4483-9966-c39e25b1c37c"
+                }
+              },
+              {
+                "type": "boolean",
+                "boolean": true,
+                "field": {
+                  "id": "oNU7io04rOKs",
+                  "type": "yes_no",
+                  "ref": "fbafa1ad-281b-4fad-8608-b34a9ad207f6"
+                }
+              },
+              {
+                "type": "boolean",
+                "boolean": true,
+                "field": {
+                  "id": "1kTQMCpqbJJE",
+                  "type": "legal",
+                  "ref": "d9c42c7a-b445-481d-8c5b-e09f442fb1db"
+                }
+              }
+            ],
+            "ending": {
+              "id": "ebhRoRwOYO9f",
+              "ref": "605e9a0d-2549-4ac2-b353-1a1e698508d8"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD",
+    "timezone": "Europe/Berlin"
+  },
+  "staticData": {
+    "node:Typeform Trigger": {
+      "webhookId": "n8n-7awa3pryrx"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-10T15:27:43.788Z",
+      "updatedAt": "2024-12-10T15:27:43.788Z",
+      "id": "CKO2xAwHg9nnscdV",
+      "name": "active campaign"
+    },
+    {
+      "createdAt": "2024-12-10T15:27:46.642Z",
+      "updatedAt": "2024-12-10T15:27:46.642Z",
+      "id": "VvwxOzqj9tBZMm7s",
+      "name": "airtable"
+    },
+    {
+      "createdAt": "2024-12-10T15:27:49.326Z",
+      "updatedAt": "2024-12-10T15:27:49.326Z",
+      "id": "38bR0ks6f7wVJ5Zj",
+      "name": "close"
+    },
+    {
+      "createdAt": "2024-12-18T07:35:15.922Z",
+      "updatedAt": "2024-12-18T07:35:15.922Z",
+      "id": "yRjgjbjXdZFJQQD7",
+      "name": "slack"
+    },
+    {
+      "createdAt": "2024-12-18T07:41:07.336Z",
+      "updatedAt": "2024-12-18T07:41:07.336Z",
+      "id": "XmMsyFnHc1hzrLS2",
+      "name": "partnerprogramm"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T13:42:19.457Z",
+  "versionId": "e6c0ea99-b475-4719-9548-4e527efc3b25"
+}
