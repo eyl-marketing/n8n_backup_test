@@ -1,0 +1,3392 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Demio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create/Update Lead in Close5": {
+      "main": [
+        [
+          {
+            "node": "Find Contact Superchat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Contact": {
+      "main": [
+        [
+          {
+            "node": "Add to Contact List1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Update Contact",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Contact": {
+      "main": [
+        [
+          {
+            "node": "Add to Contact List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calc Phone Length": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Record": {
+      "main": [
+        [
+          {
+            "node": "Search First Click",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Contact Superchat": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search First Click": {
+      "main": [
+        [
+          {
+            "node": "Update Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Record": {
+      "main": [
+        [
+          {
+            "node": "Create/Update Lead in Close5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "Register to Webinar1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Register to Webinar1": {
+      "main": [
+        [
+          {
+            "node": "Get Live Room ID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create/Update Lead in Close": {
+      "main": [
+        [
+          {
+            "node": "Find Contact Superchat1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Contact1": {
+      "main": [
+        [
+          {
+            "node": "Add to Contact List3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Update Contact1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Contact1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Contact1": {
+      "main": [
+        [
+          {
+            "node": "Add to Contact List2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calc Phone Length1": {
+      "main": [
+        [
+          {
+            "node": "Create Record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Live Room ID1": {
+      "main": [
+        [
+          {
+            "node": "Calc Phone Length1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Record1": {
+      "main": [
+        [
+          {
+            "node": "Search First Click1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Contact Superchat1": {
+      "main": [
+        [
+          {
+            "node": "Filter3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter3": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search First Click1": {
+      "main": [
+        [
+          {
+            "node": "Update Record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Record1": {
+      "main": [
+        [
+          {
+            "node": "Create/Update Lead in Close",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Demio": {
+      "main": [
+        [
+          {
+            "node": "Calc Phone Length",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign": {
+      "main": [
+        [
+          {
+            "node": "Add to List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add to List": {
+      "main": [
+        [
+          {
+            "node": "Add Tag",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Tag": {
+      "main": [
+        [
+          {
+            "node": "Create Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-27T16:28:44.767Z",
+  "id": "JpkjeWu4YZgSYmNk",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[WF-AB-0016] - CF Webinar Master Automation 13.02.2025",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cd956282-80ad-4197-9f22-8b91d835f529",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        400,
+        240
+      ],
+      "id": "fd50794e-12fd-42d7-ace8-0ae0a4dbd79a",
+      "name": "Webhook",
+      "webhookId": "cd956282-80ad-4197-9f22-8b91d835f529"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a57742f2-2aac-4fc5-b066-f16a866c87e4",
+              "leftValue": "={{ $json.body.funnel.id }}",
+              "rightValue": 239457,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        620,
+        240
+      ],
+      "id": "2bdbf2de-05b0-4343-b9d8-f0ada65465d9",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.webinarjam.com/webinarjam/webinar",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "api_key",
+              "value": "9a284655-a800-47fc-9397-b5748e9c6274"
+            },
+            {
+              "name": "webinar_id",
+              "value": "130"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        -100
+      ],
+      "id": "822d1fdd-8d8c-46e6-8c48-c24bc1c79a4f",
+      "name": "Get Webinar Data",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us-central1-crm-server-mymiapage.cloudfunctions.net/Create_Update_Lead_in_Close",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Webhook').item.json.body.data.data.contact.first_name }} {{ $('Webhook').item.json.body.data.data.contact.last_name }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('Webhook').item.json.body.data.data.phone_number }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Webhook').item.json.body.data.data.contact.email }}"
+            },
+            {
+              "name": "kampagne",
+              "value": "🔴 SC LIVE Webinar 03.07.2025"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $('Webhook').item.json.body.data.data.utm_source }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('Webhook').item.json.body.data.data.utm_medium }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('Webhook').item.json.body.data.data.utm_campaign }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('Webhook').item.json.body.data.data.utm_term }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('Webhook').item.json.body.data.data.utm_content }}"
+            },
+            {
+              "name": "placement",
+              "value": "={{ $('Webhook').item.json.body.data.data.placement }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1010c271-2601-4461-8e40-534ed2c139b6",
+      "name": "Create/Update Lead in Close5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2580,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/contacts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"first_name\": \"{{ $('Webhook').item.json.body.data.data.contact.first_name }}\",\n  \"last_name\": \"{{ $('Webhook').item.json.body.data.data.contact.last_name }}\",\n  \"handles\": [\n    {\n      \"type\": \"phone\",\n      \"value\": \"{{ $('Webhook').item.json.body.data.data.phone_number }}\"\n    }\n  ],\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_NKGRcNqE1fKX8wvPDeJ6J\",\n      \"value\": \"{{ $('Demio').item.json['join_link'].split(\"/\").pop() }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "f72dd1f8-da01-40aa-b970-9fcef0ecc337",
+      "name": "Create Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3600,
+        340
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Find Contact Superchat').item.json.results[0].id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Exist"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "595e52ab-cd9f-4d29-ac9b-9de7a7055f9f",
+                    "leftValue": "={{ $('Find Contact Superchat').item.json.results[0].id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Doesn't exist"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        3220,
+        240
+      ],
+      "id": "13547943-7337-42ed-adc9-241d78a39a2a",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_NKGRcNqE1fKX8wvPDeJ6J\",\n      \"value\": \"{{ $('Demio').item.json['join_link'].split(\"/\").pop() }}\"\n    }\n  ],\n  \"first_name\": \"{{ $('Webhook').item.json.body.data.data.contact.first_name }}\",\n  \"last_name\": \"{{ $('Webhook').item.json.body.data.data.contact.last_name }}\"\n}",
+        "options": {}
+      },
+      "id": "48fae1e0-096f-43bb-8928-59c305dd92fb",
+      "name": "Update Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3600,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Hole die Daten aus dem Webhook-Node (ersetze 'WebhookNodeName' durch den tatsächlichen Namen deines Webhook-Nodes)\nconst webhookData = $node[\"Webhook\"].json;\n\n// Zugriff auf die Telefonnummer aus den Webhook-Daten\nconst phoneNumber = webhookData.body.data.data.phone_number;\n\n// Überprüfen, ob die Telefonnummer vorhanden ist\nif (!phoneNumber) {\n  throw new Error(\"Telefonnummer fehlt!\");\n}\n\n// Berechnung der Länge der Telefonnummer\nconst phoneLength = phoneNumber.length;\n\n// Rückgabe der Länge als Objekt\nreturn {\n  json: {\n    phoneLength // Nur die Länge der Telefonnummer wird zurückgegeben\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        240
+      ],
+      "id": "b698e68d-5ed2-488d-8b39-87a629d52665",
+      "name": "Calc Phone Length"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $('Webhook').item.json.body.data.updated_at }}",
+            "Lead Herkunft": "🔴 SC LIVE Webinar 03.07.2025",
+            "E-Mail": "={{ $('Webhook').item.json.body.data.data.contact.email }}",
+            "Full Name": "={{ $('Webhook').item.json.body.data.data.contact.first_name }} {{ $('Webhook').item.json.body.data.data.contact.last_name }}",
+            "Telefonnummer": "={{ $('Webhook').item.json.body.data.data.phone_number }}",
+            "utm_source": "={{ $('Webhook').item.json.body.data.data.utm_source }}",
+            "utm_campaign": "={{ $('Webhook').item.json.body.data.data.utm_campaign }}",
+            "utm_medium": "={{ $('Webhook').item.json.body.data.data.utm_medium }}",
+            "utm_term": "={{ $('Webhook').item.json.body.data.data.utm_term }}",
+            "utm_content": "={{ $('Webhook').item.json.body.data.data.utm_content }}",
+            "Placement": "={{ $('Webhook').item.json.body.data.data.placement }}",
+            "Count": 1,
+            "URL Path": "live-masterclass-1",
+            "Vorname": "={{ $('Webhook').item.json.body.data.data.contact.first_name }}",
+            "Nachname": "={{ $('Webhook').item.json.body.data.data.contact.last_name }}",
+            "Affiliate": "🔵 Intern"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1920,
+        240
+      ],
+      "id": "8f92a7ff-36e9-408b-a1d4-8c63dc106e2e",
+      "name": "Create Record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/contacts/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": {\n    \"value\": [\n      {\n        \"operator\": \"=\",\n        \"field\": \"phone\",\n        \"value\": \"{{ $('Webhook').item.json.body.data.data.phone_number }}\"\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "id": "fa75fb1d-2aed-49be-93a2-3c5e47ec9434",
+      "name": "Find Contact Superchat",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2780,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "086516f5-303c-4834-b71d-9128198f94a0",
+              "leftValue": "={{ $('Calc Phone Length').item.json.phoneLength }}",
+              "rightValue": 7,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "e1b8e397-ce95-4698-a0df-872248a32d5e",
+              "leftValue": "={{ $('Calc Phone Length').item.json.phoneLength }}",
+              "rightValue": 15,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            },
+            {
+              "id": "19a006c8-be2e-4116-91b3-1820ee085528",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        3000,
+        240
+      ],
+      "id": "e587c8eb-018a-4874-95fa-2f07c3fd356d",
+      "name": "Filter1"
+    },
+    {
+      "parameters": {
+        "content": "Webhook ist mit Live-Training Social Media in CF connected. Bei Anmeldung über die LP wird dieser Flow getriggert.\n\n(https://n8n.mymiapage.de/webhook/cd956282-80ad-4197-9f22-8b91d835f529)\n\n\nhttps://www.loom.com/share/6d63d168201e4effb23b173b7e6129a1",
+        "height": 240,
+        "width": 800
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        480
+      ],
+      "id": "589f506b-8f22-4132-a71e-b74649086ffd",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "filterByFormula": "={E-Mail} = \"{{ $('Webhook').item.json.body.data.data.contact.email }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "view": {
+            "__rl": true,
+            "value": "viwpB5iqJmrioRtKS",
+            "mode": "list",
+            "cachedResultName": "First Click",
+            "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB/viwpB5iqJmrioRtKS"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2120,
+        240
+      ],
+      "id": "cb6b9f74-4a5e-4435-a019-e9e6934d4898",
+      "name": "Search First Click",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Create Record').item.json.id }}",
+            "first_utm_source": "={{ $json.utm_source }}",
+            "first_utm_medium": "={{ $json.utm_medium }}",
+            "first_utm_campaign": "={{ $json.utm_campaign }}",
+            "first_utm_term": "={{ $json.utm_term }}",
+            "first_utm_content": "={{ $json.utm_content }}",
+            "first_placement": "={{ $json.Placement }}",
+            "first_url_path": "={{ $json['URL Path'] }}",
+            "Lead Herkunft First": "={{ $json['Lead Herkunft'] }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2340,
+        240
+      ],
+      "id": "06ce3c94-b5e0-4eb2-9696-06b5c043a80a",
+      "name": "Update Record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.id }}/contact-lists",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "cl_8DijknfzhIXRDpKAOXJCK"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90274d49-9c7f-4af1-be0e-9bd62ce3a504",
+      "name": "Add to Contact List",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3800,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.id }}/contact-lists",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "cl_8DijknfzhIXRDpKAOXJCK"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cb655ebf-0c0a-4003-943f-654b1f425d43",
+      "name": "Add to Contact List1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3800,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cd956282-80ad-4197-9f22-8b91d835f529",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        -980
+      ],
+      "id": "7e3dfd5e-2590-46a3-a183-f810226af980",
+      "name": "Webhook1",
+      "webhookId": "cd956282-80ad-4197-9f22-8b91d835f529",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a57742f2-2aac-4fc5-b066-f16a866c87e4",
+              "leftValue": "={{ $json.body.funnel.id }}",
+              "rightValue": 239457,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        -980
+      ],
+      "id": "e4bcce78-7b21-479e-ba75-93bd91fe62c8",
+      "name": "Filter2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.webinarjam.com/webinarjam/register",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "api_key",
+              "value": "9a284655-a800-47fc-9397-b5748e9c6274"
+            },
+            {
+              "name": "webinar_id",
+              "value": "130"
+            },
+            {
+              "name": "first_name",
+              "value": "={{ $json.body.data.data.contact.first_name }}"
+            },
+            {
+              "name": "last_name",
+              "value": "={{ $json.body.data.data.contact.last_name }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.body.data.data.contact.email }}"
+            },
+            {
+              "name": "schedule",
+              "value": "158"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('Webhook1').item.json.body.data.data.phone_number }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        380,
+        -980
+      ],
+      "id": "24c3717e-9342-4380-98ae-3836317a6916",
+      "name": "Register to Webinar1",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.webinarjam.com/webinarjam/webinar",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "api_key",
+              "value": "9a284655-a800-47fc-9397-b5748e9c6274"
+            },
+            {
+              "name": "webinar_id",
+              "value": "130"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -40,
+        -1220
+      ],
+      "id": "452ea036-e4aa-4629-b052-8694c35f9d95",
+      "name": "Get Webinar Data1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us-central1-crm-server-mymiapage.cloudfunctions.net/Create_Update_Lead_in_Close",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Webhook1').item.json.body.data.data.contact.first_name }} {{ $('Webhook1').item.json.body.data.data.contact.last_name }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('Webhook1').item.json.body.data.data.phone_number }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Webhook1').item.json.body.data.data.contact.email }}"
+            },
+            {
+              "name": "kampagne",
+              "value": "🔴 SC LIVE Webinar 08.05.2025"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $('Webhook1').item.json.body.data.data.utm_source }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('Webhook1').item.json.body.data.data.utm_medium }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('Webhook1').item.json.body.data.data.utm_campaign }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('Webhook1').item.json.body.data.data.utm_term }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('Webhook1').item.json.body.data.data.utm_content }}"
+            },
+            {
+              "name": "placement",
+              "value": "={{ $('Webhook1').item.json.body.data.data.placement }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a14d5cef-ed05-4807-b65b-1252b97977ac",
+      "name": "Create/Update Lead in Close",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1660,
+        -980
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/contacts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"first_name\": \"{{ $('Webhook1').item.json.body.data.data.contact.first_name }}\",\n  \"last_name\": \"{{ $('Webhook1').item.json.body.data.data.contact.last_name }}\",\n  \"handles\": [\n    {\n      \"type\": \"phone\",\n      \"value\": \"{{ $('Webhook1').item.json.body.data.data.phone_number }}\"\n    }\n  ],\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_NKGRcNqE1fKX8wvPDeJ6J\",\n      \"value\": \"{{ $('Get Live Room ID1').item.json.livePath }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "ed9db508-105d-4401-aff0-1e9482aa6d36",
+      "name": "Create Contact1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2680,
+        -880
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Find Contact Superchat1').item.json.results[0].id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Exist"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "595e52ab-cd9f-4d29-ac9b-9de7a7055f9f",
+                    "leftValue": "={{ $('Find Contact Superchat1').item.json.results[0].id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Doesn't exist"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2300,
+        -980
+      ],
+      "id": "63dde958-f67e-483a-be0e-458b1863ac8e",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_NKGRcNqE1fKX8wvPDeJ6J\",\n      \"value\": \"{{ $('Get Live Room ID1').item.json.livePath }}\"\n    }\n  ],\n  \"first_name\": \"{{ $('Webhook1').item.json.body.data.data.contact.first_name }}\",\n  \"last_name\": \"{{ $('Webhook1').item.json.body.data.data.contact.last_name }}\"\n}",
+        "options": {}
+      },
+      "id": "cb16228d-55d1-4df4-a359-67b0d5dc3dd1",
+      "name": "Update Contact1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2680,
+        -1120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Hole die Daten aus dem Webhook-Node (ersetze 'WebhookNodeName' durch den tatsächlichen Namen deines Webhook-Nodes)\nconst webhookData = $node[\"Webhook1\"].json;\n\n// Zugriff auf die Telefonnummer aus den Webhook-Daten\nconst phoneNumber = webhookData.body.data.data.phone_number;\n\n// Überprüfen, ob die Telefonnummer vorhanden ist\nif (!phoneNumber) {\n  throw new Error(\"Telefonnummer fehlt!\");\n}\n\n// Berechnung der Länge der Telefonnummer\nconst phoneLength = phoneNumber.length;\n\n// Rückgabe der Länge als Objekt\nreturn {\n  json: {\n    phoneLength // Nur die Länge der Telefonnummer wird zurückgegeben\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        780,
+        -980
+      ],
+      "id": "61ddbab1-56a0-4973-b686-70556c1c5fca",
+      "name": "Calc Phone Length1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Zugriff auf den Live-Raum-URL aus der Eingabe\nconst liveRoomUrl = $json[\"user\"][\"live_room_url\"];\n\n// Überprüfen, ob die URL vorhanden ist\nif (!liveRoomUrl) {\n  throw new Error(\"Live-Raum-URL fehlt!\");\n}\n\n// Splitte die URL nach 'live/'\nconst parts = liveRoomUrl.split(\"live/\");\n\nif (parts.length < 2) {\n  throw new Error(\"Ungültige Live-URL-Struktur!\");\n}\n\n// Extrahiere alles nach 'live/'\nconst result = parts[1]; // Beispiel: \"112/1ylp4bk5hq5arkcknrl\"\n\n// Rückgabe des gesamten Strings als Output\nreturn {\n  json: {\n    livePath: result // Beispiel: \"112/1ylp4bk5hq5arkcknrl\"\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        580,
+        -980
+      ],
+      "id": "35919722-2569-474e-bfae-fea5aae083f3",
+      "name": "Get Live Room ID1"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $('Webhook1').item.json.body.data.updated_at }}",
+            "Lead Herkunft": "🔴 SC LIVE Webinar 03.07.2025",
+            "E-Mail": "={{ $('Webhook1').item.json.body.data.data.contact.email }}",
+            "Full Name": "={{ $('Webhook1').item.json.body.data.data.contact.first_name }} {{ $('Webhook1').item.json.body.data.data.contact.last_name }}",
+            "Telefonnummer": "={{ $('Webhook1').item.json.body.data.data.phone_number }}",
+            "utm_source": "={{ $('Webhook1').item.json.body.data.data.utm_source }}",
+            "utm_campaign": "={{ $('Webhook1').item.json.body.data.data.utm_campaign }}",
+            "utm_medium": "={{ $('Webhook1').item.json.body.data.data.utm_medium }}",
+            "utm_term": "={{ $('Webhook1').item.json.body.data.data.utm_term }}",
+            "utm_content": "={{ $('Webhook1').item.json.body.data.data.utm_content }}",
+            "Placement": "={{ $('Webhook1').item.json.body.data.data.placement }}",
+            "Count": 1,
+            "URL Path": "live-masterclass-1",
+            "Vorname": "={{ $('Webhook1').item.json.body.data.data.contact.first_name }}",
+            "Nachname": "={{ $('Webhook1').item.json.body.data.data.contact.last_name }}",
+            "Affiliate": "🔵 Intern"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1000,
+        -980
+      ],
+      "id": "56bd824b-37b5-4d67-8aab-088f965c27b5",
+      "name": "Create Record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/contacts/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": {\n    \"value\": [\n      {\n        \"operator\": \"=\",\n        \"field\": \"phone\",\n        \"value\": \"{{ $('Webhook1').item.json.body.data.data.phone_number }}\"\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "id": "e291b11c-5b35-4951-baab-d416d64d3b99",
+      "name": "Find Contact Superchat1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1860,
+        -980
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "086516f5-303c-4834-b71d-9128198f94a0",
+              "leftValue": "={{ $('Calc Phone Length1').item.json.phoneLength }}",
+              "rightValue": 7,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "e1b8e397-ce95-4698-a0df-872248a32d5e",
+              "leftValue": "={{ $('Calc Phone Length1').item.json.phoneLength }}",
+              "rightValue": 15,
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2080,
+        -980
+      ],
+      "id": "30dd1bfb-31f2-4235-adf0-07854a8f7b75",
+      "name": "Filter3"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "filterByFormula": "={E-Mail} = \"{{ $('Webhook1').item.json.body.data.data.contact.email }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "view": {
+            "__rl": true,
+            "value": "viwpB5iqJmrioRtKS",
+            "mode": "list",
+            "cachedResultName": "First Click",
+            "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB/viwpB5iqJmrioRtKS"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1200,
+        -980
+      ],
+      "id": "a74d7aad-73a6-40d3-a133-0c7a3435e02e",
+      "name": "Search First Click1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Create Record1').item.json.id }}",
+            "first_utm_source": "={{ $json.utm_source }}",
+            "first_utm_medium": "={{ $json.utm_medium }}",
+            "first_utm_campaign": "={{ $json.utm_campaign }}",
+            "first_utm_term": "={{ $json.utm_term }}",
+            "first_utm_content": "={{ $json.utm_content }}",
+            "first_placement": "={{ $json.Placement }}",
+            "first_url_path": "={{ $json['URL Path'] }}",
+            "Lead Herkunft First": "={{ $json['Lead Herkunft'] }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1420,
+        -980
+      ],
+      "id": "25a47b13-e760-4a0b-803c-7a10bd8d8ac0",
+      "name": "Update Record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.id }}/contact-lists",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "cl_WumEWlklZiSPsjmVVglHQ"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b2d0636f-f4dd-4159-a100-15f54573f7bc",
+      "name": "Add to Contact List2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2880,
+        -1120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.id }}/contact-lists",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "cl_WumEWlklZiSPsjmVVglHQ"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7b9c69b7-6a24-4d4c-9d43-58a174a6832c",
+      "name": "Add to Contact List3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2880,
+        -880
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## BACKUP",
+        "height": 700,
+        "width": 3260,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        -1320
+      ],
+      "id": "2b14f119-227f-4b9b-b9ec-f395f4895dc9",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "register",
+        "eventId": 905703,
+        "firstName": "={{ $('Webhook').item.json.body.data.data.contact.first_name }}",
+        "email": "={{ $('Webhook').item.json.body.data.data.contact.email }}",
+        "additionalFields": {
+          "last_name": "={{ $('Webhook').item.json.body.data.data.contact.last_name }}"
+        }
+      },
+      "type": "n8n-nodes-base.demio",
+      "typeVersion": 1,
+      "position": [
+        840,
+        240
+      ],
+      "id": "1920ee83-9671-47a5-ab9a-7f3a3f94629c",
+      "name": "Demio",
+      "credentials": {
+        "demioApi": {
+          "id": "DsytZAZjuW7jYUyR",
+          "name": "Demio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $('Webhook').item.json.body.data.data.contact.email }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "12",
+                "value": "={{ $('Demio').item.json.join_link }}"
+              }
+            ]
+          },
+          "firstName": "={{ $('Webhook').item.json.body.data.data.contact.first_name }}",
+          "lastName": "={{ $('Webhook').item.json.body.data.data.contact.last_name }}",
+          "phone": "={{ $('Webhook').item.json.body.data.data.phone_number }}"
+        }
+      },
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        240
+      ],
+      "id": "f4056d82-18cd-47e3-9465-f78cf5906688",
+      "name": "ActiveCampaign",
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactList",
+        "listId": 51,
+        "contactId": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        240
+      ],
+      "id": "75c5d290-9ac4-4b8b-9d6b-5cf8d69d2b11",
+      "name": "Add to List",
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "230",
+        "contactId": "={{ $('ActiveCampaign').item.json.id }}"
+      },
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        240
+      ],
+      "id": "c372b1a5-72fa-45bf-801f-afa738d29ab9",
+      "name": "Add Tag",
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.superchat.com/v1.0/contact-lists",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "50"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3220,
+        -20
+      ],
+      "id": "5a3714f1-12cf-49f1-be8f-a2f08439f583",
+      "name": "Get Superchat Contact Lists",
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "52.7.123.226",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.mymiapage.de",
+            "x-amzn-trace-id": "Root=1-6808f3fd-06a221c3443218d57d306175",
+            "content-length": "941",
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "accept": "*/*",
+            "user-agent": "Ruby",
+            "content-type": "application/json",
+            "traceparent": "00-70b7f896ecceed4b425cb70603006a6c-ecd9aea6839b0fbd-00",
+            "tracestate": "2882645@nr=0-0-3154619-1494295268-ecd9aea6839b0fbd-59c13c41505b7ead-0-0.967912-1745417213589",
+            "newrelic": "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkFwcCIsImFjIjoiMzE1NDYxOSIsImFwIjoiMTQ5NDI5NTI2OCIsInR4IjoiNTljMTNjNDE1MDViN2VhZCIsInRyIjoiNzBiN2Y4OTZlY2NlZWQ0YjQyNWNiNzA2MDMwMDZhNmMiLCJzYSI6ZmFsc2UsInByIjowLjk2NzkxMiwidGkiOjE3NDU0MTcyMTM1OTAsImlkIjoiZWNkOWFlYTY4MzliMGZiZCIsInRrIjoiMjg4MjY0NSJ9fQ=="
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "id": 38442293,
+              "data": {
+                "contact": {
+                  "email": "alexander@eyl-marketing.de",
+                  "last_name": "Beutl",
+                  "first_name": "Alexander"
+                },
+                "utm_term": "26-04-2025",
+                "ip_address": "209.198.159.110",
+                "utm_medium": "founder-summit",
+                "utm_source": "event",
+                "redirect_to": "https://click.mymiapage.de/thankyou-live",
+                "utm_content": "wiesbaden",
+                "phone_number": "+436767820594",
+                "utm_campaign": "fotowand"
+              },
+              "page_id": 7278981,
+              "public_id": "QEkeVP",
+              "contact_id": 351517751,
+              "created_at": "2025-04-23T14:06:50.333Z",
+              "updated_at": "2025-04-23T14:06:50.349Z",
+              "workspace_id": 156577
+            },
+            "page": {
+              "id": 7278981,
+              "name": "Dark Green & Beige Long Form Pop Up Opt-in",
+              "public_id": "obMdoo"
+            },
+            "funnel": {
+              "id": 239457,
+              "name": "Live-Training - Social Media ",
+              "public_id": "jplDAv"
+            },
+            "event_id": "e3b8fa30-2535-4c6b-ad0d-16160dd2f88f",
+            "created_at": "2025-04-23T14:06:50.424Z",
+            "event_type": "form_submission.created",
+            "subject_id": 38442293,
+            "api_version": 2,
+            "subject_type": "FormSubmission",
+            "workspace_id": 156577
+          },
+          "webhookUrl": "https://n8n.mymiapage.de/webhook/cd956282-80ad-4197-9f22-8b91d835f529",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "52.7.123.226",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.mymiapage.de",
+            "x-amzn-trace-id": "Root=1-6808f3fd-06a221c3443218d57d306175",
+            "content-length": "941",
+            "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "accept": "*/*",
+            "user-agent": "Ruby",
+            "content-type": "application/json",
+            "traceparent": "00-70b7f896ecceed4b425cb70603006a6c-ecd9aea6839b0fbd-00",
+            "tracestate": "2882645@nr=0-0-3154619-1494295268-ecd9aea6839b0fbd-59c13c41505b7ead-0-0.967912-1745417213589",
+            "newrelic": "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkFwcCIsImFjIjoiMzE1NDYxOSIsImFwIjoiMTQ5NDI5NTI2OCIsInR4IjoiNTljMTNjNDE1MDViN2VhZCIsInRyIjoiNzBiN2Y4OTZlY2NlZWQ0YjQyNWNiNzA2MDMwMDZhNmMiLCJzYSI6ZmFsc2UsInByIjowLjk2NzkxMiwidGkiOjE3NDU0MTcyMTM1OTAsImlkIjoiZWNkOWFlYTY4MzliMGZiZCIsInRrIjoiMjg4MjY0NSJ9fQ=="
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": {
+              "id": 38442293,
+              "data": {
+                "contact": {
+                  "email": "alexander@eyl-marketing.de",
+                  "last_name": "Beutl",
+                  "first_name": "Alexander"
+                },
+                "utm_term": "26-04-2025",
+                "ip_address": "209.198.159.110",
+                "utm_medium": "founder-summit",
+                "utm_source": "event",
+                "redirect_to": "https://click.mymiapage.de/thankyou-live",
+                "utm_content": "wiesbaden",
+                "phone_number": "+436767820594",
+                "utm_campaign": "fotowand"
+              },
+              "page_id": 7278981,
+              "public_id": "QEkeVP",
+              "contact_id": 351517751,
+              "created_at": "2025-04-23T14:06:50.333Z",
+              "updated_at": "2025-04-23T14:06:50.349Z",
+              "workspace_id": 156577
+            },
+            "page": {
+              "id": 7278981,
+              "name": "Dark Green & Beige Long Form Pop Up Opt-in",
+              "public_id": "obMdoo"
+            },
+            "funnel": {
+              "id": 239457,
+              "name": "Live-Training - Social Media ",
+              "public_id": "jplDAv"
+            },
+            "event_id": "e3b8fa30-2535-4c6b-ad0d-16160dd2f88f",
+            "created_at": "2025-04-23T14:06:50.424Z",
+            "event_type": "form_submission.created",
+            "subject_id": 38442293,
+            "api_version": 2,
+            "subject_type": "FormSubmission",
+            "workspace_id": 156577
+          },
+          "webhookUrl": "https://n8n.mymiapage.de/webhook/cd956282-80ad-4197-9f22-8b91d835f529",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD",
+    "timezone": "Europe/Berlin"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-10T15:27:46.642Z",
+      "updatedAt": "2024-12-10T15:27:46.642Z",
+      "id": "VvwxOzqj9tBZMm7s",
+      "name": "airtable"
+    },
+    {
+      "createdAt": "2024-12-10T15:27:49.326Z",
+      "updatedAt": "2024-12-10T15:27:49.326Z",
+      "id": "38bR0ks6f7wVJ5Zj",
+      "name": "close"
+    },
+    {
+      "createdAt": "2025-01-02T12:36:35.760Z",
+      "updatedAt": "2025-01-02T12:36:35.760Z",
+      "id": "MoDT37dlTQmFIZRD",
+      "name": "webinarjam"
+    },
+    {
+      "createdAt": "2025-01-02T12:36:51.390Z",
+      "updatedAt": "2025-01-02T12:36:51.390Z",
+      "id": "GkxXxk9eK6tfAHuZ",
+      "name": "superchat"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-16T19:26:42.558Z",
+  "versionId": "497f6fcd-28dc-4327-af91-f93e682b761e"
+}
