@@ -1,0 +1,189 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Find Lead using advanced filtering",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Lead using advanced filtering": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Delete Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Find Lead using advanced filtering",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-04T16:24:24.680Z",
+  "id": "FPfoBLbucdwAVVxB",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[WF-AB-0005] - Delete @eyl Leads in Close",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "weeksInterval": null
+            }
+          ]
+        }
+      },
+      "id": "242318f0-e66d-492b-93ca-3d9e7dc02ae6",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        720,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.close.com/api/v1/data/search/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic YXBpXzFERmxjcmw3NmplbDNkMXZlbGtzc0ouNXFScjNzTmJtUlhGS1FXczhVaU1tMg=="
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"query\": {\n        \"negate\": false,\n        \"queries\": [\n            {\n                \"negate\": false,\n                \"object_type\": \"lead\",\n                \"type\": \"object_type\"\n            },\n            {\n                \"negate\": false,\n                \"queries\": [\n                    {\n                        \"negate\": false,\n                        \"related_object_type\": \"contact\",\n                        \"related_query\": {\n                            \"negate\": false,\n                            \"queries\": [\n                                {\n                                    \"negate\": false,\n                                    \"related_object_type\": \"contact_email\",\n                                    \"related_query\": {\n                                        \"negate\": false,\n                                        \"queries\": [\n                                            {\n                                                \"condition\": {\n                                                    \"mode\": \"full_words\",\n                                                    \"type\": \"text\",\n                                                    \"value\": \"@eyl-marketing.de\"\n                                                },\n                                                \"field\": {\n                                                    \"field_name\": \"email\",\n                                                    \"object_type\": \"contact_email\",\n                                                    \"type\": \"regular_field\"\n                                                },\n                                                \"negate\": false,\n                                                \"type\": \"field_condition\"\n                                            }\n                                        ],\n                                        \"type\": \"and\"\n                                    },\n                                    \"this_object_type\": \"contact\",\n                                    \"type\": \"has_related\"\n                                }\n                            ],\n                            \"type\": \"and\"\n                        },\n                        \"this_object_type\": \"lead\",\n                        \"type\": \"has_related\"\n                    }\n                ],\n                \"type\": \"and\"\n            }\n        ],\n        \"type\": \"and\"\n    },\n    \"results_limit\": 100, \n    \"limit\": 100,\n    \"sort\": [\n        {\n            \"direction\": \"desc\",\n            \"field\": {\n                \"field_name\": \"date_created\",\n                \"object_type\": \"lead\",\n                \"type\": \"regular_field\"\n            }\n        }\n    ]\n}",
+        "options": {}
+      },
+      "id": "94d70805-0d8a-4d00-a6d9-7e4317f29e6d",
+      "name": "Find Lead using advanced filtering",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        940,
+        440
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "ea51b67d-9715-4f4a-9814-25db04b9032c",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        440
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "87e4a33f-39d2-4a5f-9c72-2a5351b91564",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        720,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "DELETE",
+        "url": "=https://api.close.com/api/v1/lead/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic YXBpXzFERmxjcmw3NmplbDNkMXZlbGtzc0ouNXFScjNzTmJtUlhGS1FXczhVaU1tMg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f2a66693-1caa-49bd-9438-3a7e86663a19",
+      "name": "Delete Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1360,
+        440
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD",
+    "timezone": "Europe/Berlin"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-10T15:27:49.326Z",
+      "updatedAt": "2024-12-10T15:27:49.326Z",
+      "id": "38bR0ks6f7wVJ5Zj",
+      "name": "close"
+    },
+    {
+      "createdAt": "2024-12-18T07:42:59.872Z",
+      "updatedAt": "2024-12-18T07:42:59.872Z",
+      "id": "AWcUcLwhKQbnuokA",
+      "name": "system"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T13:45:19.060Z",
+  "versionId": "bd8b355a-cdaa-41b2-8844-4b710d14aa10"
+}
