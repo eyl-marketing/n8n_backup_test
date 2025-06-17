@@ -1,0 +1,414 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Find existing registration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Find Affiliate if set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find existing registration": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Affiliate if set": {
+      "main": [
+        [
+          {
+            "node": "Create Register for Webinar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Register for Webinar": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-06-11T08:17:41.773Z",
+  "id": "NwzQIIVLVuTh0ctf",
+  "meta": null,
+  "name": "DOSM 2025 |Webinar Registration",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "286ddb6b-b5bd-4ab3-b00f-818038001a51",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "acda6f31-e0a0-4fbd-be95-e479c83ae56f",
+              "name": "email",
+              "value": "affiliate1@eyl-marketing.de",
+              "type": "string"
+            },
+            {
+              "id": "1fa23403-5895-4222-90ea-f71801e000f7",
+              "name": "phone",
+              "value": "+436649246896",
+              "type": "string"
+            },
+            {
+              "id": "d44c37d2-5c03-4749-ba51-57d1aece4d69",
+              "name": "firstname",
+              "value": "Danielo",
+              "type": "string"
+            },
+            {
+              "id": "3848f58c-8f6d-4d47-8f45-9a516e65e48a",
+              "name": "lastname",
+              "value": "Formanek",
+              "type": "string"
+            },
+            {
+              "id": "4d7ba4aa-df44-4aad-ba17-7bb1db3a692d",
+              "name": "Ref-ID",
+              "value": "rechWGLhMadIlGV7Q",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        0
+      ],
+      "id": "e686bc4b-4c80-4ff8-86bc-121ba40fe6b4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "da250f3b-ab8f-4dd9-a581-8dbb4764988e",
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "already exists"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "doesnt exists"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        860,
+        0
+      ],
+      "id": "a55cd8b9-8dc5-459a-b300-3e7347a4622e",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appqUItOkg2ljzCFu",
+          "mode": "list",
+          "cachedResultName": "DOSM 2025",
+          "cachedResultUrl": "https://airtable.com/appqUItOkg2ljzCFu"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbljdRS5Vf0RJNaSZ",
+          "mode": "list",
+          "cachedResultName": "Registrierungen",
+          "cachedResultUrl": "https://airtable.com/appqUItOkg2ljzCFu/tbljdRS5Vf0RJNaSZ"
+        },
+        "filterByFormula": "={E-Mail} = \"{{ $json.email }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        520,
+        0
+      ],
+      "id": "ea1cdafa-0332-401a-ade3-d9f4d4c9be2b",
+      "name": "Find existing registration",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "ZxaATuaCa4odOcuW",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appqUItOkg2ljzCFu",
+          "mode": "list",
+          "cachedResultName": "DOSM 2025",
+          "cachedResultUrl": "https://airtable.com/appqUItOkg2ljzCFu"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbljdRS5Vf0RJNaSZ",
+          "mode": "list",
+          "cachedResultName": "Registrierungen",
+          "cachedResultUrl": "https://airtable.com/appqUItOkg2ljzCFu/tbljdRS5Vf0RJNaSZ"
+        },
+        "id": "={{ $('Edit Fields').item.json['Ref-ID'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1200,
+        20
+      ],
+      "id": "54465811-f59b-46ae-b01b-d3690570ba4c",
+      "name": "Find Affiliate if set",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "ZxaATuaCa4odOcuW",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appqUItOkg2ljzCFu",
+          "mode": "list",
+          "cachedResultName": "DOSM 2025",
+          "cachedResultUrl": "https://airtable.com/appqUItOkg2ljzCFu"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbljdRS5Vf0RJNaSZ",
+          "mode": "list",
+          "cachedResultName": "Registrierungen",
+          "cachedResultUrl": "https://airtable.com/appqUItOkg2ljzCFu/tbljdRS5Vf0RJNaSZ"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "E-Mail": "={{ $('Edit Fields').item.json.email }}",
+            "Vorname": "={{ $('Edit Fields').item.json.firstname }}",
+            "Nachname": "={{ $('Edit Fields').item.json.lastname }}",
+            "Telefonnummer": "={{ $('Edit Fields').item.json.phone }}",
+            "Ref-ID": "={{ $('Edit Fields').item.json['Ref-ID'] }}",
+            "Affiliate Einladungen": "={{ $('Edit Fields').item.json['Ref-ID'] ? [ $('Edit Fields').item.json['Ref-ID'] ] : [] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vollständiger Name",
+              "displayName": "Vollständiger Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Ref-ID",
+              "displayName": "Ref-ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Affiliate Einladungen",
+              "displayName": "Affiliate Einladungen",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1460,
+        20
+      ],
+      "id": "23a0040e-f144-461f-a331-8d03d06d072c",
+      "name": "Create Register for Webinar",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "ZxaATuaCa4odOcuW",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-06-11T11:49:42.523Z",
+  "versionId": "3f3b216a-e248-4c2e-9f00-80d0b4bb9f61"
+}
