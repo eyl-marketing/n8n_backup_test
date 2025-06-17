@@ -1,0 +1,2106 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "Search First Click1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Airtable1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable1": {
+      "main": [
+        [
+          {
+            "node": "Search First Click",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search First Click": {
+      "main": [
+        [
+          {
+            "node": "Update Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Record": {
+      "main": [
+        [
+          {
+            "node": "Create/Update Lead in Close1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search First Click1": {
+      "main": [
+        [
+          {
+            "node": "Update Record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Record1": {
+      "main": [
+        [
+          {
+            "node": "Create/Update Lead in Close",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-20T09:57:07.951Z",
+  "id": "UBes6gLUcBNQyAJt",
+  "meta": null,
+  "name": "Organische Lead Erstellung",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "fda55a86-bedd-4357-a412-4b87c1f2a149",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        320,
+        0
+      ],
+      "id": "37881c72-6562-4a79-aa77-2d2c82944af4",
+      "name": "Webhook",
+      "webhookId": "fda55a86-bedd-4357-a412-4b87c1f2a149"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $json.body.createdAt }}",
+            "Lead Herkunft": "=🌱 {{ $json.body.fields['Lead Herkunft'] }}",
+            "E-Mail": "={{ $json.body.fields['E-Mail'] }}",
+            "Vorname": "={{ $json.body.fields.Vorname }}",
+            "Nachname": "={{ $json.body.fields.Nachname }}",
+            "Telefonnummer": "={{ $json.body.fields['phone-input-phone-0dd9ca70'] }}",
+            "utm_source": "organic",
+            "utm_campaign": "organic",
+            "utm_medium": "organic",
+            "utm_term": "organic",
+            "utm_content": "organic",
+            "Count": 1,
+            "Placement": "organic",
+            "Full Name": "={{ $json.body.fields.Vorname }} {{ $json.body.fields.Nachname }}",
+            "Affiliate": "🔵 Intern",
+            "URL Path": "organisches-leadform"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        860,
+        20
+      ],
+      "id": "f88baf41-16c1-4088-b557-befe30e2f022",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.fields['Lead Herkunft'] }}",
+                    "rightValue": "Affiliate Network",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "If affiliate network"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a01542c0-c404-44e2-a415-be1feccc1758",
+                    "leftValue": "={{ $json.body.fields['Lead Herkunft'] }}",
+                    "rightValue": "Affiliate Network",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "If NOT affiliate network"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        540,
+        0
+      ],
+      "id": "6722d44d-e849-423b-9ddc-9968dc6ef172",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $json.body.createdAt }}",
+            "Lead Herkunft": "=🌐 {{ $json.body.fields['Lead Herkunft'] }}",
+            "E-Mail": "={{ $json.body.fields['E-Mail'] }}",
+            "Vorname": "={{ $json.body.fields.Vorname }}",
+            "Nachname": "={{ $json.body.fields.Nachname }}",
+            "Telefonnummer": "={{ $json.body.fields['phone-input-phone-0dd9ca70'] }}",
+            "utm_source": "affiliate-network",
+            "utm_campaign": "affiliate-network",
+            "utm_medium": "affiliate-network",
+            "utm_term": "affiliate-network",
+            "utm_content": "affiliate-network",
+            "Count": 1,
+            "Placement": "affiliate-network",
+            "Full Name": "={{ $json.body.fields.Vorname }} {{ $json.body.fields.Nachname }}",
+            "Affiliate": "🔵 Intern",
+            "URL Path": "organisches-leadform"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        860,
+        -180
+      ],
+      "id": "94db8387-4441-4693-a3ee-e6211f266104",
+      "name": "Airtable1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us-central1-crm-server-mymiapage.cloudfunctions.net/Create_Update_Lead_in_Close",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Webhook').item.json.body.fields.Vorname }} {{ $('Webhook').item.json.body.fields.Nachname }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('Webhook').item.json.body.fields['phone-input-phone-0dd9ca70'] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Webhook').item.json.body.fields['E-Mail'] }}"
+            },
+            {
+              "name": "kampagne",
+              "value": "=🌱 {{ $('Webhook').item.json.body.fields['Lead Herkunft'] }}"
+            },
+            {
+              "name": "utm_source",
+              "value": "organic"
+            },
+            {
+              "name": "utm_medium",
+              "value": "organic"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "organic"
+            },
+            {
+              "name": "utm_term",
+              "value": "organic"
+            },
+            {
+              "name": "utm_content",
+              "value": "organic"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d55daef3-d5d9-4b77-a162-a0febddee5b2",
+      "name": "Create/Update Lead in Close",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1480,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us-central1-crm-server-mymiapage.cloudfunctions.net/Create_Update_Lead_in_Close",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Webhook').item.json.body.fields.Vorname }} {{ $('Webhook').item.json.body.fields.Nachname }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('Webhook').item.json.body.fields['phone-input-phone-0dd9ca70'] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Webhook').item.json.body.fields['E-Mail'] }}"
+            },
+            {
+              "name": "kampagne",
+              "value": "=🌐 {{ $('Webhook').item.json.body.fields['Lead Herkunft'] }}"
+            },
+            {
+              "name": "utm_source",
+              "value": "affiliate-network"
+            },
+            {
+              "name": "utm_medium",
+              "value": "affiliate-network"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "affiliate-network"
+            },
+            {
+              "name": "utm_term",
+              "value": "affiliate-network"
+            },
+            {
+              "name": "utm_content",
+              "value": "affiliate-network"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c49d1ef2-3293-4d16-99b5-becb29605e72",
+      "name": "Create/Update Lead in Close1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1480,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "filterByFormula": "={E-Mail} = \"{{ $('Webhook').item.json.body.fields['E-Mail'] }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "view": {
+            "__rl": true,
+            "value": "viwpB5iqJmrioRtKS",
+            "mode": "list",
+            "cachedResultName": "First Click",
+            "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB/viwpB5iqJmrioRtKS"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1060,
+        -180
+      ],
+      "id": "eef87dfe-3972-43fc-b8f4-ea989b1a0e6a",
+      "name": "Search First Click",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Airtable1').item.json.id }}",
+            "first_utm_source": "={{ $json.utm_source }}",
+            "first_utm_medium": "={{ $json.utm_medium }}",
+            "first_utm_campaign": "={{ $json.utm_campaign }}",
+            "first_utm_term": "={{ $json.utm_term }}",
+            "first_utm_content": "={{ $json.utm_content }}",
+            "first_placement": "={{ $json.Placement }}",
+            "first_url_path": "={{ $json['URL Path'] }}",
+            "Lead Herkunft First": "={{ $json['Lead Herkunft'] }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1280,
+        -180
+      ],
+      "id": "1b033de6-5fce-442a-ad46-dd919af90ebe",
+      "name": "Update Record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "filterByFormula": "={E-Mail} = \"{{ $('Webhook').item.json.body.fields['E-Mail'] }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "view": {
+            "__rl": true,
+            "value": "viwpB5iqJmrioRtKS",
+            "mode": "list",
+            "cachedResultName": "First Click",
+            "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB/viwpB5iqJmrioRtKS"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1060,
+        20
+      ],
+      "id": "35f0cb6b-96db-40a3-aa90-aea64d5c2abd",
+      "name": "Search First Click1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Airtable').item.json.id }}",
+            "first_utm_source": "={{ $json.utm_source }}",
+            "first_utm_medium": "={{ $json.utm_medium }}",
+            "first_utm_campaign": "={{ $json.utm_campaign }}",
+            "first_utm_term": "={{ $json.utm_term }}",
+            "first_utm_content": "={{ $json.utm_content }}",
+            "first_placement": "={{ $json.Placement }}",
+            "first_url_path": "={{ $json['URL Path'] }}",
+            "Lead Herkunft First": "={{ $json['Lead Herkunft'] }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1280,
+        20
+      ],
+      "id": "09a2fc7a-c8f8-4fdc-8ce1-154850c38892",
+      "name": "Update Record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "34.96.39.160",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.mymiapage.de",
+            "x-amzn-trace-id": "Root=1-678eade7-2f6222640f93fcf90da03675",
+            "content-length": "333",
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "user-agent": "axios/1.7.8",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "flowID": "ukOWUCfRsCWTgJ7DMX2U",
+            "id": "TrzjSGY2ACgc9xcJ5gRD",
+            "createdAt": "2025-01-20T20:11:18.848Z",
+            "fields": {
+              "E-Mail": "daniel@eyl-marketing.de",
+              "Vorname": "Daniel",
+              "Nachname": "Formanek",
+              "country-select-phone-0dd9ca70": "DE",
+              "phone-input-phone-0dd9ca70": "+49 3423 424",
+              "Lead Herkunft": "Affiliate Network",
+              "pwd": "gum*gzd3quq5PUV2tve"
+            }
+          },
+          "webhookUrl": "https://n8n.mymiapage.de/webhook-test/fda55a86-bedd-4357-a412-4b87c1f2a149",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-10T15:27:46.642Z",
+      "updatedAt": "2024-12-10T15:27:46.642Z",
+      "id": "VvwxOzqj9tBZMm7s",
+      "name": "airtable"
+    },
+    {
+      "createdAt": "2024-12-10T15:27:58.464Z",
+      "updatedAt": "2024-12-10T15:27:58.464Z",
+      "id": "QnF1D30PX6aUza9Y",
+      "name": "heyflow"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T12:32:45.028Z",
+  "versionId": "f252ad7f-9836-40ce-859b-687b32dec9d8"
+}
