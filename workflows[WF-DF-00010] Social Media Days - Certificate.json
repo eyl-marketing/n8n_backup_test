@@ -139,6 +139,11 @@
           }
         ]
       ]
+    },
+    "HTTP Request1": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2024-11-06T07:17:16.705Z",
@@ -601,6 +606,33 @@
         640
       ],
       "webhookId": "9bc7c999-a6ea-41fe-a88f-70ae937ed530"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://certificate.thesocialmediadays.de/webhook",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"firstName\": \"Dein\",\n    \"lastName\": \"Name\"\n} ",
+        "options": {}
+      },
+      "id": "3c73c73b-ecee-49d5-9762-65a945e5cdec",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ]
     }
   ],
   "pinData": {
@@ -681,10 +713,10 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-18T13:42:59.907Z",
-      "updatedAt": "2024-12-18T13:42:59.907Z",
-      "id": "mWBdY8N7iM4hbx1S",
-      "name": "webhook"
+      "createdAt": "2024-12-10T15:27:43.788Z",
+      "updatedAt": "2024-12-10T15:27:43.788Z",
+      "id": "CKO2xAwHg9nnscdV",
+      "name": "active campaign"
     },
     {
       "createdAt": "2024-12-10T15:27:46.642Z",
@@ -693,10 +725,10 @@
       "name": "airtable"
     },
     {
-      "createdAt": "2024-12-10T15:27:43.788Z",
-      "updatedAt": "2024-12-10T15:27:43.788Z",
-      "id": "CKO2xAwHg9nnscdV",
-      "name": "active campaign"
+      "createdAt": "2024-12-18T13:42:59.907Z",
+      "updatedAt": "2024-12-18T13:42:59.907Z",
+      "id": "mWBdY8N7iM4hbx1S",
+      "name": "webhook"
     },
     {
       "createdAt": "2024-12-10T15:28:43.960Z",
@@ -706,6 +738,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-22T13:44:47.504Z",
-  "versionId": "9e9626fc-fbb0-4bc5-91fc-2c73d3125d8e"
+  "updatedAt": "2025-06-17T16:02:46.924Z",
+  "versionId": "1176a2e6-f612-465e-bf33-c2252c268a2c"
 }
