@@ -1,0 +1,557 @@
+{
+  "active": true,
+  "connections": {
+    "Create Contact": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp Template1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Update Contact",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Contact": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp Template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Contact Superchat": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Typeform Trigger": {
+      "main": [
+        [
+          {
+            "node": "Find Contact Superchat",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send WhatsApp Template": {
+      "main": [
+        [
+          {
+            "node": "Add to Contact List (Live Webinar 08.05.2025)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send WhatsApp Template1": {
+      "main": [
+        [
+          {
+            "node": "Add to Contact List (Live Webinar 08.05.2025)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-02T12:25:30.067Z",
+  "id": "J2IWa4CM0KNJ8cBe",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "MP - Typeform > Webinar Responses > Superchat",
+  "nodes": [
+    {
+      "parameters": {
+        "formId": "wBeDDsrG"
+      },
+      "type": "n8n-nodes-base.typeformTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -800,
+        140
+      ],
+      "id": "14841747-086c-4774-be5e-fdb39fa25e68",
+      "name": "Typeform Trigger",
+      "webhookId": "d7a0356d-ee91-4213-aa76-1eaa523795a2",
+      "credentials": {
+        "typeformApi": {
+          "id": "WNBjA8Z9BvJjPQzb",
+          "name": "Typeform account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/contacts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"first_name\": \"{{ $('Typeform Trigger').item.json['First name'] }}\",\n  \"last_name\": \"{{ $('Typeform Trigger').item.json['Last name'] }}\",\n  \"handles\": [\n    {\n      \"type\": \"phone\",\n      \"value\": \"{{ $('Typeform Trigger').item.json['Phone number'] }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "5f5cfb4b-0b2b-4da0-9358-8438c2f19677",
+      "name": "Create Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        240
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.results[0].id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Exist"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "595e52ab-cd9f-4d29-ac9b-9de7a7055f9f",
+                    "leftValue": "={{ $json.results[0].id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notExists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Doesn't exist"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -160,
+        140
+      ],
+      "id": "c7a4de9f-8faa-45bf-8007-aa1a61c059fa",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"first_name\": \"{{ $('Typeform Trigger').item.json['First name'] }}\",\n  \"last_name\": \"{{ $('Typeform Trigger').item.json['Last name'] }}\"\n}",
+        "options": {}
+      },
+      "id": "f9da5fcc-85c9-4390-9a01-d7949ab3541b",
+      "name": "Update Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/contacts/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": {\n    \"value\": [\n      {\n        \"operator\": \"=\",\n        \"field\": \"phone\",\n        \"value\": \"{{ $json['Phone number'] }}\"\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "id": "fcd99bd6-0869-471b-8b2e-2b1059c25055",
+      "name": "Find Contact Superchat",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -600,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"to\": [\n    {\n      \"identifier\": \"{{ $json.id }}\"\n    }\n  ],\n  \"from\": {\n    \"channel_id\": \"mc_yBn8SBjOpPslxLHpaTO9Q\",\n    \"name\": \"Mia\"\n  },\n  \"content\": {\n    \"type\": \"whats_app_template\",\n    \"template_id\": \"tn_UcNVP0AjgsbmEkcIOch5U\",\n    \"parameters\": [],\n    \"variables\": [\n      {\n        \"position\": 1,\n        \"value\": \"{{ $('Typeform Trigger').item.json['First name'] }}\"\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "id": "5fb7a5d8-7511-4095-9ae8-dd6f10054735",
+      "name": "Send WhatsApp Template",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"to\": [\n    {\n      \"identifier\": \"{{ $json.id }}\"\n    }\n  ],\n  \"from\": {\n    \"channel_id\": \"mc_yBn8SBjOpPslxLHpaTO9Q\",\n    \"name\": \"Mia\"\n  },\n  \"content\": {\n    \"type\": \"whats_app_template\",\n    \"template_id\": \"tn_UcNVP0AjgsbmEkcIOch5U\",\n    \"parameters\": [],\n    \"variables\": [\n      {\n        \"position\": 1,\n        \"value\": \"{{ $('Typeform Trigger').item.json['First name'] }}\"\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "id": "2c34d1ab-ffca-4eec-8c6e-017b2cb3467f",
+      "name": "Send WhatsApp Template1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 2
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -380,
+        140
+      ],
+      "id": "1479b957-2efa-402e-a585-62f7f0297b86",
+      "name": "Wait",
+      "webhookId": "a6af0133-c933-465d-a60b-c4ff45725ae8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Update Contact').item.json.id }}/contact-lists",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "cl_8DijknfzhIXRDpKAOXJCK"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3c8072f8-5e13-43e2-a229-cceb165bc406",
+      "name": "Add to Contact List (Live Webinar 08.05.2025)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Create Contact').item.json.id }}/contact-lists",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "cl_8DijknfzhIXRDpKAOXJCK"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0a8fa6f-941d-4e6e-b6eb-1e7a71b75fc6",
+      "name": "Add to Contact List (Live Webinar 08.05.2025)1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.superchat.com/v1.0/contact-lists",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "50"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3b441d66-00c5-4922-8822-845704635611",
+      "name": "Get all Contact Lists",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        -260
+      ],
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "Typeform Trigger": [
+      {
+        "json": {
+          "Du bist...": "Angestellt",
+          "Was ist aktuell deine größte Herausforderung mit Social Media?": [
+            "Ich habe keine Zeit für die Content Erstellung",
+            "Ich komme mit den neuen Trends nicht hinterher",
+            "Ich weiß nicht, was für eine Art Content ich erstellen soll"
+          ],
+          "Welches Ziel möchtest du mit Social Media erreichen?": [
+            "Mehr Follower / mehr Reichweite",
+            "Ich möchte mehr Neukunden gewinnen"
+          ],
+          "Wie würdest du deine Erfahrung im Bereich Social Media einschätzen?": 7,
+          "Welches Thema soll ich in meine Präsentation mit aufnehmen?": "ferq",
+          "Hast du noch weitere Fragen zum LIVE Workshop?": "efsw",
+          "First name": "Alexander",
+          "Last name": "Beutl",
+          "Email": "alexander@eyl-marketing.de",
+          "Phone number": "+436767820594"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD",
+    "saveExecutionProgress": true
+  },
+  "staticData": {
+    "node:Typeform Trigger": {
+      "webhookId": "n8n-hsxellbms7"
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-18T13:48:03.827Z",
+      "updatedAt": "2024-12-18T13:48:03.827Z",
+      "id": "3HRZFaNnFUl91Ipc",
+      "name": "typeform"
+    },
+    {
+      "createdAt": "2025-01-02T12:36:51.390Z",
+      "updatedAt": "2025-01-02T12:36:51.390Z",
+      "id": "GkxXxk9eK6tfAHuZ",
+      "name": "superchat"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-16T19:51:25.760Z",
+  "versionId": "1ebf769b-d6a5-4208-ab91-243b862b66d9"
+}
