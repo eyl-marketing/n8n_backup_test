@@ -319,7 +319,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"to\": [\n    {\n      \"identifier\": \"{{ $json.id }}\"\n    }\n  ],\n  \"from\": {\n    \"channel_id\": \"mc_yBn8SBjOpPslxLHpaTO9Q\",\n    \"name\": \"Mia\"\n  },\n  \"content\": {\n    \"type\": \"whats_app_template\",\n    \"template_id\": \"tn_UcNVP0AjgsbmEkcIOch5U\",\n    \"parameters\": [],\n    \"variables\": [\n      {\n        \"position\": 1,\n        \"value\": \"{{ $('Typeform Trigger').item.json['First name'] }}\"\n      }\n    ]\n  }\n}",
+        "jsonBody": "={\n  \"to\": [\n    {\n      \"identifier\": \"{{ $json.id }}\"\n    }\n  ],\n  \"from\": {\n    \"channel_id\": \"mc_t2Vstzn1902wdTQA6qQW3\",\n    \"name\": \"Mia\"\n  },\n  \"content\": {\n    \"type\": \"whats_app_template\",\n    \"template_id\": \"tn_TVD5WFCFyv8DrlrLvQCIU\",\n    \"parameters\": [],\n    \"variables\": [\n      {\n        \"position\": 1,\n        \"value\": \"{{ $('Typeform Trigger').item.json['First name'] }}\"\n      }\n    ]\n  }\n}",
         "options": {}
       },
       "id": "5fb7a5d8-7511-4095-9ae8-dd6f10054735",
@@ -354,7 +354,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"to\": [\n    {\n      \"identifier\": \"{{ $json.id }}\"\n    }\n  ],\n  \"from\": {\n    \"channel_id\": \"mc_yBn8SBjOpPslxLHpaTO9Q\",\n    \"name\": \"Mia\"\n  },\n  \"content\": {\n    \"type\": \"whats_app_template\",\n    \"template_id\": \"tn_UcNVP0AjgsbmEkcIOch5U\",\n    \"parameters\": [],\n    \"variables\": [\n      {\n        \"position\": 1,\n        \"value\": \"{{ $('Typeform Trigger').item.json['First name'] }}\"\n      }\n    ]\n  }\n}",
+        "jsonBody": "={\n  \"to\": [\n    {\n      \"identifier\": \"{{ $json.id }}\"\n    }\n  ],\n  \"from\": {\n    \"channel_id\": \"mc_t2Vstzn1902wdTQA6qQW3\",\n    \"name\": \"Mia\"\n  },\n  \"content\": {\n    \"type\": \"whats_app_template\",\n    \"template_id\": \"tn_TVD5WFCFyv8DrlrLvQCIU\",\n    \"parameters\": [],\n    \"variables\": [\n      {\n        \"position\": 1,\n        \"value\": \"{{ $('Typeform Trigger').item.json['First name'] }}\"\n      }\n    ]\n  }\n}",
         "options": {}
       },
       "id": "2c34d1ab-ffca-4eec-8c6e-017b2cb3467f",
@@ -368,7 +368,8 @@
     },
     {
       "parameters": {
-        "amount": 2
+        "amount": 2,
+        "unit": "minutes"
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
@@ -534,7 +535,7 @@
   },
   "staticData": {
     "node:Typeform Trigger": {
-      "webhookId": "n8n-hsxellbms7"
+      "webhookId": "n8n-itc6j7e7ug"
     }
   },
   "tags": [
@@ -552,6 +553,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-16T19:51:25.760Z",
-  "versionId": "1ebf769b-d6a5-4208-ab91-243b862b66d9"
+  "updatedAt": "2025-06-17T15:54:38.857Z",
+  "versionId": "94267a06-14bf-4779-9fee-45b2c7872c8c"
 }
