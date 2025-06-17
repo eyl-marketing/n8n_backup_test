@@ -1,0 +1,3726 @@
+{
+  "active": false,
+  "connections": {
+    "Find Record (First Click)": {
+      "main": [
+        [
+          {
+            "node": "Create Record (All Submissions) Master",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Record (All Submissions) EVENTS": {
+      "main": [
+        [
+          {
+            "node": "Create Record (Mini-Produkte)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Record (Mini-Produkte)": {
+      "main": [
+        [
+          {
+            "node": "Create/Update & Autosell",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "First UTM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Record (All Submissions) Master": {
+      "main": [
+        [
+          {
+            "node": "Create Record (All Submissions) EVENTS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add to List": {
+      "main": [
+        [
+          {
+            "node": "Add Tag",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create/Update": {
+      "main": [
+        [
+          {
+            "node": "Add to List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Tag": {
+      "main": [
+        [
+          {
+            "node": "Only continue if number is valid1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Contact": {
+      "main": [
+        [
+          {
+            "node": "Contact does not exist",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Contact exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contact exists": {
+      "main": [
+        [
+          {
+            "node": "Update Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contact does not exist": {
+      "main": [
+        [
+          {
+            "node": "Create Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Record (All Submissions) Master": {
+      "main": [
+        [
+          {
+            "node": "Update Record (All Submissions) EVENTS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Record (All Submissions) EVENTS": {
+      "main": [
+        [
+          {
+            "node": "Update Record Mini-Produkte",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Find Record (First Click)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split campaign_id": {
+      "main": [
+        [
+          {
+            "node": "format Phone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "format Phone": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Only continue if number is valid1": {
+      "main": [
+        [
+          {
+            "node": "Find Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create/Update & Autosell": {
+      "main": [
+        [
+          {
+            "node": "Create/Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Contact": {
+      "main": [
+        [
+          {
+            "node": "Add to Contact List (DOSM Day 1)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Contact": {
+      "main": [
+        [
+          {
+            "node": "Add to Contact List (DOSM Day 1)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "First UTM": {
+      "main": [
+        [
+          {
+            "node": "Update Record (All Submissions) Master",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FREE": {
+      "main": [
+        [
+          {
+            "node": "Split campaign_id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "FREE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-06T13:13:38.492Z",
+  "id": "nHePp8Fw9q0y1nYf",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Days of Social Media Free",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "filterByFormula": "=\"{{ $('Webhook').item.json.body['payer[email]'] }}\"={E-Mail}",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "view": {
+            "__rl": true,
+            "value": "viwpB5iqJmrioRtKS",
+            "mode": "list",
+            "cachedResultName": "First Click",
+            "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB/viwpB5iqJmrioRtKS"
+          }
+        }
+      },
+      "id": "00437e41-a07c-4604-aaf1-b5aeb8d8e891",
+      "name": "Find Record (First Click)",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        600,
+        300
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appT9Q0lTbgTyRrHE",
+          "mode": "list",
+          "cachedResultName": "MP LIVE EVENTS",
+          "cachedResultUrl": "https://airtable.com/appT9Q0lTbgTyRrHE"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWLy8iXGxhOEra5",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/appT9Q0lTbgTyRrHE/tblWLy8iXGxhOEra5"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $('Webhook').item.json.body.created_date }}",
+            "E-Mail": "={{ $('Webhook').item.json.body['payer[email]'] }}",
+            "Vorname": "={{ $('Webhook').item.json.body['payer[first_name]'] }}",
+            "Nachname": "={{ $('Webhook').item.json.body['payer[last_name]'] }}",
+            "Full Name": "={{ $('Webhook').item.json.body['payer[first_name]'] }} {{ $('Webhook').item.json.body['payer[last_name]'] }}",
+            "Telefonnummer": "={{ $('format Phone').item.json.Phone }}",
+            "utm_source": "={{ $('Split campaign_id').item.json.output.Source }}",
+            "utm_medium": "={{ $('Split campaign_id').item.json.output.Medium }}",
+            "utm_campaign": "={{ $('Split campaign_id').item.json.output.Campaign }}",
+            "utm_term": "={{ $('Split campaign_id').item.json.output.Term }}",
+            "utm_content": "={{ $('Split campaign_id').item.json.output.Content }}",
+            "Placement": "={{ $('Split campaign_id').item.json.output.Placement }}",
+            "URL Path": "={{ $('Webhook').item.json.body['sellables[][product][slug]'] }}",
+            "Count": 1,
+            "Lead Herkunft": "📲 DOSM Free",
+            "first_utm_source": "={{ $('Find Record (First Click)').item.json.utm_source }}",
+            "first_utm_campaign": "={{ $('Find Record (First Click)').item.json.utm_campaign }}",
+            "first_utm_medium": "={{ $('Find Record (First Click)').item.json.utm_medium }}",
+            "first_utm_term": "={{ $('Find Record (First Click)').item.json.utm_term }}",
+            "first_utm_content": "={{ $('Find Record (First Click)').item.json.utm_content }}",
+            "first_placement": "={{ $('Find Record (First Click)').item.json.Placement }}",
+            "first_url_path": "={{ $('Find Record (First Click)').item.json['URL Path'] }}",
+            "Lead Herkunft First": "={{ $('Find Record (First Click)').item.json['Lead Herkunft'] }}",
+            "Affiliate": "🔵 Intern"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "DOSM Day 1",
+              "displayName": "DOSM Day 1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "DOSM Day 2",
+              "displayName": "DOSM Day 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "DOSM Day 3",
+              "displayName": "DOSM Day 3",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "DOSM Day 4",
+              "displayName": "DOSM Day 4",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "DOSM Day 1 ID",
+              "displayName": "DOSM Day 1 ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "DOSM Day 2 ID",
+              "displayName": "DOSM Day 2 ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "DOSM Day 3 ID",
+              "displayName": "DOSM Day 3 ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "DOSM Day 4 ID",
+              "displayName": "DOSM Day 4 ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e358a202-6015-42cb-a9f4-37ed2f721a59",
+      "name": "Create Record (All Submissions) EVENTS",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1020,
+        300
+      ],
+      "executeOnce": false,
+      "retryOnFail": false,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl4nYxtZoBS5J4tn",
+          "mode": "list",
+          "cachedResultName": "Mini - Produkte",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tbl4nYxtZoBS5J4tn"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $('Webhook').item.json.body.created_date }}",
+            "E-Mail": "={{ $('Webhook').item.json.body['payer[email]'] }}",
+            "Vollständiger Name": "={{ $('Webhook').item.json.body['payer[first_name]'] }} {{ $('Webhook').item.json.body['payer[last_name]'] }}",
+            "Handynummer": "={{ $('format Phone').item.json.Phone }}",
+            "Produkt": "={{ $('Webhook').item.json.body['product[name]'] }}",
+            "Anzahlung / Revenue": "={{ $('Webhook').item.json.body['product[price]'] }}",
+            "Payment Method": "={{ $('Webhook').item.json.body.payment_method }}",
+            "Payment Plan / Status": "={{ $('Webhook').item.json.body.payment_state }}",
+            "Anzahl Raten": 0,
+            "utm_source": "={{ $('Split campaign_id').item.json.output.Source }}",
+            "Produktpreis": 0,
+            "utm_medium": "={{ $('Split campaign_id').item.json.output.Medium }}",
+            "utm_campaign": "={{ $('Split campaign_id').item.json.output.Campaign }}",
+            "utm_term": "={{ $('Split campaign_id').item.json.output.Term }}",
+            "utm_content": "={{ $('Split campaign_id').item.json.output.Content }}",
+            "Placement": "={{ $('Split campaign_id').item.json.output.Placement }}",
+            "Lead Herkunft Last": "={{ $json.fields['Lead Herkunft'] }}",
+            "Affiliate": "🔵 Intern",
+            "Lead Herkunft First": "={{ $('Find Record (First Click)').item.json['Lead Herkunft'] }}",
+            "first_utm_source": "={{ $('Find Record (First Click)').item.json.utm_source }}",
+            "first_utm_campaign": "={{ $('Find Record (First Click)').item.json.utm_campaign }}",
+            "first_utm_medium": "={{ $('Find Record (First Click)').item.json.utm_medium }}",
+            "first_utm_term": "={{ $('Find Record (First Click)').item.json.utm_term }}",
+            "first_utm_content": "={{ $('Find Record (First Click)').item.json.utm_content }}",
+            "first_placement": "={{ $('Find Record (First Click)').item.json.Placement }}",
+            "Vorname": "={{ $('Webhook').item.json.body['payer[first_name]'] }}",
+            "Nachname": "={{ $('Webhook').item.json.body['payer[last_name]'] }}",
+            "Count": 1
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vollständiger Name",
+              "displayName": "Vollständiger Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Handynummer",
+              "displayName": "Handynummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Produkt",
+              "displayName": "Produkt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Produktpreis",
+              "displayName": "Produktpreis",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Anzahlung / Revenue",
+              "displayName": "Anzahlung / Revenue",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Payment Method",
+              "displayName": "Payment Method",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Payment Plan / Status",
+              "displayName": "Payment Plan / Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Anzahl Raten",
+              "displayName": "Anzahl Raten",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Raten",
+              "displayName": "Raten",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Land",
+              "displayName": "Land",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Stadt",
+              "displayName": "Stadt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "PLZ",
+              "displayName": "PLZ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Strasse ",
+              "displayName": "Strasse ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Hausnummer",
+              "displayName": "Hausnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft Last",
+              "displayName": "Lead Herkunft Last",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "PID",
+              "displayName": "PID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "PRID",
+              "displayName": "PRID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Affiliate Name",
+              "displayName": "Affiliate Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b157970c-e572-437b-8d15-e7d460815bbe",
+      "name": "Create Record (Mini-Produkte)",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1240,
+        300
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $('Webhook').item.json.body.created_date }}",
+            "Lead Herkunft": "📲 DOSM Free",
+            "E-Mail": "={{ $('Webhook').item.json.body['payer[email]'] }}",
+            "Vorname": "={{ $('Webhook').item.json.body['payer[first_name]'] }}",
+            "Nachname": "={{ $('Webhook').item.json.body['payer[last_name]'] }}",
+            "Full Name": "={{ $('Webhook').item.json.body['payer[first_name]'] }} {{ $('Webhook').item.json.body['payer[last_name]'] }}",
+            "Telefonnummer": "={{ $('format Phone').item.json.Phone }}",
+            "utm_source": "={{ $('Split campaign_id').item.json.output.Source }}",
+            "utm_medium": "={{ $('Split campaign_id').item.json.output.Medium }}",
+            "utm_campaign": "={{ $('Split campaign_id').item.json.output.Campaign }}",
+            "utm_term": "={{ $('Split campaign_id').item.json.output.Term }}",
+            "utm_content": "={{ $('Split campaign_id').item.json.output.Content }}",
+            "Placement": "={{ $('Split campaign_id').item.json.output.Placement }}",
+            "Count": 1,
+            "URL Path": "={{ $('Webhook').item.json.body['product[slug]'] }}",
+            "Affiliate": "🔵 Intern",
+            "first_utm_source": "={{ $json.utm_source }}",
+            "first_utm_campaign": "={{ $json.utm_campaign }}",
+            "first_utm_medium": "={{ $json.utm_medium }}",
+            "first_utm_content": "={{ $json.utm_content }}",
+            "first_utm_term": "={{ $json.utm_term }}",
+            "first_placement": "={{ $json.Placement }}",
+            "first_url_path": "={{ $json['URL Path'] }}",
+            "Lead Herkunft First": "={{ $json['Lead Herkunft'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3c0e8d3-04b3-4a44-b3e6-acca475e0e5f",
+      "name": "Create Record (All Submissions) Master",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        820,
+        300
+      ],
+      "executeOnce": false,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactList",
+        "listId": 35,
+        "contactId": "={{ $json.id }}"
+      },
+      "id": "d3fad85f-0c10-4cbd-bb2e-d059b5cc291e",
+      "name": "Add to List",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        300
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $('Webhook').item.json.body['payer[email]'] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "1",
+                "value": "={{ $('Split campaign_id').item.json.output.Source }}"
+              },
+              {
+                "field": "2",
+                "value": "={{ $('Split campaign_id').item.json.output.Campaign }}"
+              },
+              {
+                "field": "3",
+                "value": "={{ $('Split campaign_id').item.json.output.Medium }}"
+              },
+              {
+                "field": "4",
+                "value": "={{ $('Split campaign_id').item.json.output.Term }}"
+              },
+              {
+                "field": "6",
+                "value": "={{ $('Split campaign_id').item.json.output.Content }}"
+              },
+              {
+                "field": "9",
+                "value": "={{ $('Split campaign_id').item.json.output.Placement }}"
+              }
+            ]
+          },
+          "firstName": "={{ $('Webhook').item.json.body['payer[first_name]'] }}",
+          "lastName": "={{ $('Webhook').item.json.body['payer[last_name]'] }}",
+          "phone": "={{ $('format Phone').item.json.Phone }}"
+        }
+      },
+      "id": "e382bfd4-7248-473b-abf2-8a300acf6144",
+      "name": "Create/Update",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        300
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "147",
+        "contactId": "={{ $('Create/Update').item.json.id }}"
+      },
+      "id": "347450f8-58f2-46c4-99f4-ec309b749fc4",
+      "name": "Add Tag",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2100,
+        300
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/contacts/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": {\n    \"value\": [\n      {\n        \"operator\": \"=\",\n        \"field\": \"phone\",\n        \"value\": \"{{ $('format Phone').item.json.Phone }}\"\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "id": "39cfa407-b313-4a88-8379-cfd485f3a84b",
+      "name": "Find Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2560,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f9f88955-5e3a-4bf6-ae7f-df9f73c91ef6",
+              "leftValue": "={{ $json.results }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1ed94d88-a693-42d7-91f8-f2c4bace5ce7",
+      "name": "Contact exists",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2840,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.id }}/contact-lists",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "cl_54LhEvAPhPbHGB7OFW8Ac"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ae4fc00c-4df6-48e6-8120-e23a1407df16",
+      "name": "Add to Contact List (DOSM Day 1)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3240,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "4c88e4d7-b0e0-46be-9530-1f01f8f79e4b",
+              "leftValue": "={{ $json.results }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "436244e7-8cdc-40ba-b684-467a3da4dd62",
+      "name": "Contact does not exist",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2840,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Create Record (All Submissions) Master').item.json.id }}",
+            "first_utm_source": "={{ $('Split campaign_id').item.json.output.Source }}",
+            "first_utm_medium": "={{ $('Split campaign_id').item.json.output.Medium }}",
+            "first_utm_campaign": "={{ $('Split campaign_id').item.json.output.Campaign }}",
+            "first_utm_term": "={{ $('Split campaign_id').item.json.output.Term }}",
+            "first_utm_content": "={{ $('Split campaign_id').item.json.output.Content }}",
+            "first_placement": "={{ $('Split campaign_id').item.json.output.Placement }}",
+            "first_url_path": "={{ $('Create Record (All Submissions) Master').item.json.fields['URL Path'] }}",
+            "Lead Herkunft First": "={{ $('Create Record (All Submissions) Master').item.json.fields['Lead Herkunft'] }}",
+            "Count": 1
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d8f79093-f6b8-4e77-823c-08969f96a5c0",
+      "name": "Update Record (All Submissions) Master",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        600,
+        100
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appT9Q0lTbgTyRrHE",
+          "mode": "list",
+          "cachedResultName": "MP LIVE EVENTS",
+          "cachedResultUrl": "https://airtable.com/appT9Q0lTbgTyRrHE"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblWLy8iXGxhOEra5",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/appT9Q0lTbgTyRrHE/tblWLy8iXGxhOEra5"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Create Record (All Submissions) EVENTS').item.json.id }}",
+            "first_utm_source": "={{ $('Split campaign_id').item.json.output.Source }}",
+            "first_utm_medium": "={{ $('Split campaign_id').item.json.output.Medium }}",
+            "first_utm_campaign": "={{ $('Split campaign_id').item.json.output.Campaign }}",
+            "first_utm_term": "={{ $('Split campaign_id').item.json.output.Term }}",
+            "first_utm_content": "={{ $('Split campaign_id').item.json.output.Content }}",
+            "first_placement": "={{ $('Split campaign_id').item.json.output.Placement }}",
+            "first_url_path": "={{ $('Create Record (All Submissions) EVENTS').item.json.fields['URL Path'] }}",
+            "Lead Herkunft First": "={{ $('Create Record (All Submissions) EVENTS').item.json.fields['Lead Herkunft'] }}",
+            "Count": 1
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "DOSM Day 1",
+              "displayName": "DOSM Day 1",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "DOSM Day 2",
+              "displayName": "DOSM Day 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "DOSM Day 3",
+              "displayName": "DOSM Day 3",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "DOSM Day 4",
+              "displayName": "DOSM Day 4",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aa783e35-62d6-451a-83ba-490dd58f3ace",
+      "name": "Update Record (All Submissions) EVENTS",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        800,
+        100
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a0e5ab86-95ac-48f3-9e16-289b98c3e222",
+              "name": "E-Mail",
+              "value": "={{ $('Webhook').item.json.body['payer[email]'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5afc306f-a291-4bb4-ac86-236bd2d5f201",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        380,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.id }}/contact-lists",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "id",
+              "value": "cl_54LhEvAPhPbHGB7OFW8Ac"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "de2594ea-8f00-4848-a1d4-141f9732785a",
+      "name": "Add to Contact List (DOSM Day 1)1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Liste von speziellen Wörtern, die nicht aufgespalten werden sollen\nconst specialWords = [\n    \"paid_search\",\n    \"paid_social\",\n    \"paid_video\",\n    \"organic_search\",\n    \"organic_social\",\n    \"user_reviews\"\n];\n\n// Join the special words into a regex pattern\nconst specialWordsPattern = specialWords.join(\"|\");\n\n// Iteriere durch die eingehenden Items\nreturn items.map(item => {\n    // Get campaign_id from input data\n    const input_data = item.json.body;\n    if (input_data && input_data.campaign_id) {\n        const campaign_id = input_data.campaign_id;\n        \n        // Regex pattern to find all parts, treating special words as single units\n        const pattern = new RegExp(`${specialWordsPattern}|[^_]+`, 'g');\n        let words = campaign_id.match(pattern);\n        \n        // Replace \"undefined\" words with \"organic\"\n        words = words.map(word => word === 'undefined' ? 'organic' : word);\n        \n        // Assign words to respective variables, handling the case when there are fewer words than expected\n        const Source = words[0] || \"\";\n        const Medium = words[1] || \"\";\n        const Campaign = words[2] || \"\";\n        const Term = words[3] || \"\";\n        const Content = words[4] || \"\";\n        \n        // Check if Placement is \"organic\" or \"undefined\"\n        let Placement = \"\";\n        if (words.length > 5 && words[5] !== \"organic\" && words[5] !== \"undefined\") {\n            Placement = words.slice(5).join(\"_\");\n        }\n        \n        // Create an object with the UTM parameters\n        const output = {\n            Source,\n            Medium,\n            Campaign,\n            Term,\n            Content,\n            Placement,\n        };\n        \n        // Return the new JSON structure for n8n\n        return {\n            json: {\n                ...item.json,\n                output,\n            }\n        };\n    }\n    \n    // If no campaign_id is present, return the item unchanged\n    return {\n        json: item.json\n    };\n});"
+      },
+      "id": "d17672c6-c6d2-48b0-b582-d9b3115dca29",
+      "name": "Split campaign_id",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// JSON-Eingabe: Die Struktur entspricht der übergebenen Beispielstruktur\nconst data = $json;\n\n// Extrahiere die Telefonnummer aus payer[phone]\nlet phone = data.body[\"payer[phone]\"];\n\n// Liste aller Ländervorwahlen\nconst countryCodes = [\"1\", \"30\", \"31\", \"32\", \"33\", \"34\", \"36\", \"39\", \"40\", \"41\", \"43\", \"44\", \"45\", \"46\", \"47\", \"48\", \"49\", \"52\", \"62\", \"971\", \"420\", \"423\", \"27\"];\n\n// Funktion zur Bereinigung der Telefonnummer\nfunction cleanPhoneNumber(phone) {\n    // Entferne Leerzeichen, Bindestriche, Klammern und sonstige Sonderzeichen\n    phone = phone.replace(/[\\s()-]/g, \"\");\n\n    // Entferne führende Nullen (vor dem Ländercode)\n    while (phone.startsWith(\"0\")) {\n        phone = phone.substring(1);\n    }\n\n    // Wenn keine \"+\" vorhanden ist, füge sie hinzu (E.164 Format benötigt das \"+\" Zeichen)\n    if (!phone.startsWith(\"+\")) {\n        phone = \"+\" + phone;\n    }\n\n    // Prüfe auf doppelte Ländervorwahl\n    phone = removeDuplicateCountryCode(phone, countryCodes);\n\n    // Ländervorwahl validieren und überprüfen, ob nach der Ländervorwahl keine Null steht\n    for (let code of countryCodes) {\n        const pattern = new RegExp(`^(\\\\+${code})(0+)`); // Überprüfe auf eine oder mehrere Nullen nach dem Ländercode\n        if (pattern.test(phone)) {\n            // Entferne alle führenden Nullen nach der Ländervorwahl\n            phone = phone.replace(pattern, `+$1`); // Ersetze die Nullen durch nichts\n        }\n    }\n\n    // Entferne alle doppelten '+' Zeichen und lasse nur eines übrig\n    phone = phone.replace(/^\\+{2,}/, \"+\");\n\n    return phone;\n}\n\n// Funktion zur Überprüfung auf doppelte Ländervorwahl\nfunction removeDuplicateCountryCode(phone, countryCodes) {\n    for (let code of countryCodes) {\n        const doubleCodePattern = new RegExp(`^\\\\+${code}{2}`);\n        if (doubleCodePattern.test(phone)) {\n            // Entferne die doppelte Ländervorwahl\n            phone = phone.replace(`+${code}${code}`, `+${code}`);\n        }\n    }\n    return phone;\n}\n\n// Telefonnummer bereinigen und formatieren\nconst formattedPhone = cleanPhoneNumber(phone);\n\n// Berechnung der Anzahl der Zeichen inklusive des Plus-Zeichens\nconst phoneLength = formattedPhone.length;\n\n// Ausgabe: Bereinigte Telefonnummer im E.164-Format und die Anzahl der Zeichen\nreturn {\n    \"Phone\": formattedPhone,\n    \"PhoneLength\": phoneLength\n};\n"
+      },
+      "id": "5d85db48-dbbd-4115-b2c0-5d538db89586",
+      "name": "format Phone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        140,
+        300
+      ],
+      "notes": "Old: \n\n// JSON-Eingabe: Die Struktur entspricht der übergebenen Beispielstruktur\nconst data = $json;\n\n// Extrahiere die Telefonnummer aus payer[phone]\nlet phone = data.body[\"payer[phone]\"];\n\n// Liste aller Ländervorwahlen\nconst countryCodes = [\"1\", \"30\", \"31\", \"32\", \"33\", \"34\", \"36\", \"39\", \"40\", \"41\", \"43\", \"44\", \"45\", \"46\", \"47\", \"48\", \"49\", \"52\", \"62\", \"971\", \"420\", \"423\", \"27\"];\n\n// Funktion zur Bereinigung der Telefonnummer\nfunction cleanPhoneNumber(phone) {\n    // Entferne Leerzeichen, Bindestriche, Klammern und sonstige Sonderzeichen\n    phone = phone.replace(/[\\s()-]/g, \"\");\n\n    // Entferne führende Nullen (vor dem Ländercode)\n    while (phone.startsWith(\"0\")) {\n        phone = phone.substring(1);\n    }\n\n    // Wenn keine \"+\" vorhanden ist, füge sie hinzu (E.164 Format benötigt das \"+\" Zeichen)\n    if (!phone.startsWith(\"+\")) {\n        phone = \"+\" + phone;\n    }\n\n    // Prüfe auf doppelte Ländervorwahl\n    phone = removeDuplicateCountryCode(phone, countryCodes);\n\n    // Ländervorwahl validieren und überprüfen, ob nach der Ländervorwahl keine Null steht\n    for (let code of countryCodes) {\n        const pattern = new RegExp(`^(\\\\+${code})(0+)`); // Überprüfe auf eine oder mehrere Nullen nach dem Ländercode\n        if (pattern.test(phone)) {\n            // Entferne alle führenden Nullen nach der Ländervorwahl\n            phone = phone.replace(pattern, `+$1`); // Ersetze die Nullen durch nichts\n        }\n    }\n\n    // Entferne alle doppelten '+' Zeichen und lasse nur eines übrig\n    phone = phone.replace(/^\\+{2,}/, \"+\");\n\n    return phone;\n}\n\n// Funktion zur Überprüfung auf doppelte Ländervorwahl\nfunction removeDuplicateCountryCode(phone, countryCodes) {\n    for (let code of countryCodes) {\n        const doubleCodePattern = new RegExp(`^\\\\+${code}{2}`);\n        if (doubleCodePattern.test(phone)) {\n            // Entferne die doppelte Ländervorwahl\n            phone = phone.replace(`+${code}${code}`, `+${code}`);\n        }\n    }\n    return phone;\n}\n\n// Telefonnummer bereinigen und formatieren\nconst formattedPhone = cleanPhoneNumber(phone);\n\n// Berechnung der Anzahl der Zeichen inklusive des Plus-Zeichens\nconst phoneLength = formattedPhone.length;\n\n// Ausgabe: Bereinigte Telefonnummer im E.164-Format und die Anzahl der Zeichen\nreturn {\n    \"Phone\": formattedPhone,\n    \"PhoneLength\": phoneLength\n};\n"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "9884eb3d-6946-4f54-bbdb-d85118910cab",
+              "leftValue": "={{ $('format Phone').item.json.PhoneLength }}",
+              "rightValue": 10,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "b6309d41-6cd4-444d-8cee-aa6cedaeb7d7",
+              "leftValue": "={{ $('format Phone').item.json.PhoneLength }}",
+              "rightValue": 16,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "afff34a6-a1e0-46e0-958e-050184ffd47c",
+      "name": "Only continue if number is valid1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us-central1-crm-server-mymiapage.cloudfunctions.net/Create_Update_Lead_in_Close_Autosell_Infoproducts2",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Webhook').item.json.body['payer[first_name]'] }} {{ $('Webhook').item.json.body['payer[last_name]'] }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('format Phone').item.json.Phone }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Webhook').item.json.body['payer[email]'] }}"
+            },
+            {
+              "name": "kampagne",
+              "value": "📲 Days of Social Media"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $('Split campaign_id').item.json.output.Source }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('Split campaign_id').item.json.output.Medium }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('Split campaign_id').item.json.output.Campaign }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('Split campaign_id').item.json.output.Term }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('Split campaign_id').item.json.output.Content }}"
+            },
+            {
+              "name": "placement",
+              "value": "={{ $('Split campaign_id').item.json.output.Placement }}"
+            },
+            {
+              "name": "Netto Auftragsvolumen",
+              "value": "=0"
+            },
+            {
+              "name": "produkt",
+              "value": "={{ $('Webhook').item.json.body['product[name]'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e13d7126-de6f-4481-8164-9d3e7b201b25",
+      "name": "Create/Update & Autosell",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1460,
+        300
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/contacts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"first_name\": \"{{ $('Webhook').item.json.body['payer[first_name]'] }}\",\n  \"last_name\": \"{{ $('Webhook').item.json.body['payer[last_name]'] }}\",\n  \"handles\": [\n    {\n      \"type\": \"phone\",\n      \"value\": \"{{ $('format Phone').item.json.Phone }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "81535731-3745-46c3-9e59-de2f8fe4a7ce",
+      "name": "Create Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3040,
+        380
+      ],
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"first_name\": \"{{ $('Webhook').item.json.body['payer[first_name]'] }}\",\n  \"last_name\": \"{{ $('Webhook').item.json.body['payer[last_name]'] }}\"\n}",
+        "options": {}
+      },
+      "id": "5deae322-2a75-48f1-8c7d-6d3cc0e23364",
+      "name": "Update Contact",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3040,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "de44d497-a140-4bb3-a512-0d5bf3973c5c",
+              "leftValue": "={{ $('Find Record (First Click)').item.json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d8567957-4f89-4b69-83f7-a61bd973609b",
+      "name": "First UTM",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        380,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl4nYxtZoBS5J4tn",
+          "mode": "list",
+          "cachedResultName": "Mini - Produkte",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tbl4nYxtZoBS5J4tn"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Create Record (Mini-Produkte)').item.json.id }}",
+            "Lead Herkunft First": "={{ $('Create Record (All Submissions) Master').item.json.fields['Lead Herkunft'] }}",
+            "first_utm_source": "={{ $('Split campaign_id').item.json.output.Source }}",
+            "first_utm_medium": "={{ $('Split campaign_id').item.json.output.Medium }}",
+            "first_utm_campaign": "={{ $('Split campaign_id').item.json.output.Campaign }}",
+            "first_utm_term": "={{ $('Split campaign_id').item.json.output.Term }}",
+            "first_utm_content": "={{ $('Split campaign_id').item.json.output.Content }}",
+            "first_placement": "={{ $('Split campaign_id').item.json.output.Placement }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Vollständiger Name",
+              "displayName": "Vollständiger Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Handynummer",
+              "displayName": "Handynummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Produkt",
+              "displayName": "Produkt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Produktpreis",
+              "displayName": "Produktpreis",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Anzahlung / Revenue",
+              "displayName": "Anzahlung / Revenue",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Payment Method",
+              "displayName": "Payment Method",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Payment Plan / Status",
+              "displayName": "Payment Plan / Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Anzahl Raten",
+              "displayName": "Anzahl Raten",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Raten",
+              "displayName": "Raten",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Land",
+              "displayName": "Land",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Stadt",
+              "displayName": "Stadt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "PLZ",
+              "displayName": "PLZ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Strasse ",
+              "displayName": "Strasse ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Hausnummer",
+              "displayName": "Hausnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Lead Herkunft Last",
+              "displayName": "Lead Herkunft Last",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "PID",
+              "displayName": "PID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "PRID",
+              "displayName": "PRID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Affiliate Name",
+              "displayName": "Affiliate Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9c674dd3-8fc9-44f8-9f98-e77c6fd34904",
+      "name": "Update Record Mini-Produkte",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1020,
+        100
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "5a19e9cf-73ea-4d5d-9c00-15d1146a3137",
+              "leftValue": "={{ $json.body[0].body['payer[phone]'] }}",
+              "rightValue": "@eyl-marketing.de",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "2e099d37-5cc1-4737-8498-ceaba63dce53",
+              "leftValue": "={{ $json.body[0].body['product[name]'] }}",
+              "rightValue": "Days of Social Media FREE Ticket",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9a7d6253-28ea-4761-884e-2e6d12ddf678",
+      "name": "FREE",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        -300,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "1ed089d7-53b8-4664-8e3e-679f2e4d47a5",
+        "options": {}
+      },
+      "id": "d2d236d8-d93a-4270-bffc-bea2ecc8ae0b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -500,
+        300
+      ],
+      "webhookId": "1ed089d7-53b8-4664-8e3e-679f2e4d47a5",
+      "notes": "https://myablefy.com/cabinet/webhook_endpoints/5352/edit"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "content-type": "application/json",
+            "user-agent": "PostmanRuntime/7.42.0",
+            "accept": "*/*",
+            "cache-control": "no-cache",
+            "postman-token": "8ae01c91-1604-4f36-bf82-c2d20f82bbd4",
+            "host": "n8n-mymiapage.fly.dev",
+            "accept-encoding": "gzip, deflate, br",
+            "x-request-start": "t=1729083769851355",
+            "content-length": "5472",
+            "fly-client-ip": "54.86.50.139",
+            "x-forwarded-for": "54.86.50.139, 66.241.125.249",
+            "fly-forwarded-proto": "https",
+            "x-forwarded-proto": "https",
+            "fly-forwarded-ssl": "on",
+            "x-forwarded-ssl": "on",
+            "fly-forwarded-port": "443",
+            "x-forwarded-port": "443",
+            "fly-region": "iad",
+            "fly-request-id": "01JAAPS0ZV5TQSMZ2B26MFK65E-iad",
+            "via": "1.1 fly.io"
+          },
+          "params": {},
+          "query": {},
+          "body": [
+            {
+              "headers": {
+                "accept": "*/*",
+                "user-agent": "rest-client/2.1.0 (linux-musl x86_64) ruby/3.1.6p260",
+                "content-length": "2654",
+                "content-type": "application/x-www-form-urlencoded",
+                "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+                "host": "n8n-mymiapage.fly.dev",
+                "sentry-trace": "8d94b6d7108a4a21b3a86c0db5dac8a7-f49cc638a79149e7",
+                "baggage": "sentry-trace_id=8d94b6d7108a4a21b3a86c0db5dac8a7,sentry-environment=production,sentry-public_key=aef26e3499ff411385cdc49392666d34",
+                "traceparent": "00-11e01cf0c77af8e43aa25b83ee873816-e22c8b9d072a83c0-00",
+                "tracestate": "1230973@nr=0-0-1230973-17287220-e22c8b9d072a83c0-246afce20e555980-0-0.078774-1729081852470",
+                "newrelic": "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkFwcCIsImFjIjoiMTIzMDk3MyIsImFwIjoiMTcyODcyMjAiLCJ0eCI6IjI0NmFmY2UyMGU1NTU5ODAiLCJ0ciI6IjExZTAxY2YwYzc3YWY4ZTQzYWEyNWI4M2VlODczODE2Iiwic2EiOmZhbHNlLCJwciI6MC4wNzg3NzQsInRpIjoxNzI5MDgxODUyNDcwLCJpZCI6ImUyMmM4YjlkMDcyYTgzYzAifX0=",
+                "x-request-start": "t=1729081852471917",
+                "fly-client-ip": "18.199.28.132",
+                "x-forwarded-for": "18.199.28.132, 66.241.125.249",
+                "fly-forwarded-proto": "https",
+                "x-forwarded-proto": "https",
+                "fly-forwarded-ssl": "on",
+                "x-forwarded-ssl": "on",
+                "fly-forwarded-port": "443",
+                "x-forwarded-port": "443",
+                "fly-region": "fra",
+                "fly-request-id": "01JAAMYGHQX31Z6EWKNZ4H5BAX-fra",
+                "via": "1.1 fly.io"
+              },
+              "params": {},
+              "query": {},
+              "body": {
+                "id": "827177379",
+                "event": "payment.successful",
+                "state": "successful",
+                "payer[email]": "konstantin.postel@gmx.de",
+                "payer[phone]": "01778204563",
+                "payer[country]": "Deutschland",
+                "payer[last_name]": "Postel",
+                "payer[first_name]": "Konstantin",
+                "payer[country_code]": "DE",
+                "upsell": "",
+                "action": "payment_processed",
+                "amount": "0.0",
+                "events[]": "",
+                "currency": "EUR",
+                "opt_ins": "",
+                "product[id]": "391384",
+                "product[name]": "Days of Social Media FREE Ticket",
+                "product[slug]": "tsmd-free-ticket",
+                "product[type]": "service",
+                "product[price]": "0.0",
+                "product[groups]": "",
+                "product[cost_center]": "",
+                "product[internal_name]": "SMD Free Ticket",
+                "product[performance_period]": "16.10.2024",
+                "revenue": "0.0",
+                "tickets[]": "",
+                "add_id_2": "cs7r36rgh5ps715aus10",
+                "vat_amount": "0.0",
+                "order_id": "11662857",
+                "vat_rate": "0.0",
+                "error_msg": "",
+                "publisher": "",
+                "recurring": "no",
+                "sellables[][id]": "11928792",
+                "sellables[][product][id]": "391384",
+                "sellables[][product][form]": "service",
+                "sellables[][product][name]": "Days of Social Media FREE Ticket",
+                "sellables[][product][slug]": "tsmd-free-ticket",
+                "sellables[][product][cost_center]": "",
+                "sellables[][product][internal_name]": "SMD Free Ticket",
+                "sellables[][quantity]": "1",
+                "sellables[][pricing_plan][id]": "",
+                "sellables[][pricing_plan][name]": "",
+                "sellables[][sellable_items][][id]": "16531247",
+                "sellables[][sellable_items][][product][id]": "391384",
+                "sellables[][sellable_items][][product][form]": "service",
+                "sellables[][sellable_items][][product][name]": "Days of Social Media FREE Ticket",
+                "sellables[][sellable_items][][product][slug]": "tsmd-free-ticket",
+                "sellables[][sellable_items][][product][cost_center]": "",
+                "sellables[][sellable_items][][product][internal_name]": "SMD Free Ticket",
+                "sellables[][price_information][net]": "0.0",
+                "sellables[][price_information][gross]": "0.0",
+                "created_at": "16.10.2024 12:30",
+                "membership": "",
+                "product_id": "391384",
+                "recurring_form": "one_time",
+                "coupon_code": "",
+                "order_token": "8JFBkLBQSWfizP9FJQwb",
+                "upsell_type": "standard",
+                "created_date": "2024-10-16T12:30Z",
+                "currency_key": "EUR",
+                "invoice_link": "",
+                "pricing_plan[id]": "",
+                "pricing_plan[name]": "",
+                "success_date": "2024-10-16T12:30Z",
+                "success_link": "https://myablefy.com/s/mymiapage/payment/8JFBkLBQSWfizP9FJQwb?",
+                "team_members": "",
+                "gift_receiver": "",
+                "payment_state": "paid",
+                "invoice_number": "",
+                "payment_method": "free",
+                "payments_count": "1",
+                "refunded_transfer_id": "",
+                "access_lifetime": "false",
+                "created_date_utc": "16.10.2024 12:30",
+                "credit_memo_link": "",
+                "order_amount_net": "0.0",
+                "success_date_utc": "16.10.2024 12:30",
+                "with_test_period": "false",
+                "funnel_uniq_token": "8JFBkLBQSWfizP9FJQwb",
+                "payments_schedule": "",
+                "with_custom_start": "false",
+                "minimum_terms_data": "",
+                "order_amount_gross": "0.0",
+                "payment_session_id": "11662857",
+                "success_date_short": "2024-10-16",
+                "access_activated_at": "2024-10-16T12:30:40Z",
+                "team_member_commissions": "",
+                "test_period_end_date": "",
+                "payment_session_token": "8JFBkLBQSWfizP9FJQwb",
+                "access_expiration_date": "",
+                "payments_count_expected": "",
+                "payments_schedule_next_rate_date": "",
+                "initial_order_amount_net": "0.0",
+                "initial_order_amount_gross": "0.0",
+                "fee": "0.0"
+              },
+              "webhookUrl": "https://n8n-mymiapage.fly.dev/webhook/1ed089d7-53b8-4664-8e3e-679f2e4d47a5",
+              "executionMode": "production"
+            }
+          ],
+          "webhookUrl": "https://n8n-mymiapage.fly.dev/webhook-test/1ed089d7-53b8-4664-8e3e-679f2e4d47a5",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-11-06T13:23:31.021Z",
+  "versionId": "ad39b5ed-32db-42e6-8749-7468becf7181"
+}
