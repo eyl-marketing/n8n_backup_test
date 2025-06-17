@@ -1,0 +1,118 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get Task Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp": {
+      "main": [
+        []
+      ]
+    },
+    "Get Task Info": {
+      "main": [
+        [
+          {
+            "node": "ClickUp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-28T19:03:35.630Z",
+  "id": "UmZGoadoit4Csjeq",
+  "meta": null,
+  "name": "[WF-DF-0017] - CSM Kennzahlen tracking",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "3cdd9fcb-cd4e-4edd-8b8d-a8158f004626",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -260,
+        0
+      ],
+      "id": "b49f6980-c692-402a-ab57-ebcde350db99",
+      "name": "Webhook",
+      "webhookId": "3cdd9fcb-cd4e-4edd-8b8d-a8158f004626"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "id": "={{ $json.id }}",
+        "updateFields": {
+          "content": "=## Kennzahlen tracking [{{ $json.status.status }}]\n\n**Bitte folgende Kennzahlen vom Kunden für {{ $json.status.status }}  erheben:**\n\n**Umsatz:**\n**Reichweite:**\n**Follower:**\n\n---\n\n{{ $json.description }}",
+          "markdownContent": true
+        }
+      },
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "id": "a9432eaa-06a4-4f54-beea-62ece88008f5",
+      "name": "ClickUp",
+      "credentials": {
+        "clickUpApi": {
+          "id": "Rdiql52dzcuwBRR3",
+          "name": "Clickup Personal Access Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "id": "={{ $json.body.payload.id }}"
+      },
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        -20,
+        0
+      ],
+      "id": "612763a7-8c80-499a-8b1e-3bd948271239",
+      "name": "Get Task Info",
+      "alwaysOutputData": true,
+      "credentials": {
+        "clickUpApi": {
+          "id": "Rdiql52dzcuwBRR3",
+          "name": "Clickup Personal Access Token"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-18T13:48:41.688Z",
+      "updatedAt": "2024-12-18T13:48:41.688Z",
+      "id": "lvBQmOdSQz5LnVk8",
+      "name": "clickup"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T13:43:01.381Z",
+  "versionId": "45c5f6b7-6ebd-4b1d-951b-748edcc276cf"
+}
