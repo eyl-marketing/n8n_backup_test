@@ -1,0 +1,196 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Affiliates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Affiliates": {
+      "main": [
+        [
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Remove Duplicates": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get Affiliates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-04T17:00:14.134Z",
+  "id": "vQ7FUuISjvGRiE1O",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[WF-AB-0006-01] - Update Ablefy Affiliates to Airtable (Step 1)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "id": "e22928c8-83fe-4d6f-bd51-09ff01f9b01e",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        1900,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.elopage.com/api/publishers?key=1d56d9a3ea5b094d8db47044db72b403&secret=xYLxwnzZpCfYAHCoU2zk_g7EugyVgsuqgzGC6myS8_2R5ZrUMg1qz6erb7yjSu",
+        "options": {}
+      },
+      "id": "a37b2d9f-f412-461e-a1b9-3fee6b8b9549",
+      "name": "Get Affiliates",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2120,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "compare": "selectedFields",
+        "fieldsToCompare": "id",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        440
+      ],
+      "id": "206dc6ac-54b4-4a68-94f0-c2196ef53bfd",
+      "name": "Remove Duplicates"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        260
+      ],
+      "id": "e11fb17c-0ccf-47c0-a1d2-5f8b73e0d42f",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "35pk1lRHR4LL7DlQ",
+          "mode": "list",
+          "cachedResultName": "My Sub-Workflow 1"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "position": [
+        3000,
+        540
+      ],
+      "id": "ff43c8b1-1e36-4a96-bd4e-419ee1c638d0",
+      "name": "Execute Workflow",
+      "executeOnce": false,
+      "retryOnFail": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "batchSize": 100,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2620,
+        440
+      ],
+      "id": "51fc9963-8c79-4762-a703-c4fb318fc40f",
+      "name": "Loop Over Items"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "timezone": "Europe/Berlin",
+    "errorWorkflow": "zwVmjda7oPTTXCQD"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-12-18T13:40:56.672Z",
+      "updatedAt": "2024-12-18T13:40:56.672Z",
+      "id": "8cTXSWw3KMjb2Rgc",
+      "name": "elopage"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T13:44:33.580Z",
+  "versionId": "7024650e-813a-461e-98e8-47113eb11be9"
+}
