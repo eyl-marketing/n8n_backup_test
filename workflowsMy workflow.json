@@ -1,0 +1,127 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Create Form Submission1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-29T05:57:29.654Z",
+  "id": "fcgYIdSXCnrUQsem",
+  "meta": null,
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e0606ef4-b504-400f-82bd-46aa35f9b376",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "559fa552-4540-4c25-b4d5-f339fb823106",
+      "name": "Webhook",
+      "webhookId": "e0606ef4-b504-400f-82bd-46aa35f9b376"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.hsforms.com/submissions/v3/integration/submit/20336024/89217d9d-ac96-4aff-ba58-3802a859d9ee",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": [\n    {\n      \"name\": \"firstname\",\n      \"value\": \"{{ $json.body.Vorname }}\"\n    },\n    {\n      \"name\": \"lastname\",\n      \"value\": \"{{ $json.body.Nachname }}\"\n    },\n    {\n      \"name\": \"email\",\n      \"value\": \"{{ $json.body['E-Mail'] }}\"\n    },\n    {\n      \"name\": \"phone\",\n      \"value\": \"\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        240,
+        0
+      ],
+      "id": "1cc8eec2-358a-463e-b781-b62df74a20d5",
+      "name": "Create Form Submission1"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "91.73.224.127, 107.178.203.68",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.mymiapage.de",
+            "x-amzn-trace-id": "Root=1-6837f7dd-78c2b5311ed11adb2f3bd1eb",
+            "content-length": "948",
+            "content-type": "application/json",
+            "user-agent": "Mozilla/5.0 (compatible; Google-Apps-Script; beanserver; +https://script.google.com; id: UAEmdDd8hNh3qHNFGrMprj6-W_i-szJX08Q)",
+            "accept-encoding": "gzip, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Datum": "2025-05-28T20:25:00.000Z",
+            "Lead Herkunft": "🗞️ Krypto Börsenbrief",
+            "E-Mail": "christian.bergs@gmx.de",
+            "Vollständiger Name": "Christian Bergs",
+            "Vorname": "Christian",
+            "Nachname": "Bergs",
+            "Handynummer": "+4915221820118",
+            "utm_source": "facebook",
+            "utm_medium": "paid_social",
+            "utm_campaign": "120215950738900212",
+            "utm_term": "120218960259720212",
+            "utm_content": "120218960259700212",
+            "placement": "Instagram_Feed",
+            "URL Path": "kryptoboersenbrief-1",
+            "Verhaltniss": "",
+            "Alter": "",
+            "Interesse weil": "",
+            "Investment": "",
+            "first_utm_source": "facebook",
+            "first_utm_medium": "cpc",
+            "first_utm_campaign": "23853251412720211",
+            "first_utm_term": "120210013003270212",
+            "first_utm_content": "120210017307530212",
+            "first_placement": "Instagram_Feed",
+            "first_url_path": "dmt-training-1",
+            "First Lead Herkunft": "📈LP: DMT-Strategie",
+            "Hubspot Kontakt ID": 17887641509,
+            "Hubspot Kontakt": "https://app.hubspot.com/contacts/20336024/record/0-1/17887641509",
+            "Buchungsquelle": "Funnel-Lead"
+          },
+          "webhookUrl": "https://n8n.mymiapage.de/webhook-test/e0606ef4-b504-400f-82bd-46aa35f9b376",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-29T06:02:44.795Z",
+  "versionId": "f47f98d9-b27c-4055-ade7-22615ae119a3"
+}
