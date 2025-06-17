@@ -1,0 +1,480 @@
+{
+  "active": true,
+  "connections": {
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find Lead": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Only continue if Lead found",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update OneTrackID | Close API": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Find Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Only continue if Lead found": {
+      "main": [
+        [
+          {
+            "node": "Update OneTrackID | Close API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-05T17:00:14.889Z",
+  "id": "FcbCEj2zunzTm5bO",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[WF-AB-0007] Upsert One Track ID",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "06349121-1542-4541-b8e0-a8879df526eb",
+              "leftValue": "={{ $json.body.user.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fa1ba678-1e3e-4c1f-a45e-8bd69a9435de",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "email": "={{ $('Webhook').item.json.body.user.email[0] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "8",
+                "value": "={{ $('Webhook').item.json.body.Event.visitorId }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "a35869f7-41f2-46b2-a8e0-6f7e1aada798",
+      "name": "ActiveCampaign",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2620,
+        360
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.close.com/api/v1/lead/?query=email:{{ $json['body.user.email'] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Basic YXBpXzFERmxjcmw3NmplbDNkMXZlbGtzc0ouNXFScjNzTmJtUlhGS1FXczhVaU1tMg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f8a91b18-08ac-4789-b2e6-8027e266ba88",
+      "name": "Find Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1920,
+        360
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.close.com/api/v1/lead/{{ $json.data[0].contacts[0].lead_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "authorization",
+              "value": "Basic YXBpXzFERmxjcmw3NmplbDNkMXZlbGtzc0ouNXFScjNzTmJtUlhGS1FXczhVaU1tMg=="
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom.cf_Hcn7JCJsdDl9m6uz2zxu3BmpzL6KvHg3gDJhnOBDWPd\": \"{{ $('Webhook').item.json.body.Event.visitorId }}\"\n}",
+        "options": {}
+      },
+      "id": "1e852810-db5e-4ea9-a832-c14200253bc1",
+      "name": "Update OneTrackID | Close API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2400,
+        360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "maxTries": 5
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "id": "003c933d-1ab4-430a-b58b-d16a0ef128e1",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1680,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body.user.email",
+        "options": {}
+      },
+      "id": "578b9a75-6411-4b37-a3b7-aa847e134d38",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "72ad1f4a-6fb1-4bb8-b056-37421116e5b3",
+              "leftValue": "={{ $json.total_results }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c0bcbc8c-e87b-4e7e-9ab4-c8c5dd167795",
+      "name": "Only continue if Lead found",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2140,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "33ba557e-8712-4d01-b564-cd65cd6b2bdd",
+        "options": {}
+      },
+      "id": "1f07ff01-d245-4d77-91e9-881d01055a58",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        1020,
+        240
+      ],
+      "webhookId": "33ba557e-8712-4d01-b564-cd65cd6b2bdd"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "email",
+              "value": "={{ $json['body.user.email'] }}"
+            }
+          ]
+        }
+      },
+      "id": "117fa8af-c755-43ad-9c38-c02259287bf9",
+      "name": "Execution Data",
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 10,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2840,
+        460
+      ],
+      "id": "0d49c7ba-076c-4845-af39-40d5e7ae57d9",
+      "name": "Wait",
+      "webhookId": "222d4c29-b907-407b-b125-e1bbe7e9202e"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "content-type": "application/json",
+            "content-length": "1986",
+            "accept-encoding": "gzip",
+            "user-agent": "Go-http-client/2.0",
+            "x-request-start": "t=1725274510850999",
+            "host": "n8n-mymiapage.fly.dev",
+            "fly-client-ip": "18.153.37.50",
+            "x-forwarded-for": "18.153.37.50, 66.241.125.249",
+            "fly-forwarded-proto": "https",
+            "x-forwarded-proto": "https",
+            "fly-forwarded-ssl": "on",
+            "x-forwarded-ssl": "on",
+            "fly-forwarded-port": "443",
+            "x-forwarded-port": "443",
+            "fly-region": "fra",
+            "fly-request-id": "01J6S5ZNG23CGSPFMKDAV5H58N-fra",
+            "via": "2 fly.io",
+            "fly-tracestate": "",
+            "fly-traceparent": "00-be33c0f720c507d7183a88d4b3427da1-f96733d9ac3e17ac-00"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "user": {
+              "email": [
+                "alexander@eyl-marketing.de",
+                "alexander@eyl-marketing.de"
+              ],
+              "phone": [
+                "+491703168451"
+              ],
+              "lastName": "o",
+              "city": "frankfurt am main",
+              "state": "DE-HE",
+              "zipCode": "60313",
+              "country": "DE",
+              "visitorId": [
+                "cov60fqudbts716noe70"
+              ],
+              "userId": "cov60fqudbts716noe70",
+              "ipAddress": "87.184.60.232",
+              "userAgent": "Mozilla/5.0 (Linux; Android 14; SM-S918B Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/128.0.6613.88 Mobile Safari/537.36 Instagram 346.1.0.46.104 Android (34/14; 450dpi; 1080x2106; samsung; SM-S918B; dm3q; qcom; de_DE; 637459761)",
+              "fbc": "fb.1.1725273688447.PAZXh0bgNhZW0BMAABplT3SQfvPtghk-Y4nXcOSQrWU_TfXbVhjglSCbyDvEixzu0vPMPH2jyjjA_aem_wdmrdO9gbmyzZyjGSTkhCw",
+              "fbp": "fb.1.1725273452436.683620069601673694",
+              "ttp": "ucpSdTZUGd2LswP0rHpXmjUUrGo",
+              "_ga": "GA1.1.757726319.1715363903",
+              "fbclid": "PAZXh0bgNhZW0BMAABplT3SQfvPtghk-Y4nXcOSQrWU_TfXbVhjglSCbyDvEixzu0vPMPH2jyjjA_aem_wdmrdO9gbmyzZyjGSTkhCw"
+            },
+            "Event": {
+              "clientSideTimestamp": 1725273587546,
+              "clientSideId": "8cf73b5d-cedf-4149-9d5d-21b48c14a8a0",
+              "timestamp": "2024-09-02T10:39:48Z",
+              "id": "crapbt5vg3mc710m7qk0",
+              "visitorId": "cov60fqudbts716noe70",
+              "workspaceId": "cmol3esbajf6h9hqkhn0",
+              "connectorId": "cmol3esbajf6h9hqkhng",
+              "sessionId": "cov60fqudbts716noe6g",
+              "source": "OneTrackPixel",
+              "idempotencyKey": "9e387d6ce698212facfaed9af76e2152307e7794187b59452177fb017edc3a31",
+              "event": "lead",
+              "tag": {
+                "host": "click.mymiapage.de",
+                "project": "mymiapage",
+                "routing::1721153875673": "true"
+              },
+              "data": {
+                "pageInfo": {
+                  "url": "https://click.mymiapage.de/mia-interview?utm_source=facebook&utm_campaign=120212310223170651&utm_medium=cpc&utm_term=120213486914200651&utm_content=120213486914220651&placement=Instagram_Feed&one_s=meta&one_m=cpc&one_c=120212310223170651&one_a=120213486914220651&one_as=120213486914200651&site_source=ig&fbclid=PAZXh0bgNhZW0BMAABpqHLpnUHOIa1RT11gh_WrKuEpCUDISIGVunEn8TSac2Ilhe0pSqSAi04SA_aem_X3SAMAk91Yp1WvlXRpe_Yg#open-popup",
+                  "title": "Kostenloses Social Media Training"
+                }
+              }
+            }
+          },
+          "webhookUrl": "https://n8n-mymiapage.fly.dev/webhook-test/90e1cb7f-76c3-49ac-a0e2-450f8fbe99dc",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD",
+    "timezone": "Europe/Berlin"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-10T15:27:43.788Z",
+      "updatedAt": "2024-12-10T15:27:43.788Z",
+      "id": "CKO2xAwHg9nnscdV",
+      "name": "active campaign"
+    },
+    {
+      "createdAt": "2024-12-18T13:42:56.133Z",
+      "updatedAt": "2024-12-18T13:42:56.133Z",
+      "id": "iw9tKFa1rAjUZgIW",
+      "name": "onetrack"
+    },
+    {
+      "createdAt": "2024-12-18T13:42:59.907Z",
+      "updatedAt": "2024-12-18T13:42:59.907Z",
+      "id": "mWBdY8N7iM4hbx1S",
+      "name": "webhook"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T13:40:59.159Z",
+  "versionId": "bd3f1f7a-885c-4818-b73c-8e2ff956a1c1"
+}
