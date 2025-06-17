@@ -1,0 +1,300 @@
+{
+  "active": true,
+  "connections": {
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add to NEWSLETTER List": {
+      "main": [
+        [
+          {
+            "node": "Create Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Create Contact",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Contact": {
+      "main": [
+        [
+          {
+            "node": "Add to NEWSLETTER List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-13T17:56:02.966Z",
+  "id": "mLm5QI5oY2gFsA1q",
+  "meta": null,
+  "name": "Newsletter Unsubsribe Flow",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.airtable.com/v0/app7PqKIhu9ypyIBX/tblXlnbBdUrXaPqTg",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer patQ2d7ubuSJVavXz.c21034ff60dbcca6a5750778d7b282f4cedfd334ab33bf12e04ea4b6fb02b410"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"Datum\": \"{{ $('Webhook').item.json.body.createdAt }}\",\n    \"Abmeldegrund\": [{{ $('Code').item.json.formattedReasons }}],\n    \"Feedback\": \"{{ $('Webhook').item.json.body.fields.Feedback }}\",\n    \"Unsubscribe?\": \"{{ $('Webhook').item.json.body.fields['Unsubscribe / Resubscribe?'] }}\",\n    \"Vorname\": \"{{ $('Webhook').item.json.body.fields.firstname }}\",\n    \"Nachname\": \"{{ $('Webhook').item.json.body.fields.lastname }}\",\n    \"E-Mail\": \"{{ $('Webhook').item.json.body.fields.email }}\"\n  },\n  \"typecast\": true\n}",
+        "options": {}
+      },
+      "id": "0a21edef-9037-44b0-a847-7cdafca0039c",
+      "name": "Create Record",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        420,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Alle eingehenden Items holen\nconst items = $input.all();\n\n// 2. Jedes Item bearbeiten\nfor (const item of items) {\n  // Pfad zum Feedback: item.json.body.fields.Feedback\n  const fields = item.json.body && item.json.body.fields;\n  if (fields && typeof fields.Feedback === 'string') {\n    // Alle Anführungszeichen entfernen\n    fields.Feedback = fields.Feedback.replace(/\"/g, '');\n  }\n}\n\n// 3. Items unverändert (bis auf das bereinigte Feedback) zurückgeben\nreturn items;"
+      },
+      "id": "ba1d2833-4f96-4724-be46-86748efb8500",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -500,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "contactList",
+        "listId": 12,
+        "contactId": "={{ $json.id }}"
+      },
+      "id": "804c1736-5600-4478-95e6-131e78342d94",
+      "name": "Add to NEWSLETTER List",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "70ac98f0-b1f3-45d2-92e9-339f1e8f9983",
+        "options": {}
+      },
+      "id": "66f5c2ef-3c1f-4011-b1db-553c763f1835",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        160
+      ],
+      "webhookId": "70ac98f0-b1f3-45d2-92e9-339f1e8f9983"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "07235cd1-ccc9-434a-a7cf-d1fe2353636d",
+              "leftValue": "={{ $('Webhook').item.json.body.fields['Unsubscribe / Resubscribe?'] }}",
+              "rightValue": "Resubscribe",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3f519720-572e-40d6-966e-359d3313c79d",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        -280,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.airtable.com/v0/app7PqKIhu9ypyIBX/tblXlnbBdUrXaPqTg",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer patQ2d7ubuSJVavXz.c21034ff60dbcca6a5750778d7b282f4cedfd334ab33bf12e04ea4b6fb02b410"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"fields\": {\n    \"Datum\": \"{{ $('Webhook').item.json.body.createdAt }}\",\n    \"Abmeldegrund\":\"{{ $('Code').item.json.body.fields.Feedback }}\",\n    \"Feedback\": \"{{ $('Code').item.json.body.fields.Abmeldegrund }}\",\n    \"Unsubscribe?\": \"{{ $('Webhook').item.json.body.fields['Unsubscribe / Resubscribe?'] }}\"\n  },\n  \"typecast\": true\n}",
+        "options": {}
+      },
+      "id": "92a391ec-bca7-4846-b061-06d0ba4661d0",
+      "name": "Create Record1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "email": "={{ $('Webhook').item.json.body.fields.email }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "firstName": "={{ $('Webhook').item.json.body.fields.firstname }}",
+          "lastName": "={{ $('Webhook').item.json.body.fields.lastname }}"
+        }
+      },
+      "id": "f0d1dc54-9814-490c-bdac-207cc275d8ae",
+      "name": "Create Contact",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "34.96.39.166",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.mymiapage.de",
+            "x-amzn-trace-id": "Root=1-681b15a3-7f6411333bf4953120829c25",
+            "content-length": "426",
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "user-agent": "axios/1.8.4",
+            "accept-encoding": "gzip, compress, deflate, br"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "flowID": "irTS4zn6AiUwg7Dz472F",
+            "id": "kSwc5ehwwsZVjwAwBlod",
+            "createdAt": "2025-05-07T08:11:14.725Z",
+            "fields": {
+              "Abmeldegrund": "Euer Angebot ist für mich aktuell zu teuer",
+              "Feedback": "Ich habe meine Mailadresse gewechselt. Also ein \"Daten ändern\" in der Mail Signatur wäre cool. Dann muss ich mich nicht austragen und neu anmelden. LG Katrin",
+              "Unsubscribe / Resubscribe?": "Unsubscribe",
+              "Sicher austragen?": "Ja, austragen"
+            }
+          },
+          "webhookUrl": "https://n8n.mymiapage.de/webhook/70ac98f0-b1f3-45d2-92e9-339f1e8f9983",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-10T15:27:43.788Z",
+      "updatedAt": "2024-12-10T15:27:43.788Z",
+      "id": "CKO2xAwHg9nnscdV",
+      "name": "active campaign"
+    },
+    {
+      "createdAt": "2024-12-10T15:27:46.642Z",
+      "updatedAt": "2024-12-10T15:27:46.642Z",
+      "id": "VvwxOzqj9tBZMm7s",
+      "name": "airtable"
+    },
+    {
+      "createdAt": "2024-12-10T15:27:58.464Z",
+      "updatedAt": "2024-12-10T15:27:58.464Z",
+      "id": "QnF1D30PX6aUza9Y",
+      "name": "heyflow"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-07T12:00:01.394Z",
+  "versionId": "8257058c-db9f-4d11-9381-bcf28adb2083"
+}
