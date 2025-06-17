@@ -1,0 +1,478 @@
+{
+  "active": true,
+  "connections": {
+    "Get Task Details": {
+      "main": [
+        [
+          {
+            "node": "ClickUp1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get formatted Clickup history data in description",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transform into key:value": {
+      "main": [
+        [
+          {
+            "node": "Get Task Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Transform into key:value",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get formatted Clickup history data in description": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "ClickUp",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ClickUp2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ClickUp3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-11-20T15:06:21.544Z",
+  "id": "PIwS4vl397K5lv0a",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[WF-DF-0012] Göttinnen Mentoring Premium | Airtable -> Clickup",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "get",
+        "id": "={{ $('Webhook').item.json.body['Clickup Task ID'] }}"
+      },
+      "id": "055ef9bf-8404-4d3f-98d1-3cc5c31178fe",
+      "name": "Get Task Details",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        320
+      ],
+      "credentials": {
+        "clickUpOAuth2Api": {
+          "id": "LspYar39p5opLqSn",
+          "name": "Clickup Mymiapage OAUTH"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function flattenObject(obj, parentKey = '', result = {}) {\n  for (const key in obj) {\n    const fullKey = parentKey ? `${parentKey}.${key}` : key;\n\n    // Überspringe unerwünschte Keys\n    if (['Zuletzt geändert', 'Datum'].includes(key) || ['Zuletzt geändert', 'Datum'].includes(fullKey)) {\n      continue;\n    }\n\n    if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {\n      if (obj[key].hasOwnProperty('name')) {\n        result[parentKey || key] = obj[key].name; // Nur Name ins Ergebnis aufnehmen\n      } else {\n        flattenObject(obj[key], fullKey, result); // Weiter verschachteln\n      }\n    } else if (typeof obj[key] === 'string') {\n      // Zeilenumbrüche und überflüssige Leerzeichen entfernen\n      result[fullKey] = obj[key].replace(/\\n/g, ' ').trim();\n\n      // Datum umwandeln, wenn der Key \"Erstellt\" ist\n      if (['Erstellt'].includes(key) || ['Erstellt'].includes(fullKey)) {\n        const date = new Date(obj[key]);\n        if (!isNaN(date)) {\n          result[fullKey] = date\n            .toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })\n            .replace(',', ''); // Datum in dd.mm.yyyy hh:mm Format\n        }\n      }\n    } else {\n      result[fullKey] = obj[key];\n    }\n  }\n  return result;\n}\n\n// Funktion zur formatieren Ausgabe für ClickUp\nfunction formatForClickUp(data) {\n  let formattedOutput = '';\n  for (const key in data) {\n    // Überprüfen, ob der Wert ein String ist und nicht leer\n    if (typeof data[key] === 'string' && data[key].trim() !== '') {\n      formattedOutput += `**${key}**:\\n${data[key]}\\n\\n`; // Key in Fettschrift, Wert in neuer Zeile\n    }\n  }\n  return formattedOutput.trim();\n}\n\n// Verarbeitung\nconst inputData = $node['Webhook'].json; // Ersetzen mit tatsächlichem Input in n8n\nconst flattenedData = flattenObject(inputData.body || inputData); // JSON Body verarbeiten\nconst formattedData = formatForClickUp(flattenedData);\n\nreturn {\n  normalizedData: flattenedData,\n  normalizedData_formatted: formattedData,\n};"
+      },
+      "id": "fc308c84-81a5-4ce5-9a9d-d0ad33d99dbd",
+      "name": "Transform into key:value",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "update",
+        "id": "={{ $('Get Task Details').item.json.id }}",
+        "updateFields": {
+          "content": "=# Onboarding Formular\n\n{{ $('Transform into key:value').item.json.normalizedData_formatted }}\n____________________\n\n{{ $('Get formatted Clickup history data in description').item.json.body.markdown_description }}",
+          "markdownContent": true
+        }
+      },
+      "id": "84eec256-0192-4227-bdf9-82ac9a8028ad",
+      "name": "ClickUp",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        100
+      ],
+      "credentials": {
+        "clickUpOAuth2Api": {
+          "id": "LspYar39p5opLqSn",
+          "name": "Clickup Mymiapage OAUTH"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "update",
+        "id": "={{ $('Get Task Details').item.json.id }}",
+        "updateFields": {
+          "content": "=# Halbzeit-Feedback nach 6 Monaten\n\n{{ $('Transform into key:value').item.json.normalizedData_formatted }}\n____________________\n\n{{ $('Get formatted Clickup history data in description').item.json.body.markdown_description }}",
+          "markdownContent": true
+        }
+      },
+      "id": "33e13728-4ae7-4015-8e5a-3970b5f5f0c7",
+      "name": "ClickUp2",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        320
+      ],
+      "credentials": {
+        "clickUpOAuth2Api": {
+          "id": "LspYar39p5opLqSn",
+          "name": "Clickup Mymiapage OAUTH"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "update",
+        "id": "={{ $('Get Task Details').item.json.id }}",
+        "updateFields": {
+          "content": "=# GM - Abschlussbericht\n\n{{ $('Transform into key:value').item.json.normalizedData_formatted }}\n____________________\n\n{{ $('Get formatted Clickup history data in description').item.json.body.markdown_description }}\n",
+          "markdownContent": true
+        }
+      },
+      "id": "aa067e18-34e9-45ba-81a4-e2e54bff2a8c",
+      "name": "ClickUp3",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        560
+      ],
+      "credentials": {
+        "clickUpOAuth2Api": {
+          "id": "LspYar39p5opLqSn",
+          "name": "Clickup Mymiapage OAUTH"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "list",
+        "team": "9015284078",
+        "space": "90152854276",
+        "folderless": true,
+        "list": "901507317177"
+      },
+      "id": "1a6b3286-83df-4675-a715-2e9238c2758c",
+      "name": "ClickUp1",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        540
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "Rdiql52dzcuwBRR3",
+          "name": "Clickup Personal Access Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e4cc64fb-4bb4-49c4-a5ad-2d4b36bf9c85",
+        "options": {}
+      },
+      "id": "c5f938db-990e-4e35-84ce-0ce5d31cb305",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        780,
+        320
+      ],
+      "webhookId": "e4cc64fb-4bb4-49c4-a5ad-2d4b36bf9c85"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.clickup.com/api/v2/task/{{ $json.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "clickUpOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "include_markdown_description",
+              "value": "true"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "e43385b6-2015-4aaa-a8ae-ad59d28056b7",
+      "name": "Get formatted Clickup history data in description",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1580,
+        320
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "clickUpApi": {
+          "id": "Rdiql52dzcuwBRR3",
+          "name": "Clickup Personal Access Token"
+        },
+        "clickUpOAuth2Api": {
+          "id": "LspYar39p5opLqSn",
+          "name": "Clickup Mymiapage OAUTH"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook').item.json.body.tableId }}",
+                    "rightValue": "appmRAOvRwMWVrVbz/tblzis9nIbdfvVFLl",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Onboarding Formular"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "92f5529b-82f9-459b-bf7e-1429142be2b0",
+                    "leftValue": "={{ $('Webhook').item.json.body.tableId }}",
+                    "rightValue": "appmRAOvRwMWVrVbz/tblk8M1S4HM6otEMy",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Halbzeit-Feedback nach 6 Monaten"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9a0c09d9-4151-40f8-bbdf-99b9c38dd657",
+                    "leftValue": "={{ $('Webhook').item.json.body.tableId }}",
+                    "rightValue": "appmRAOvRwMWVrVbz/tblKtowxpMkorTmNo",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Abschlussbericht"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "413faee1-a99d-4f9a-b468-0aef71ef5a28",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1820,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Airtable Formulare\n\nhttps://airtable.com/appmRAOvRwMWVrVbz/pag2g1LO3hQOIrnFK/edit\nhttps://airtable.com/appmRAOvRwMWVrVbz/pagZRTjpRyU5rN03m/edit\nhttps://airtable.com/appmRAOvRwMWVrVbz/pagpBzebBmQYL35H5/edit",
+        "width": 500
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        200,
+        300
+      ],
+      "id": "947be414-999b-4f66-8866-f440d227c7f9",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "100.25.214.86",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.mymiapage.de",
+            "x-amzn-trace-id": "Root=1-6749a2d9-4f2c1416589296431d0b415e",
+            "content-length": "1945",
+            "content-type": "application/json",
+            "user-agent": "Mozilla/5.0 (compatible; AirtableScripting; +https://airtable.com/developers/scripting;)",
+            "x-airtable-source": "appmRAOvRwMWVrVbz/wflf1RMwLugWcyuy9",
+            "accept": "*/*",
+            "accept-encoding": "gzip,deflate"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Clickup Task ID": "86c13w93c",
+            "Vorname": "Daniel",
+            "Nachname": "Formanek",
+            "E-Mail": "daniel@eyl-marketing.de",
+            "Mit welchen Zielen ist die Kundin gestartet?": "Ziel",
+            "Hat sich das Ziel der Kundin während der Betreuung verändert?": {
+              "id": "selfuZJbyPlhBdG35",
+              "name": "Ja",
+              "color": "blueLight2"
+            },
+            "WARUM haben sich die Ziele der Kundin geändert?": "WARUM haben sich die Ziele der Kundin geändert?",
+            "Was waren die 4 größten Probleme der Kundin, als die Kundin gestartet ist?": "Was waren die 4 größten Probleme der Kundin, als die Kundin gestartet ist?",
+            "Was waren die 4 größten Probleme der Kundin während des Mentorings?": "Was waren die 4 größten Probleme der Kundin während des Mentorings?",
+            "Welche 4 Lösungspunkte haben der Kundin geholfen, um tolle Ergebnisse zu bekommen und sich weiterzuentwickeln?": "Welche 4 Lösungspunkte haben der Kundin geholfen, um tolle Ergebnisse zu bekommen und sich weiterzuentwickeln?\n\n",
+            "Welche 4 Haupterfolge hat die Kundin, durch das Mentoring?": "Welche 4 Haupterfolge hat die Kundin, durch das Mentoring?",
+            "Gibt es weitere (persönliche) Erfolge, die erwähnenswert sind?": "Gibt es weitere (persönliche) Erfolge, die erwähnenswert sind?",
+            "Wie hat sich die Kundin während und nach nach den Livementorings mit Mia gefühlt?": "Wie hat sich die Kundin während und nach nach den Livementorings mit Mia gefühlt?",
+            "Wen würdest du das Göttinnen Mentoring weiter empfehlen?": "Wen würdest du das Göttinnen Mentoring weiter empfehlen?\n\n",
+            "Trustpilot Bewertung der Kundin vorhanden?": {
+              "id": "selZ1iolupiQpLykF",
+              "name": "Ja",
+              "color": "redLight2"
+            },
+            "Videotestimonial der Kundin vorhanden?": {
+              "id": "selAl94GSk4TwU3xf",
+              "name": "Ja",
+              "color": "blueLight2"
+            },
+            "Videotestimonial Link": "https://app.clickup.com/t/86c12px2g",
+            "Datum": "2024-11-22T14:04:00.000Z",
+            "Zuletzt geändert": "2024-11-22T14:04:59.000Z",
+            "Erstellt": "2024-11-21T19:00:28.000Z",
+            "recordId": "rec6pAtYiYILPTQrA",
+            "tableId": "appmRAOvRwMWVrVbz/tblzis9nIbdfvVFLl"
+          },
+          "webhookUrl": "https://n8n.mymiapage.de/webhook-test/e4cc64fb-4bb4-49c4-a5ad-2d4b36bf9c85",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Berlin",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "zwVmjda7oPTTXCQD"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-12-10T15:27:46.642Z",
+      "updatedAt": "2024-12-10T15:27:46.642Z",
+      "id": "VvwxOzqj9tBZMm7s",
+      "name": "airtable"
+    },
+    {
+      "createdAt": "2024-12-18T13:48:41.688Z",
+      "updatedAt": "2024-12-18T13:48:41.688Z",
+      "id": "lvBQmOdSQz5LnVk8",
+      "name": "clickup"
+    },
+    {
+      "createdAt": "2024-12-18T13:57:31.649Z",
+      "updatedAt": "2024-12-18T13:57:31.649Z",
+      "id": "q7DnXi79NHKZF50m",
+      "name": "airtable_formular"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-04-22T13:40:46.679Z",
+  "versionId": "4143020f-ff87-47e9-a534-6e44f1a255b2"
+}
