@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Airtable": {
       "main": [
@@ -738,6 +738,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-17T16:02:46.924Z",
+  "updatedAt": "2025-06-18T07:41:22.366Z",
   "versionId": "1176a2e6-f612-465e-bf33-c2252c268a2c"
 }
