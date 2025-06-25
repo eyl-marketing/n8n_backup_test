@@ -1,7 +1,18 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Bewertung versenden": {
+      "main": [
+        [
+          {
+            "node": "Getting Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Getting Email": {
       "main": [
         [
           {
@@ -12,16 +23,33 @@
         ]
       ]
     },
-    "ActiveCampaign": {
-      "main": [
-        []
-      ]
-    },
     "ActiveCampaign1": {
       "main": [
         [
           {
             "node": "ActiveCampaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "ClickUp",
             "type": "main",
             "index": 0
           }
@@ -53,17 +81,71 @@
     },
     {
       "parameters": {
+        "method": "POST",
+        "url": "https://api.memberspot.de/v1/users/grant-user-offer-by-mail",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "X-API-KEY",
+              "value": "H1EX-mK0Gp6SKExTNCoPgEQqPMIw-pqpz65A7tSHMtsClCagwTdAj0oIoKIU"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $('Getting Email').item.json.email }}"
+            },
+            {
+              "name": "grantOffer",
+              "value": "683838e24fdb8f3334610529"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        -220
+      ],
+      "id": "3b9a5087-22fa-4739-b1d8-0c8a68e8e845",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const text = item.json.body?.payload?.text_content || '';\n  const match = text.match(/[\\w.+-]+@[\\w.-]+\\.[A-Za-z]{2,}/);\n  return {\n    json: {\n      email: match ? match[0] : ''\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        -220
+      ],
+      "id": "f57da826-5df6-42d0-aa60-0b825943870e",
+      "name": "Getting Email"
+    },
+    {
+      "parameters": {
         "resource": "contactTag",
-        "tagId": "227",
+        "tagId": "229",
         "contactId": "={{ $json.id }}"
       },
       "type": "n8n-nodes-base.activeCampaign",
       "typeVersion": 1,
       "position": [
-        200,
+        420,
         -220
       ],
-      "id": "572ff2a9-5efb-490b-8f9c-fa0fa88c6faf",
+      "id": "256aa2a8-6d1f-49a4-8712-9bf28dd06f82",
       "name": "ActiveCampaign",
       "credentials": {
         "activeCampaignApi": {
@@ -74,17 +156,17 @@
     },
     {
       "parameters": {
-        "email": "={{ $json.body.payload.fields[1].value }}",
+        "email": "={{ $json.email }}",
         "updateIfExists": true,
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.activeCampaign",
       "typeVersion": 1,
       "position": [
-        -100,
+        160,
         -220
       ],
-      "id": "60cd2b92-466b-4b2f-a053-483ed5ccde0f",
+      "id": "6017d227-b16c-44ec-8caf-58f7a7c51782",
       "name": "ActiveCampaign1",
       "credentials": {
         "activeCampaignApi": {
@@ -92,15 +174,287 @@
           "name": "ActiveCampaign account"
         }
       }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "comment",
+        "commentOn": "task",
+        "id": "={{ $('Bewertung versenden').item.json.body.payload.id }}",
+        "commentText": "Freebekurs erfolgreich freigeschaltet!",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        940,
+        -220
+      ],
+      "id": "484ca8e3-98c4-4b53-bdb7-f360d5435373",
+      "name": "ClickUp",
+      "credentials": {
+        "clickUpOAuth2Api": {
+          "id": "LspYar39p5opLqSn",
+          "name": "Clickup Mymiapage OAUTH"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Bewertung versenden": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "54.72.117.226",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.mymiapage.de",
+            "x-amzn-trace-id": "Root=1-68555f94-12b00c75620fa8885efdca4d",
+            "content-length": "14872",
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "user-agent": "axios/0.24.0",
+            "x-datadog-trace-id": "1148410934241205811",
+            "x-datadog-parent-id": "1148410934241205811",
+            "x-datadog-sampling-priority": "-1",
+            "x-datadog-tags": "_dd.p.tid=68555f9400000000",
+            "x-b3-traceid": "68555f94000000000feff9a8ff9f1e33",
+            "x-b3-spanid": "0feff9a8ff9f1e33",
+            "x-b3-sampled": "0",
+            "b3": "68555f94000000000feff9a8ff9f1e33-0feff9a8ff9f1e33-0",
+            "traceparent": "00-68555f94000000000feff9a8ff9f1e33-0feff9a8ff9f1e33-00",
+            "tracestate": "dd=t.tid:68555f9400000000;t.dm:-3;s:-1;p:0feff9a8ff9f1e33"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "auto_id": "2b7be385-f8be-42a6-81db-e3a6190e8a9e:main",
+            "trigger_id": "4a3ed053-e2b6-40b0-ba89-6c74a2b69c40",
+            "date": "2025-06-20T13:18:12.706Z",
+            "payload": {
+              "id": "86c1uu1r1",
+              "name": "Daniel Formanek",
+              "content": "{\"ops\":[{\"insert\":\"SC - Abschlussbericht\"},{\"insert\":\"\\n\",\"attributes\":{\"header\":1}},{\"insert\":\"\\n\"},{\"insert\":\"Clickup Task ID\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\n86c1uu1r1\\n\\n\"},{\"insert\":\"Vorname\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nDaniel\\n\\n\"},{\"insert\":\"Nachname\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nFormanek\\n\\n\"},{\"insert\":\"E-Mail\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\n\"},{\"insert\":\"daniel@eyl-marketing.de\",\"attributes\":{\"link\":\"mailto:daniel@eyl-marketing.de\"}},{\"insert\":\"\\n\\n\"},{\"insert\":\"Wieviel Umsatz konnte der Kunde der Kunde erzielen?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\n10000\\n\\n** Wieviel Reichweite konnte der Kunde erzielen?**:\\n100000\\n\\n\"},{\"insert\":\"Wie viele Follower hatte der Kunde beim Start\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\n1000\\n\\n\"},{\"insert\":\"Wie viele Follower hat der Kunde heute?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\n100000000\\n\\n\"},{\"insert\":\"Welches Paket hatte der Kunde?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nSocial Chronicles\\n\\n\"},{\"insert\":\"Was war die Ausgangssituation des Kunden?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\ndadasd\\n\\n\"},{\"insert\":\"Was ist jetzt die IST-Situation?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nadas\\n\\n\"},{\"insert\":\"Weitere sekundäre Erfolge die mit der Zusammenarbeit hereingehen?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\ndasd\\n\\n\"},{\"insert\":\"Was war das größte Problem?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nasdas\\n\\n\"},{\"insert\":\"Ziel des Kunden?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\ndasd\\n\\n\"},{\"insert\":\"Nische des Kunden?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nasdasd\\n\\n\"},{\"insert\":\"Mit welchen Zielen ist der Kunde gestartet?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nadsda\\n\\n\"},{\"insert\":\"Hat sich das Ziel des Kunden während der Betreuung verändert?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nJa\\n\\n\"},{\"insert\":\"Wenn ja, warum?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nadasd\\n\\n\"},{\"insert\":\"Was waren die 4 größten Probleme des Kunden, als der Kunde gestartet ist?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nasdasd\\n\\n\"},{\"insert\":\"Was waren die 4 größten Probleme des Kunden, während der Betreuung?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nasdasd\\n\\n\"},{\"insert\":\"Welche 4 Lösungspunkte haben dem Kunden geholfen, um tolle Ergebnisse zu bekommen?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nasdas\\n\\n\"},{\"insert\":\"Welche 4 Haupterfolge hat der Kunde, durch die Betreuung?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nasdasd\\n\\n\"},{\"insert\":\"Gibt es weitere (persönliche) Erfolge, die erwähnenswert sind?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nNein\\n\\n\"},{\"insert\":\"Welche Branche?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nCoaching\\n\\n\"},{\"insert\":\"In welche Kategorie passt im Kern die Lösung für den Kunden, die zum Erfolg geführt hat?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nStorytelling\\n\\n\"},{\"insert\":\"Sind Insights vorhanden, die die Ergebnisse des Kunden zeigen?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nNein\\n\\n\"},{\"insert\":\"Videotestimonial vorhanden?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nNein\\n\\n\"},{\"insert\":\"Foto für Webseite vorhanden?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nNein\\n\\n\"},{\"insert\":\"Sonstige relevante Sachen?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\ndadsasd\\n\\n\"},{\"insert\":\"Gab es Übungen, die dem Kunden besonders weitergeholfen haben?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nasdasd\\n\\n\"},{\"insert\":\"Hat der Kunde eine Pause gemacht?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nNein\\n\\n\"},{\"insert\":\"Wer hat den Kunden betreut?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nJenny Eikel\\n\\n\"},{\"insert\":\"Wann wurde die Zusammenarbeit beendet?\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\n2025-04-26\\n\\n\"},{\"insert\":\"Erstellt\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\n25.04.2025 15:02\\n\\n\"},{\"insert\":\"recordId\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\nreccfGFaUS9oqLKwi\\n\\n\"},{\"insert\":\"tableId\",\"attributes\":{\"bold\":true}},{\"insert\":\":\\napp00WlzZtbAVQ20R/tblSgfncxdAoWdnR4\\n\"},{\"insert\":{\"divider\":true}},{\"insert\":\"\\nKennzahlen tracking [2. monat]\"},{\"insert\":\"\\n\",\"attributes\":{\"header\":2}},{\"insert\":\"\\n\"},{\"insert\":\"Bitte folgende Kennzahlen vom Kunden für 2. monat erheben:\",\"attributes\":{\"bold\":true}},{\"insert\":\"\\n\\n\"},{\"insert\":\"Umsatz:\",\"attributes\":{\"bold\":true}},{\"insert\":\"\\n\\n\"},{\"insert\":\"Reichweite:\",\"attributes\":{\"bold\":true}},{\"insert\":\"\\n\\n\"},{\"insert\":\"Follower:\",\"attributes\":{\"bold\":true}},{\"insert\":\"\\n\"},{\"insert\":{\"divider\":true}},{\"insert\":\"\\nKennzahlen tracking [5. monat]\\n\\nBitte folgende Kennzahlen vom Kunden für 5. monat erheben:\\n\\nUmsatz:\\nReichweite:\\nFollower:\\n\\nKennzahlen tracking [4. monat]\\n\\nBitte folgende Kennzahlen vom Kunden für 4. monat erheben:\\n\\nUmsatz:\\nReichweite:\\nFollower:\\n\\nKennzahlen tracking [4. woche]\\n\\nBitte folgende Kennzahlen vom Kunden für 4. woche erheben:\\n\\nUmsatz:\\nReichweite:\\nFollower:\\n\\nPre Setting: ausgefüllt von Mija Tajlili\\n\\nErgebnis: Setting gebucht\\n\\nNotiz: Tattoostudio (hat seit längerer Zeit Studio)Reichweite aufbauenmacht ein Imagewechsel durchhat bislang alles Fineline tattowiert und will jetzt zu Realistic Tattoos\\n\\nSC Setting Skript: ausgefüllt von Mija Tajlili\\n\\nAlter: 36\\n\\nAktuelle berufliche Situation / Selbständigkeit:\\nverheiratet, 2 Kidstätowiert seit 11 JahrenTattoostudio Reichweite aufbauenmacht ein Imagewechsel durchhat bislang alles Fineline tattowiert und will jetzt zu Realistic Tattooshat keine anderen Angebote\\n\\nWie lange kennt die Person Mia?\\n\\n2 Tage (\\\"sie hat mein Vertrauen gewonnen\\\") MC 3h geschaut\\n\\nHat die Person Erfahrung mit Social Media?\\n\\nnein\\n\\nInstagram Account der Person:\\n\\nWieso möchte die Person etwas ändern / Pain?\\n\\nkann sich mit Fineline nicht identifizierenmöchte ihre Zielgruppe verändern\\n\\nZiel / Träume\\n\\nGeld ist ihr egalmöchte Bekanntheitsgrad erreichen\\\"Es geht mir um Ruhm\\\"Kunden glücklich machen\\n\\nHerausforderung\\n\\nContent Creation\\n\\nFinanzielle Ressourcen\\n\\nhat 4-stelligen Puffer zur Verfügungbespricht es mit Mann, aber entscheidet alleine\\n\\nEntscheider (alle müssen im Call dabei sein)\\n\\nAlle Entscheider dabei\\n\\nWas erwartest du von dem nächsten Gespräch und wann wäre das nächste Gespräch ein voller Erfolg für dich?\\n\\nClosing Skript: ausgefüllt von\\n\\nIST-Situation:\\n\\nVision:\\n\\nErwartungshaltung:\\n\\nEinwände:\\n\\nWeitere Notizen:\\n\\nNotizen: ausgefüllt von\\n\"}]}",
+              "lower_name": "daniel formanek",
+              "html_content": null,
+              "text_content": "SC - Abschlussbericht\n\nClickup Task ID:\n86c1uu1r1\n\nVorname:\nDaniel\n\nNachname:\nFormanek\n\nE-Mail:\ndaniel@eyl-marketing.de\n\nWieviel Umsatz konnte der Kunde der Kunde erzielen?:\n10000\n\n** Wieviel Reichweite konnte der Kunde erzielen?**:\n100000\n\nWie viele Follower hatte der Kunde beim Start:\n1000\n\nWie viele Follower hat der Kunde heute?:\n100000000\n\nWelches Paket hatte der Kunde?:\nSocial Chronicles\n\nWas war die Ausgangssituation des Kunden?:\ndadasd\n\nWas ist jetzt die IST-Situation?:\nadas\n\nWeitere sekundäre Erfolge die mit der Zusammenarbeit hereingehen?:\ndasd\n\nWas war das größte Problem?:\nasdas\n\nZiel des Kunden?:\ndasd\n\nNische des Kunden?:\nasdasd\n\nMit welchen Zielen ist der Kunde gestartet?:\nadsda\n\nHat sich das Ziel des Kunden während der Betreuung verändert?:\nJa\n\nWenn ja, warum?:\nadasd\n\nWas waren die 4 größten Probleme des Kunden, als der Kunde gestartet ist?:\nasdasd\n\nWas waren die 4 größten Probleme des Kunden, während der Betreuung?:\nasdasd\n\nWelche 4 Lösungspunkte haben dem Kunden geholfen, um tolle Ergebnisse zu bekommen?:\nasdas\n\nWelche 4 Haupterfolge hat der Kunde, durch die Betreuung?:\nasdasd\n\nGibt es weitere (persönliche) Erfolge, die erwähnenswert sind?:\nNein\n\nWelche Branche?:\nCoaching\n\nIn welche Kategorie passt im Kern die Lösung für den Kunden, die zum Erfolg geführt hat?:\nStorytelling\n\nSind Insights vorhanden, die die Ergebnisse des Kunden zeigen?:\nNein\n\nVideotestimonial vorhanden?:\nNein\n\nFoto für Webseite vorhanden?:\nNein\n\nSonstige relevante Sachen?:\ndadsasd\n\nGab es Übungen, die dem Kunden besonders weitergeholfen haben?:\nasdasd\n\nHat der Kunde eine Pause gemacht?:\nNein\n\nWer hat den Kunden betreut?:\nJenny Eikel\n\nWann wurde die Zusammenarbeit beendet?:\n2025-04-26\n\nErstellt:\n25.04.2025 15:02\n\nrecordId:\nreccfGFaUS9oqLKwi\n\ntableId:\napp00WlzZtbAVQ20R/tblSgfncxdAoWdnR4\n\nKennzahlen tracking [2. monat]\n\nBitte folgende Kennzahlen vom Kunden für 2. monat erheben:\n\nUmsatz:\n\nReichweite:\n\nFollower:\n\nKennzahlen tracking [5. monat]\n\nBitte folgende Kennzahlen vom Kunden für 5. monat erheben:\n\nUmsatz:\nReichweite:\nFollower:\n\nKennzahlen tracking [4. monat]\n\nBitte folgende Kennzahlen vom Kunden für 4. monat erheben:\n\nUmsatz:\nReichweite:\nFollower:\n\nKennzahlen tracking [4. woche]\n\nBitte folgende Kennzahlen vom Kunden für 4. woche erheben:\n\nUmsatz:\nReichweite:\nFollower:\n\nPre Setting: ausgefüllt von Mija Tajlili\n\nErgebnis: Setting gebucht\n\nNotiz: Tattoostudio (hat seit längerer Zeit Studio)Reichweite aufbauenmacht ein Imagewechsel durchhat bislang alles Fineline tattowiert und will jetzt zu Realistic Tattoos\n\nSC Setting Skript: ausgefüllt von Mija Tajlili\n\nAlter: 36\n\nAktuelle berufliche Situation / Selbständigkeit:\nverheiratet, 2 Kidstätowiert seit 11 JahrenTattoostudio Reichweite aufbauenmacht ein Imagewechsel durchhat bislang alles Fineline tattowiert und will jetzt zu Realistic Tattooshat keine anderen Angebote\n\nWie lange kennt die Person Mia?\n\n2 Tage (\"sie hat mein Vertrauen gewonnen\") MC 3h geschaut\n\nHat die Person Erfahrung mit Social Media?\n\nnein\n\nInstagram Account der Person:\n\nWieso möchte die Person etwas ändern / Pain?\n\nkann sich mit Fineline nicht identifizierenmöchte ihre Zielgruppe verändern\n\nZiel / Träume\n\nGeld ist ihr egalmöchte Bekanntheitsgrad erreichen\"Es geht mir um Ruhm\"Kunden glücklich machen\n\nHerausforderung\n\nContent Creation\n\nFinanzielle Ressourcen\n\nhat 4-stelligen Puffer zur Verfügungbespricht es mit Mann, aber entscheidet alleine\n\nEntscheider (alle müssen im Call dabei sein)\n\nAlle Entscheider dabei\n\nWas erwartest du von dem nächsten Gespräch und wann wäre das nächste Gespräch ein voller Erfolg für dich?\n\nClosing Skript: ausgefüllt von\n\nIST-Situation:\n\nVision:\n\nErwartungshaltung:\n\nEinwände:\n\nWeitere Notizen:\n\nNotizen: ausgefüllt von",
+              "content_size": "long",
+              "sprint_points": null,
+              "coverimage": null,
+              "priority": null,
+              "personal_priority": [],
+              "draft_uuid": null,
+              "custom_id": null,
+              "custom_type": null,
+              "status_id": "sc901502108774_6FgwNS0D",
+              "workspace_id": "9015284078",
+              "subcategory": "901502108774",
+              "direct_parent": null,
+              "root_parent": null,
+              "merged_to": null,
+              "subtask_sort": null,
+              "subtask_sort_dir": null,
+              "reccurence": {
+                "v1": {
+                  "recurring": false,
+                  "recur_type": null,
+                  "recur_next": null,
+                  "recur_new_status": null,
+                  "recur_due_date": null,
+                  "recur_data": null,
+                  "recur_rule": null,
+                  "recur_task": null,
+                  "recur_skip_missed": false,
+                  "recur_on_status": null,
+                  "recur_on": null,
+                  "recur_copy_original": false,
+                  "recur_time": false,
+                  "recur_immediately": false,
+                  "recur_until": null,
+                  "recur_dst": null,
+                  "recur_tz_offset": null,
+                  "recur_tz": null,
+                  "recur_daily": false,
+                  "recur_ignore_today": false
+                },
+                "v2": {
+                  "set_time": false,
+                  "create_new_task": false,
+                  "periodically": false,
+                  "simple_settings": false,
+                  "ignore_weekends": false,
+                  "recur_on_schedule": false
+                }
+              },
+              "privacy": {
+                "private": false,
+                "public": false,
+                "public_token": null,
+                "public_permission_level": null,
+                "public_fields": null,
+                "public_share_expires_on": null,
+                "public_sharing": false,
+                "seo_optimized": false,
+                "made_public_by": null,
+                "made_public_time": null
+              },
+              "templating": {
+                "template": false,
+                "original_subcat": null,
+                "template_name": null,
+                "team_id": null,
+                "template_field_ids": null,
+                "permanent_template_id": null,
+                "visibility": null
+              },
+              "states": {
+                "is_archived": false,
+                "is_deleted": false,
+                "is_encrypted": false
+              },
+              "time_mgmt": {
+                "is_summary_task": false,
+                "start_date": null,
+                "start_date_time": false,
+                "date_closed": null,
+                "date_created": "1738090509570",
+                "date_updated": "1750425490186",
+                "due_date": null,
+                "due_date_time": false,
+                "date_deleted": null,
+                "date_active": null,
+                "date_unstarted": null,
+                "date_done": null,
+                "date_delegated": null,
+                "time_estimate": null,
+                "time_estimate_string": null,
+                "time_spent": null,
+                "sent_due_date_notif": false,
+                "duration": {},
+                "duration_is_elapsed": false
+              },
+              "checklists": [],
+              "ownership": {
+                "created_by_email": null,
+                "owner": 62512347,
+                "creator": 62512347,
+                "deleted_by": null,
+                "source": "user",
+                "delegator": null,
+                "form_id": null,
+                "merged_to": null
+              },
+              "subtask_ids": [
+                "86c1uu4dd",
+                "86c1uu79h",
+                "86c1uu7fq",
+                "86c1uu7kd",
+                "86c1uu7pr",
+                "86c1uu7zc"
+              ],
+              "tags": [],
+              "fields": [
+                {
+                  "field_id": "1bb1e052-dff5-45f1-bc2c-6e9f1769303b",
+                  "value": true,
+                  "value_options": null,
+                  "value_deleted": false,
+                  "value_richtext": null,
+                  "reasoning": null,
+                  "task_id": "86c1uu1r1",
+                  "type": 6
+                },
+                {
+                  "field_id": "5390b6d4-6958-43dd-a9de-4e1bccb1b494",
+                  "value": "daniel@eyl-marketing.de",
+                  "value_options": null,
+                  "value_deleted": false,
+                  "value_richtext": null,
+                  "reasoning": null,
+                  "task_id": "86c1uu1r1",
+                  "type": 2
+                },
+                {
+                  "field_id": "8ad0652b-ffc1-4558-9b35-f2474d250f91",
+                  "value": true,
+                  "value_options": null,
+                  "value_deleted": false,
+                  "value_richtext": null,
+                  "reasoning": null,
+                  "task_id": "86c1uu1r1",
+                  "type": 6
+                },
+                {
+                  "field_id": "8c325a6c-cce6-4ec6-af18-6f85d9b76869",
+                  "value": "b9d40923-6778-49fa-b7ed-a7806f7b4f47",
+                  "value_options": null,
+                  "value_deleted": false,
+                  "value_richtext": null,
+                  "reasoning": null,
+                  "task_id": "86c1uu1r1",
+                  "type": 1
+                },
+                {
+                  "field_id": "a282646f-7194-4df0-97c3-09e6800d5620",
+                  "value": "2131d033-6554-4da2-a35f-1105a7a7f08d",
+                  "value_options": null,
+                  "value_deleted": false,
+                  "value_richtext": null,
+                  "reasoning": null,
+                  "task_id": "86c1uu1r1",
+                  "type": 1
+                }
+              ],
+              "lists": [
+                {
+                  "list_id": "901502108774",
+                  "type": "home"
+                }
+              ],
+              "users": [
+                {
+                  "userid": 62512347,
+                  "type": "owner"
+                },
+                {
+                  "userid": 62512347,
+                  "type": "creator"
+                }
+              ],
+              "groups": [],
+              "related_tasks": [],
+              "related_tasks_count": {
+                "dependsOn": 0,
+                "dependedBy": 0
+              },
+              "attachments": [],
+              "docs": [],
+              "_version_vector": {
+                "workspace_id": 9015284078,
+                "object_type": "task",
+                "object_id": "86c1uu1r1",
+                "vector": [
+                  {
+                    "master_id": 31,
+                    "version": 1750425490207000,
+                    "deleted": false
+                  }
+                ]
+              }
+            }
+          },
+          "webhookUrl": "https://n8n.mymiapage.de/webhook/c0df336a-21da-410b-8a8a-eadf8341b5f2",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-05-27T15:10:30.155Z",
-  "versionId": "81d4eef3-2c20-4bca-a0b9-0cc86f0e580f"
+  "triggerCount": 1,
+  "updatedAt": "2025-06-20T14:12:19.795Z",
+  "versionId": "55770357-5442-4e36-bccd-9a9d9237c3be"
 }
