@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "ActiveCampaign1",
+            "node": "Getting Email",
             "type": "main",
             "index": 0
           }
@@ -44,6 +44,17 @@
           }
         ]
       ]
+    },
+    "Getting Email": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-05-27T14:08:47.000Z",
@@ -71,7 +82,7 @@
     {
       "parameters": {
         "resource": "contactTag",
-        "tagId": "227",
+        "tagId": "228",
         "contactId": "={{ $json.id }}"
       },
       "type": "n8n-nodes-base.activeCampaign",
@@ -91,14 +102,14 @@
     },
     {
       "parameters": {
-        "email": "={{ $json.body.payload.fields[1].value }}",
+        "email": "={{ $json.email }}",
         "updateIfExists": true,
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.activeCampaign",
       "typeVersion": 1,
       "position": [
-        -100,
+        20,
         -220
       ],
       "id": "590e768d-df9f-4007-9526-1aaf0db88768",
@@ -145,6 +156,19 @@
           "name": "Clickup Mymiapage OAUTH"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const text = item.json.body?.payload?.text_content || '';\n  const match = text.match(/[\\w.+-]+@[\\w.-]+\\.[A-Za-z]{2,}/);\n  return {\n    json: {\n      email: match ? match[0] : ''\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -140,
+        -220
+      ],
+      "id": "71e71c46-945d-4fef-8f40-708ef9ce4d1e",
+      "name": "Getting Email"
     }
   ],
   "pinData": {
@@ -392,6 +416,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2025-05-27T15:32:40.656Z",
-  "versionId": "98ba7f21-cf96-42aa-a324-8bea4f41fa09"
+  "updatedAt": "2025-06-20T14:11:53.985Z",
+  "versionId": "09bb4c72-b7fc-45c2-b699-12f5ee93903a"
 }
