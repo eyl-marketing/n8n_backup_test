@@ -279,8 +279,8 @@
       "name": "new",
       "type": "n8n-nodes-base.noOp",
       "position": [
-        740,
-        960
+        640,
+        980
       ],
       "typeVersion": 1
     },
@@ -314,7 +314,7 @@
         "resource": "file",
         "owner": "={{$node[\"Globals\"].json[\"repo\"][\"owner\"]}}",
         "repository": "={{$node[\"Globals\"].json[\"repo\"][\"name\"]}}",
-        "filePath": "={{$node[\"Globals\"].json[\"repo\"][\"path\"]}}{{$node[\"OneAtATime\"].json[\"name\"]}}.json",
+        "filePath": "={{ $node[\"Globals\"].json[\"repo\"][\"path\"] }}/{{ $node[\"OneAtATime\"].json[\"name\"] }}.json",
         "fileContent": "={{$node[\"isDiffOrNew\"].json[\"n8n_data_stringy\"]}}",
         "commitMessage": "=[N8N Backup] {{$node[\"OneAtATime\"].json[\"name\"]}}.json ({{$json[\"github_status\"]}})"
       },
@@ -323,7 +323,7 @@
       "type": "n8n-nodes-base.github",
       "position": [
         920,
-        960
+        980
       ],
       "typeVersion": 1,
       "retryOnFail": true,
@@ -412,8 +412,8 @@
     {
       "parameters": {
         "content": "## Save the data\nUsing the switch node we work out what to do based on the previous status,  If it is the same we do nothing, If it is different we update the file in Github and if it is new we create a new file. After this is done we loop back to the Split in Batches node (OneAtAtTime) to start the process again.",
-        "height": 693.9283333333326,
-        "width": 666.4416666666662
+        "height": 694,
+        "width": 946
       },
       "id": "9f0837d1-51a0-4518-8dc0-591bbf3be90d",
       "name": "Note3",
@@ -503,7 +503,18 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "On clicking 'execute'": [
+      {
+        "json": {}
+      }
+    ],
+    "Every 1 hour": [
+      {
+        "json": {}
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "timezone": "Europe/Berlin",
@@ -526,6 +537,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-18T21:40:23.891Z",
-  "versionId": "b7c6b11b-669b-4935-ac26-0c0166d15047"
+  "updatedAt": "2025-06-25T14:28:05.833Z",
+  "versionId": "c3d6ddf0-de89-42e8-9215-a07d21d4ce25"
 }
