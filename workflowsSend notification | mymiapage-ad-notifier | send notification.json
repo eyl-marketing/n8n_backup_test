@@ -1,0 +1,339 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-06-24T15:03:15.986Z",
+  "id": "PR1quZQvB0nKMKX1",
+  "meta": null,
+  "name": "Send notification | mymiapage-ad-notifier | send notification",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "8ced6c2c-219b-4be4-b1ff-a61a18556c05",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        100,
+        0
+      ],
+      "id": "0e4c0c73-0407-4e89-817d-43dac1bcd91d",
+      "name": "Webhook",
+      "webhookId": "8ced6c2c-219b-4be4-b1ff-a61a18556c05"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Du erhältst ein JSON-Objekt.\nExtrahiere alle Ad-Namen und gib sie als Slack-kompatible Nachricht mit Markdown-Formatierung zurück.\n\n⸻\n\n*🚀 Neue Ads wurden soeben gelauncht!*\n\n*Ad Namen:*\n• ADNAME 1\n• ADNAME 2\n\nFalls keine Ad-Namen vorhanden sind, gib:\n_Keine Ad-Namen gefunden._\nJSON:\n{{ $json.body.payload.content }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.7,
+      "position": [
+        340,
+        0
+      ],
+      "id": "e32c31d0-b960-40d1-be1b-977c1f60efe0",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "uDvhK6oJGGUhFIVq",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C09370S1LQ1",
+          "mode": "list",
+          "cachedResultName": "19-mymiapage-ad-notifier"
+        },
+        "text": "={{ $json.message.content }}",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "unfurl_links": false,
+          "sendAsUser": "Ad notifier"
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        700,
+        0
+      ],
+      "id": "0bbbf29e-356c-4e5e-ace5-ed0060b6e0d2",
+      "name": "Slack",
+      "webhookId": "258e9085-369e-47d9-a95c-4ba4092c5fbd",
+      "credentials": {
+        "slackApi": {
+          "id": "1GGJtRl8QfMYffLr",
+          "name": "Slack account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "x-forwarded-for": "176.34.124.53",
+            "x-forwarded-proto": "https",
+            "x-forwarded-port": "443",
+            "host": "n8n.mymiapage.de",
+            "x-amzn-trace-id": "Root=1-685ac146-070b1d7513be5705061b29d7",
+            "content-length": "5743",
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "user-agent": "axios/0.24.0",
+            "x-datadog-trace-id": "4420018011030451309",
+            "x-datadog-parent-id": "4420018011030451309",
+            "x-datadog-sampling-priority": "-1",
+            "x-datadog-tags": "_dd.p.tid=685ac14600000000",
+            "x-b3-traceid": "685ac146000000003d570ef6784c746d",
+            "x-b3-spanid": "3d570ef6784c746d",
+            "x-b3-sampled": "0",
+            "b3": "685ac146000000003d570ef6784c746d-3d570ef6784c746d-0",
+            "traceparent": "00-685ac146000000003d570ef6784c746d-3d570ef6784c746d-00",
+            "tracestate": "dd=t.tid:685ac14600000000;t.dm:-3;s:-1;p:3d570ef6784c746d"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "auto_id": "6936d618-1b5c-4f8d-babe-f2695edd2c00:main",
+            "trigger_id": "04d17a67-40c8-41fa-bb77-2c45559facf7",
+            "date": "2025-06-24T15:16:22.131Z",
+            "payload": {
+              "id": "86c456n77",
+              "name": "Eleganzkurs Creatives Mai TESTING",
+              "content": "{\"ops\":[{\"insert\":\"Für Funnel: Eleganzkurs\"},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-e7a2a88c-fff4-428c-954f-65d590f65e70\"}},{\"insert\":\"Ad \",\"attributes\":{\"bold\":true}},{\"insert\":\"Namen\",\"attributes\":{\"link\":\"https://docs.google.com/document/d/1SdGltnpVQfDis5idEfaihbXGiVsvrg7499wMzwV5zj8/edit?tab=t.0\",\"bold\":true}},{\"insert\":\": \",\"attributes\":{\"bold\":true}},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-42b0d43c-86c1-48a1-b233-061ee2aeb818\"}},{\"insert\":\"25_05_Eleganzkurs_Mia_MaiCreatives_X\"},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-bcb4c2a1-90c7-4164-86e9-ed868ad07d5c\"}},{\"insert\":\"X = 1, 2, 3, 4...\"},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-2fecf624-d71e-409c-9954-b19879ca149c\"}},{\"insert\":\"Ad Erstellung\"},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-47a52848-8d70-4cde-b974-30da10590f10\",\"header\":3}},{\"insert\":\"Task: \"},{\"insert\":{\"task_mention\":{\"task_id\":\"86c2azj07\"}}},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-0a4f67d3-1190-461d-a16b-94ffd0da64dd\"}},{\"insert\":\"📄 Copy Briefing: \"},{\"insert\":{\"task_mention\":{\"task_id\":\"86c32kctw\"}}},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-0199b1ea-7b08-4102-b823-78bee25900b9\"}},{\"insert\":\"✏️ Ad Copy:  \"},{\"insert\":{\"link_mention\":{\"url\":\"https://docs.google.com/document/d/1SHW42RCcLKQaUa9YlNC5cU1aqvmNdbiU4AgDo6Bo52s/edit?tab=t.0#heading=h.gp9fylbaayxl\"}}},{\"insert\":\" \"},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-8e07ede0-618c-4317-a85f-a2299db1059c\"}},{\"insert\":\" \"},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-9ccfcf12-e5ad-4696-a1ab-a2f31bce4cd2\"}},{\"insert\":\"Links zu fertigen Creatives:  \"},{\"insert\":{\"link_mention\":{\"url\":\"https://drive.google.com/drive/u/1/folders/1FE1MaeP6-R-Gn_rMOGJ-BpaV3DZQCZrW\"}}},{\"insert\":\" \"},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-ce70f49f-db11-40b0-8ee3-62961e4578d1\"}},{\"insert\":\" \"},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-c887bed5-57fa-4d35-96c0-c645a5286175\"}},{\"insert\":\"Ad Performance\"},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-f96dff48-060a-4d29-a06f-603c189aa637\",\"header\":3}},{\"insert\":\"\\n\",\"attributes\":{\"block-id\":\"block-e6337332-5391-4085-be21-270c05c3b9da\"}}]}",
+              "lower_name": null,
+              "html_content": null,
+              "text_content": "Für Funnel: Eleganzkurs\nAd Namen: \n25_05_Eleganzkurs_Mia_MaiCreatives_X\nX = 1, 2, 3, 4...\nAd Erstellung\nTask: \n📄 Copy Briefing: \n✏️ Ad Copy:   \n \nLinks zu fertigen Creatives:   \n \nAd Performance",
+              "content_size": "medium",
+              "sprint_points": null,
+              "coverimage": null,
+              "priority": null,
+              "personal_priority": [],
+              "draft_uuid": null,
+              "custom_id": null,
+              "custom_type": null,
+              "status_id": "sc901510221016_xKoUpH4t",
+              "workspace_id": "9010043031",
+              "subcategory": "901510221016",
+              "direct_parent": null,
+              "root_parent": null,
+              "merged_to": null,
+              "subtask_sort": null,
+              "subtask_sort_dir": null,
+              "reccurence": {
+                "v1": {
+                  "recurring": false,
+                  "recur_type": null,
+                  "recur_next": null,
+                  "recur_new_status": null,
+                  "recur_due_date": null,
+                  "recur_data": null,
+                  "recur_rule": null,
+                  "recur_task": "86c456n77",
+                  "recur_skip_missed": false,
+                  "recur_on_status": null,
+                  "recur_on": null,
+                  "recur_copy_original": false,
+                  "recur_time": false,
+                  "recur_immediately": false,
+                  "recur_until": null,
+                  "recur_dst": null,
+                  "recur_tz_offset": null,
+                  "recur_tz": null,
+                  "recur_daily": false,
+                  "recur_ignore_today": false
+                },
+                "v2": {
+                  "set_time": false,
+                  "create_new_task": false,
+                  "periodically": false,
+                  "simple_settings": false,
+                  "ignore_weekends": false,
+                  "recur_on_schedule": false
+                }
+              },
+              "privacy": {
+                "private": false,
+                "public": false,
+                "public_token": null,
+                "public_permission_level": null,
+                "public_fields": null,
+                "public_share_expires_on": null,
+                "public_sharing": false,
+                "seo_optimized": false,
+                "made_public_by": null,
+                "made_public_time": null
+              },
+              "templating": {
+                "template": false,
+                "original_subcat": "901510221016",
+                "template_name": null,
+                "team_id": null,
+                "template_field_ids": null,
+                "permanent_template_id": null,
+                "visibility": null
+              },
+              "states": {
+                "is_archived": false,
+                "is_deleted": false,
+                "is_encrypted": false
+              },
+              "time_mgmt": {
+                "is_summary_task": false,
+                "start_date": null,
+                "start_date_time": false,
+                "date_closed": null,
+                "date_created": "1750778159770",
+                "date_updated": "1750778181727",
+                "due_date": null,
+                "due_date_time": false,
+                "date_deleted": null,
+                "date_active": null,
+                "date_unstarted": null,
+                "date_done": "1750284265160",
+                "date_delegated": null,
+                "time_estimate": null,
+                "time_estimate_string": null,
+                "time_spent": null,
+                "sent_due_date_notif": false,
+                "duration": {},
+                "duration_is_elapsed": false
+              },
+              "checklists": [],
+              "ownership": {
+                "created_by_email": null,
+                "owner": 88728531,
+                "creator": 88728531,
+                "deleted_by": null,
+                "source": "template",
+                "delegator": null,
+                "form_id": null,
+                "merged_to": null
+              },
+              "subtask_ids": [],
+              "tags": [],
+              "fields": [
+                {
+                  "field_id": "2f2f34d6-1417-48b7-8c14-a8b902dc8432",
+                  "value": "508a61df-fd5e-4a2e-bbeb-025c4f9a7e2d",
+                  "value_options": null,
+                  "value_deleted": false,
+                  "value_richtext": null,
+                  "reasoning": null,
+                  "task_id": "86c456n77",
+                  "type": 1
+                }
+              ],
+              "lists": [
+                {
+                  "list_id": "901510221016",
+                  "type": "home"
+                }
+              ],
+              "users": [
+                {
+                  "userid": 38341035,
+                  "type": "assigned"
+                },
+                {
+                  "userid": 88767200,
+                  "type": "assigned"
+                },
+                {
+                  "userid": 38341035,
+                  "type": "watcher"
+                },
+                {
+                  "userid": 88767200,
+                  "type": "watcher"
+                },
+                {
+                  "userid": 88728531,
+                  "type": "owner"
+                },
+                {
+                  "userid": 88728531,
+                  "type": "creator"
+                }
+              ],
+              "groups": [],
+              "related_tasks": [],
+              "related_tasks_count": {
+                "dependsOn": 0,
+                "dependedBy": 0
+              },
+              "attachments": [],
+              "docs": [],
+              "_version_vector": {
+                "workspace_id": 9010043031,
+                "object_type": "task",
+                "object_id": "86c456n77",
+                "vector": [
+                  {
+                    "master_id": 23,
+                    "version": 1750778181743000,
+                    "deleted": false
+                  }
+                ]
+              }
+            }
+          },
+          "webhookUrl": "https://n8n.mymiapage.de/webhook/8ced6c2c-219b-4be4-b1ff-a61a18556c05",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-06-25T07:39:32.414Z",
+  "versionId": "215fb600-741e-441f-919b-ad9d184a4804"
+}
