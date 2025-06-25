@@ -314,7 +314,7 @@
         "resource": "file",
         "owner": "={{$node[\"Globals\"].json[\"repo\"][\"owner\"]}}",
         "repository": "={{$node[\"Globals\"].json[\"repo\"][\"name\"]}}",
-        "filePath": "={{ $node[\"Globals\"].json[\"repo\"][\"path\"] }}/{{ $node[\"OneAtATime\"].json[\"name\"] }}.json",
+        "filePath": "={{$node[\"Globals\"].json[\"repo\"][\"path\"]}}{{$node[\"OneAtATime\"].json[\"name\"]}}.json",
         "fileContent": "={{$node[\"isDiffOrNew\"].json[\"n8n_data_stringy\"]}}",
         "commitMessage": "=[N8N Backup] {{$node[\"OneAtATime\"].json[\"name\"]}}.json ({{$json[\"github_status\"]}})"
       },
@@ -446,7 +446,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// 0. Kurz-Refs auf die Inputs\nconst meta = $input.all()[0].json;\nconst n8nWorkflow = $input.all()[1].json;\n\n// 1. Base64-Content prüfen: nur parse, wenn nicht leer\nconst contentBase64 = meta.content;\nif (typeof contentBase64 === 'string' && contentBase64.length > 0) {\n  let origWorkflow;\n  try {\n    // 2. Decodieren & Parsen\n    const decoded = Buffer.from(contentBase64, 'base64').toString('utf8');\n    origWorkflow = JSON.parse(decoded);\n  } catch (err) {\n    // 3. Fehler intern behandeln und zurückgeben\n    meta.github_status = 'parse_error';\n    meta.parseError   = err.message;\n    meta.rawContent   = contentBase64;\n    return $input.all();\n  }\n\n  // 4. Schlüssel sortieren\n  const orderedOriginal = {};\n  const orderedActual   = {};\n  Object.keys(origWorkflow).sort().forEach(k => orderedOriginal[k] = origWorkflow[k]);\n  Object.keys(n8nWorkflow).sort().forEach(k => orderedActual[k]   = n8nWorkflow[k]);\n\n  // 5. Vergleich\n  if (JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual)) {\n    meta.github_status   = 'same';\n    meta.content_decoded = orderedOriginal;\n  } else {\n    meta.github_status    = 'different';\n    meta.content_decoded  = orderedOriginal;\n    meta.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n\n// 6. Neuer Workflow = kein GitHub-Content\n} else {\n  const orderedActual = {};\n  Object.keys(n8nWorkflow).sort().forEach(k => orderedActual[k] = n8nWorkflow[k]);\n\n  meta.github_status    = 'new';\n  meta.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n\n// 7. Alles zurückgeben\nreturn $input.all();"
+        "jsCode": "// 0. Kurz-Refs auf die Inputs\nconst meta = $input.all()[0].json;\nconst n8nWorkflow = $input.all()[1].json;\n\n// 1. Base64-Content prüfen: nur parse, wenn nicht leer\nconst contentBase64 = meta.content;\nif (typeof contentBase64 === 'string' && contentBase64.length > 0) {\n  let origWorkflow;\n  try {\n    // 2. Decodieren & Parsen\n    const decoded = Buffer.from(contentBase64, 'base64').toString('utf8');\n    origWorkflow = JSON.parse(decoded);\n  } catch (err) {\n    // 3. Fehler intern behandeln und zurückgeben\n    meta.github_status = 'parse_error';\n    meta.parseError   = err.message;\n    meta.rawContent   = contentBase64;\n    return $input.all();\n  }\n\n  // 4. Schlüssel sortieren\n  const orderedOriginal = {};\n  const orderedActual   = {};\n  Object.keys(origWorkflow).sort().forEach(k => orderedOriginal[k] = origWorkflow[k]);\n  Object.keys(n8nWorkflow).sort().forEach(k => orderedActual[k]   = n8nWorkflow[k]);\n\n  // 5. Vergleich\n  if (JSON.stringify(orderedOriginal) === JSON.stringify(orderedActual)) {\n    meta.github_status   = 'same';\n    meta.content_decoded = orderedOriginal;\n  } else {\n    meta.github_status    = 'different';\n    meta.content_decoded  = orderedOriginal;\n    meta.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n  }\n\n// 6. Wenn eine SHA existiert, aber kein content, behandeln wir es als 'different'\n} else if (meta.sha) {\n  const orderedActual = {};\n  Object.keys(n8nWorkflow).sort().forEach(k => orderedActual[k] = n8nWorkflow[k]);\n\n  meta.github_status    = 'different';\n  meta.note             = 'Content missing, but sha present — treating as different';\n  meta.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n\n// 7. Neuer Workflow = kein GitHub-Content, keine SHA\n} else {\n  const orderedActual = {};\n  Object.keys(n8nWorkflow).sort().forEach(k => orderedActual[k] = n8nWorkflow[k]);\n\n  meta.github_status    = 'new';\n  meta.n8n_data_stringy = JSON.stringify(orderedActual, null, 2);\n}\n\n// 8. Alles zurückgeben\nreturn $input.all();\n"
       },
       "id": "249c3d65-507a-4425-9760-1130e5df647b",
       "name": "isDiffOrNew",
@@ -537,6 +537,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-25T14:28:05.833Z",
-  "versionId": "c3d6ddf0-de89-42e8-9215-a07d21d4ce25"
+  "updatedAt": "2025-06-25T15:42:35.425Z",
+  "versionId": "27d878c2-076b-4c4a-a667-bf8df742dbbd"
 }
