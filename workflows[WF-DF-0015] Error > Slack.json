@@ -40,7 +40,7 @@
           "mode": "list",
           "cachedResultName": "19-mymiapage-zapier-error"
         },
-        "text": "=🚨🚨🚨 \n*n8n Error*\n\n{{ $json.workflow.name }}\n{{ $json.execution.error.message }}\n{{ $json.execution.url }}\nRun ID: {{ $json.execution.id }}\n\n<@U05ULP4CLCT> <@U07RC36HQ4C> ",
+        "text": "=🚨🚨🚨 \n*n8n Error*\n\n{{ $json.workflow.name }}\n{{ $json.execution.error.message }}\n{{ $json.execution.url }}\nRun ID: {{ $json.execution.id }}\n\n<@U07RC36HQ4C> <@U08VCSJT068>",
         "otherOptions": {
           "includeLinkToWorkflow": false,
           "link_names": true,
@@ -72,19 +72,19 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2024-12-18T13:45:36.129Z",
-      "updatedAt": "2024-12-18T13:45:36.129Z",
-      "id": "YW7dba2ursqAJaXw",
-      "name": "n8n"
-    },
-    {
       "createdAt": "2024-12-18T07:35:15.922Z",
       "updatedAt": "2024-12-18T07:35:15.922Z",
       "id": "yRjgjbjXdZFJQQD7",
       "name": "slack"
+    },
+    {
+      "createdAt": "2024-12-18T13:45:36.129Z",
+      "updatedAt": "2024-12-18T13:45:36.129Z",
+      "id": "YW7dba2ursqAJaXw",
+      "name": "n8n"
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2025-04-01T12:28:52.059Z",
-  "versionId": "be8a97f6-46c9-40ff-a7d2-4210376da8cf"
+  "updatedAt": "2025-06-27T20:51:27.208Z",
+  "versionId": "9ab01340-1770-466b-bbf7-285c3f28aab5"
 }
