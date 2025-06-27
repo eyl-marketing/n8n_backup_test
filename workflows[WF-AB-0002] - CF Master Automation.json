@@ -71,6 +71,11 @@
             "node": "DOSM 2025 Warteliste",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -1622,6 +1627,83 @@
         [
           {
             "node": "Add Tag [NEWSLETTER] Business5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable16": {
+      "main": [
+        [
+          {
+            "node": "Search First Click11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add to List (Gesamte Liste)13": {
+      "main": [
+        [
+          {
+            "node": "Add to List1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search First Click11": {
+      "main": [
+        [
+          {
+            "node": "Update Record11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Record11": {
+      "main": [
+        [
+          {
+            "node": "Add to List (Gesamte Liste)13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Airtable16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add to List1": {
+      "main": [
+        [
+          {
+            "node": "Add Tag Warteliste",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Tag Warteliste": {
+      "main": [
+        [
+          {
+            "node": "Create/Update Lead in Close13",
             "type": "main",
             "index": 0
           }
@@ -19580,6 +19662,997 @@
           "name": "ActiveCampaign account"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "13c849c7-265b-4639-abd9-2c38f073d74f",
+              "leftValue": "={{ $('Webhook').item.json.body.data.attributes.page_id }}",
+              "rightValue": 9332875,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        220,
+        6360
+      ],
+      "id": "89c638f2-40ed-45fe-b961-9041fcefaa21",
+      "name": "Filter1"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Datum": "={{ $('Webhook').item.json.body.data.attributes.updated_at }}",
+            "Lead Herkunft": "🔴 SC LIVE Webinar 03.07.2025 (Warteliste)",
+            "E-Mail": "={{ $('Webhook').item.json.body.data.attributes.data.contact.email }}",
+            "Vorname": "={{ $('Webhook').item.json.body.data.attributes.data.contact.first_name }}",
+            "Nachname": "={{ $('Webhook').item.json.body.data.attributes.data.contact.last_name }}",
+            "Full Name": "=",
+            "Telefonnummer": "={{ $('Phone').item.json.Phone }}",
+            "utm_source": "={{ $('Webhook').item.json.body.data.attributes.data._utm_source }}",
+            "utm_campaign": "={{ $('Webhook').item.json.body.data.attributes.data._utm_campaign }}",
+            "utm_term": "={{ $('Webhook').item.json.body.data.attributes.data._utm_term }}",
+            "utm_content": "={{ $('Webhook').item.json.body.data.attributes.data._utm_content }}",
+            "utm_medium": "={{ $('Webhook').item.json.body.data.attributes.data._utm_medium }}",
+            "Placement": "={{ $('Webhook').item.json.body.data.attributes.data.placement }}",
+            "Count": 1,
+            "URL Path": "={{ $('Webhook').item.json.body.data.attributes.data.path }}",
+            "Affiliate": "🔵 Intern"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f2c3131a-11f4-4465-a425-68003d105215",
+      "name": "Airtable16",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        460,
+        6360
+      ],
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us-central1-crm-server-mymiapage.cloudfunctions.net/Create_Update_Lead_in_Close",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $('Webhook').item.json.body.data.attributes.data.contact.first_name }} {{ $('Webhook').item.json.body.data.attributes.data.contact.last_name }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $('Phone').item.json.Phone }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Webhook').item.json.body.data.attributes.data.contact.email }}"
+            },
+            {
+              "name": "kampagne",
+              "value": "🔴 SC LIVE Webinar 03.07.2025 (Warteliste)"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $('Webhook').item.json.body.data.attributes.data._utm_source }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('Webhook').item.json.body.data.attributes.data._utm_medium }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('Webhook').item.json.body.data.attributes.data._utm_campaign }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('Webhook').item.json.body.data.attributes.data._utm_term }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('Webhook').item.json.body.data.attributes.data._utm_content }}"
+            },
+            {
+              "name": "placement",
+              "value": "={{ $('Webhook').item.json.body.data.attributes.data.placement }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4c81f04a-0e32-40c8-817d-4c56d3f82b06",
+      "name": "Create/Update Lead in Close13",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        6360
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "contactList",
+        "listId": 12,
+        "contactId": "={{ $('Create or Update').item.json.id }}"
+      },
+      "id": "b5c087d4-b3b1-48dc-96bf-2bcea6e19f32",
+      "name": "Add to List (Gesamte Liste)13",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        6360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "filterByFormula": "={E-Mail} = \"{{ $('Webhook').item.json.body.data.attributes.data.contact.email }}\"",
+        "returnAll": false,
+        "limit": 1,
+        "options": {
+          "view": {
+            "__rl": true,
+            "value": "viwpB5iqJmrioRtKS",
+            "mode": "list",
+            "cachedResultName": "First Click",
+            "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB/viwpB5iqJmrioRtKS"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        660,
+        6360
+      ],
+      "id": "2e4d1ab6-69cd-490e-874a-8d02167201d2",
+      "name": "Search First Click11",
+      "alwaysOutputData": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "app7bQ0CiN5j1RECH",
+          "mode": "list",
+          "cachedResultName": "Final Tracking",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblj0vg3XIYidUfPB",
+          "mode": "list",
+          "cachedResultName": "All Submissions",
+          "cachedResultUrl": "https://airtable.com/app7bQ0CiN5j1RECH/tblj0vg3XIYidUfPB"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Airtable16').item.json.id }}",
+            "first_utm_source": "={{ $json.utm_source }}",
+            "first_utm_medium": "={{ $json.utm_medium }}",
+            "first_utm_campaign": "={{ $json.utm_campaign }}",
+            "first_utm_term": "={{ $json.utm_term }}",
+            "first_utm_content": "={{ $json.utm_content }}",
+            "first_placement": "={{ $json.Placement }}",
+            "first_url_path": "={{ $json['URL Path'] }}",
+            "Lead Herkunft First": "={{ $json['Lead Herkunft'] }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Datum",
+              "displayName": "Datum",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Lead Herkunft",
+              "displayName": "Lead Herkunft",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "E-Mail",
+              "displayName": "E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Vorname",
+              "displayName": "Vorname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Nachname",
+              "displayName": "Nachname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Telefonnummer",
+              "displayName": "Telefonnummer",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Placement",
+              "displayName": "Placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Count",
+              "displayName": "Count",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "URL Path",
+              "displayName": "URL Path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "first_utm_source",
+              "displayName": "first_utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_campaign",
+              "displayName": "first_utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_medium",
+              "displayName": "first_utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_term",
+              "displayName": "first_utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_utm_content",
+              "displayName": "first_utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_placement",
+              "displayName": "first_placement",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "first_url_path",
+              "displayName": "first_url_path",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Lead Herkunft First",
+              "displayName": "Lead Herkunft First",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Zuletzt geändert",
+              "displayName": "Zuletzt geändert",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Erstellt",
+              "displayName": "Erstellt",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Affiliate",
+              "displayName": "Affiliate",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "pid",
+              "displayName": "pid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "prid",
+              "displayName": "prid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_E-Mail",
+              "displayName": "Empfehlungsgeber_E-Mail",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Name",
+              "displayName": "Empfehlungsgeber_Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Empfehlungsgeber_Phone",
+              "displayName": "Empfehlungsgeber_Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        880,
+        6360
+      ],
+      "id": "ee6b8053-fe84-46ee-872a-777791defc16",
+      "name": "Update Record11",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "IBvQYb808RuFQZfA",
+          "name": "Airtable Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactList",
+        "listId": 51,
+        "contactId": "={{ $('Create or Update').item.json.id }}"
+      },
+      "id": "4bc3b637-aba3-4479-a750-79b0acda7aa7",
+      "name": "Add to List1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        6360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "contactTag",
+        "tagId": "238",
+        "contactId": "={{ $('Create or Update').item.json.id }}"
+      },
+      "id": "e27bf475-0515-4cd5-9c1b-32b32eb71a9a",
+      "name": "Add Tag Warteliste",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        6360
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "teATeM55lqOgZIOH",
+          "name": "ActiveCampaign account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -19587,64 +20660,56 @@
       {
         "json": {
           "headers": {
-            "x-forwarded-for": "54.90.87.243",
+            "x-forwarded-for": "3.220.146.206",
             "x-forwarded-proto": "https",
             "x-forwarded-port": "443",
             "host": "n8n.mymiapage.de",
-            "x-amzn-trace-id": "Root=1-684ab7e3-15ddbb367f29f0a7276b17c7",
-            "content-length": "1010",
+            "x-amzn-trace-id": "Root=1-685e6478-4a4e77b03c87786105659da2",
+            "content-length": "784",
             "accept-encoding": "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
             "accept": "*/*",
             "user-agent": "Ruby",
             "content-type": "application/json",
-            "traceparent": "00-c8f25d85ddc85548f0765044ac8c24a0-cb891719a55d577f-00",
-            "tracestate": "2882645@nr=0-0-3154619-1494295268-cb891719a55d577f-fe10b3055e495c0f-0-0.656973-1749727202846",
-            "newrelic": "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkFwcCIsImFjIjoiMzE1NDYxOSIsImFwIjoiMTQ5NDI5NTI2OCIsInR4IjoiZmUxMGIzMDU1ZTQ5NWMwZiIsInRyIjoiYzhmMjVkODVkZGM4NTU0OGYwNzY1MDQ0YWM4YzI0YTAiLCJzYSI6ZmFsc2UsInByIjowLjY1Njk3MywidGkiOjE3NDk3MjcyMDI4NDYsImlkIjoiY2I4OTE3MTlhNTVkNTc3ZiIsInRrIjoiMjg4MjY0NSJ9fQ=="
+            "traceparent": "00-60aff9fd0909d51769403b992e2e233e-29ac4d7a565a9ead-00",
+            "tracestate": "2882645@nr=0-0-3154619-1494295268-29ac4d7a565a9ead-f8796a51e293fc85-0-0.645932-1751016568302",
+            "newrelic": "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkFwcCIsImFjIjoiMzE1NDYxOSIsImFwIjoiMTQ5NDI5NTI2OCIsInR4IjoiZjg3OTZhNTFlMjkzZmM4NSIsInRyIjoiNjBhZmY5ZmQwOTA5ZDUxNzY5NDAzYjk5MmUyZTIzM2UiLCJzYSI6ZmFsc2UsInByIjowLjY0NTkzMiwidGkiOjE3NTEwMTY1NjgzMDIsImlkIjoiMjlhYzRkN2E1NjVhOWVhZCIsInRrIjoiMjg4MjY0NSJ9fQ=="
           },
           "params": {},
           "query": {},
           "body": {
             "data": {
-              "id": "41703158",
+              "id": "42671781",
               "type": "form_submission",
               "attributes": {
-                "id": 41703158,
+                "id": 42671781,
                 "data": {
-                  "path": "training-anmeldung",
-                  "gclid": "34rewfcer4353rfe461",
+                  "path": "warteliste",
                   "action": "submit",
-                  "fbclid": "34rewfcer4353rfe461",
-                  "igclid": "34rewfcer4353rfe461",
                   "contact": {
                     "email": "alexander@eyl-marketing.de",
                     "last_name": "Beutl",
                     "first_name": "Alexander"
                   },
+                  "preview": "true",
                   "purchase": {
                     "process_new_order": "true"
                   },
-                  "utm_term": "term",
-                  "placement": "Facebook_Desktop_Feed",
                   "controller": "user_pages/workflows/steps/show_page_steps",
-                  "ip_address": "194.35.121.37",
-                  "utm_medium": "medium",
-                  "utm_source": "source",
-                  "redirect_to": "https://click.mymiapage.de/aufzeichnung1",
-                  "utm_content": "content",
-                  "phone_number": "+436767820594",
-                  "utm_campaign": "campaign"
+                  "ip_address": "209.198.159.101",
+                  "redirect_to": "https://click.mymiapage.de/danke-warteliste",
+                  "phone_number": "+436767820594"
                 },
-                "page_id": 8283152,
+                "page_id": 9332875,
                 "contact_id": 351517751,
-                "created_at": "2025-06-12T11:19:59.649Z",
-                "updated_at": "2025-06-12T11:19:59.751Z",
+                "created_at": "2025-06-27T09:29:24.751Z",
+                "updated_at": "2025-06-27T09:29:24.772Z",
                 "workspace_id": 156577
               }
             },
-            "event_id": "ba734762-ff23-40de-b404-a6197b9e97a1",
-            "created_at": "2025-06-12T11:19:59.758Z",
+            "event_id": "6807eb43-61d1-4dd1-bb8b-e87e5f2420eb",
+            "created_at": "2025-06-27T09:29:24.778Z",
             "event_type": "form_submission.created",
-            "subject_id": 41703158,
+            "subject_id": 42671781,
             "subject_type": "FormSubmission"
           },
           "webhookUrl": "https://n8n.mymiapage.de/webhook/68c2ee3a-cfe5-4914-9eae-76a01db30059",
@@ -19695,6 +20760,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-12T11:22:03.037Z",
-  "versionId": "29ff3cfa-34e3-4fef-9592-4e9caa7b6064"
+  "updatedAt": "2025-06-27T09:49:31.983Z",
+  "versionId": "27e6de02-3bdc-4f03-be27-2d0ed8dfb8b7"
 }
