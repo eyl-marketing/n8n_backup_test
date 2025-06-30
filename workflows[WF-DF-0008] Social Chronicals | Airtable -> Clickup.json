@@ -138,16 +138,11 @@
       "main": [
         [
           {
-            "node": "Create Task for Alexander Beutl",
+            "node": "Create Task",
             "type": "main",
             "index": 0
           }
         ]
-      ]
-    },
-    "Create Task for Alexander Beutl": {
-      "main": [
-        []
       ]
     },
     "Assemble Custom Activity Payload": {
@@ -159,6 +154,11 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Create Task": {
+      "main": [
+        []
       ]
     }
   },
@@ -563,6 +563,19 @@
     },
     {
       "parameters": {
+        "jsCode": "// 1) Hole das erste Lead-Objekt\nconst leadData = $node[\"Find Lead\"].json.data[0];\n\n// 2) Hole die normalisierten Felder\nconst nd = $node[\"Transform into key:value\"].json.normalizedData;\n\n// 3) Baue den Payload zusammen\nconst payload = {\n  custom_activity_type_id: \"actitype_33BosVOs2pqvBAODprtK5x\",\n  lead_id: leadData.id,\n  \"custom.cf_oDM7pw5xifuA2oxLPktBLYFfvHJn6ROxE9ub1TIoiSl\": nd[\"Wieviel Umsatz konnte der Kunde der Kunde erzielen?\"],\n  \"custom.cf_vg344nTJwuzj2cpuUUCdI7RJeOPIDNu7L4p0oMvTOIJ\": nd[\" Wieviel Reichweite konnte der Kunde erzielen?\"],\n  \"custom.cf_WcncPqdIkKRCHkMDFmTutN4vyGTsetRx2pYVzeBgmMp\": nd[\"Wie viele Follower hatte der Kunde beim Start\"],\n  \"custom.cf_dynIG22WeZwEu3xc7SRXKqb84ky96dpCqecP1h63HmS\": nd[\"Wie viele Follower hat der Kunde heute?\"],\n  \"custom.cf_3q8I6bd6G4HLAgIOPaBaX2dKbvBF0vCR0flbbdDzbX5\": nd[\"Welches Paket hatte der Kunde?\"],\n  \"custom.cf_tmPH0ddd0PLom162XMxntrZp7HvARr99A2WhS0wmiC8\": nd[\"Was war die Ausgangssituation des Kunden?\"],\n  \"custom.cf_AbHTjuF62Zdg5uuDwRzlmfOmAj41gH2LSLTkgXzLreH\": nd[\"Was ist jetzt die IST-Situation?\"],\n  \"custom.cf_l4py2ugBHtdV2KKtubyENddGBRMf6qnZYmirbMcLYmy\": nd[\"Weitere sekundäre Erfolge die mit der Zusammenarbeit hereingehen?\"],\n  \"custom.cf_vaMHLXJDguyVKE1ad6TeN8AdWemaEzrNFbMZ4ua5Ta0\": nd[\"Was war das größte Problem?\"],\n  \"custom.cf_RUaziggElnbdTCGspvDtQw9V8CE2lAGHNFr9XBeirFX\": nd[\"Ziel des Kunden?\"],\n  \"custom.cf_QTaA4RZ04rA2rBfqNh1aTbfTyWDdzSEQGXUH8NfB9wg\": nd[\"Nische des Kunden?\"],\n  \"custom.cf_v3zSI8yCiy9geWgTcPKuzqcRgcGesdHI1NjNaU6JzFf\": nd[\"Mit welchen Zielen ist der Kunde gestartet?\"],\n  \"custom.cf_720Gjm1mlXDLZtHpcwZWwqI2cJUegqQqGdKhTOR2qd1\": nd[\"Hat sich das Ziel des Kunden während der Betreuung verändert?\"],\n  \"custom.cf_EVQ4W3vFd5pWiFcGBS00y8ThA50bQ9BTqWlVHzYZo61\": nd[\"Wenn ja, warum?\"],\n  \"custom.cf_1yaSnaUewuzpeqhZ7JDWtSFapcayv96tv7Ft0m7BQky\": nd[\"Was waren die 4 größten Probleme des Kunden, als der Kunde gestartet ist?\"],\n  \"custom.cf_ju9YNK6FA9oxBU6pqQXzkt6zBkir0t79DuGOLmKYUPn\": nd[\"Was waren die 4 größten Probleme des Kunden, während der Betreuung?\"],\n  \"custom.cf_2HMcrZYKHFTwR9O3Rj0N0ch2GJDSiFNFlv47kQrwZzF\": nd[\"Welche 4 Lösungspunkte haben dem Kunden geholfen, um tolle Ergebnisse zu bekommen?\"],\n  \"custom.cf_n1JEC8xSgt3jFt2PHjaSuEYGZdaTRrPRiLXjV9VP48t\": nd[\"Welche 4 Haupterfolge hat der Kunde, durch die Betreuung?\"],\n  \"custom.cf_vtaLr8OVzbTbj3905TSc2ejv66j7xz30PhXMNQBLrVt\": nd[\"Gibt es weitere (persönliche) Erfolge, die erwähnenswert sind?\"],\n  \"custom.cf_jmbXFthxbcrkdAhYvLCuu2tIrF5eybqFumO5bsHabTN\": nd[\"Welche weiteren Persönlichen Erfolge konnte der Kunde erzielen?\"],\n  \"custom.cf_eoRbOsGh6xgI7luI6gBQ42GAp9elmaG8GD7CJ9W9ukc\": nd[\"Welche Branche?\"],\n  \"custom.cf_uncliv2PkCgKCTiSSqTYU5c8IotNMaTI7AUseewgdzo\": nd[\"In welche Kategorie passt im Kern die Lösung für den Kunden, die zum Erfolg geführt hat?\"],\n  \"custom.cf_pdSDMyds54pVwlU7jghg30hwGC0k4jQUVub7lmeYc3m\": nd[\"Videotestimonial URL\"],\n  \"custom.cf_jAsKZsHo5B8IuuomIUUTCJoBid5xC7pwAsNygIKeaIb\": nd[\"Sonstige relevante Sachen?\"],\n  \"custom.cf_KCFYAVKhB8RkSRuGZmAWJhomxKlbYwvytcZfk8Z0Cmv\": nd[\"Gab es Übungen, die dem Kunden besonders weitergeholfen haben?\"],\n  \"custom.cf_ZmlDCj7GfWFEwKJNdS1UcQJLYh2j63ADdv8jbgFgdy1\": nd[\"Warum hat der Kunde eine Pause gemacht?\"],\n  \"custom.cf_TodAmLOpHaP2Ajo5hNZNJNSl7N8XiDwq0WtYFmYiRnM\": nd[\"Wer hat den Kunden betreut?\"],\n  \"custom.cf_cXp4MQX9MoN3MWEp6ybb7GusXUhKwDZ18Wq7FPfNuw0\": nd[\"Wann wurde die Zusammenarbeit beendet?\"]\n};\n\n// 4) Gib das fertige Objekt als einzigen Item zurück\nreturn [{ json: payload }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2620,
+        560
+      ],
+      "id": "2c6fb89d-8e30-44ab-a69a-0988e90da825",
+      "name": "Assemble Custom Activity Payload"
+    },
+    {
+      "parameters": {
         "authentication": "oAuth2",
         "team": "9010043031",
         "space": "90100106094",
@@ -585,26 +598,13 @@
         540
       ],
       "id": "6b0f13f5-a7c5-420b-b54f-1238f09dc31e",
-      "name": "Create Task for Alexander Beutl",
+      "name": "Create Task",
       "credentials": {
         "clickUpOAuth2Api": {
           "id": "RgypMB6ecPqR2hME",
           "name": "ClickUp account"
         }
       }
-    },
-    {
-      "parameters": {
-        "jsCode": "// 1) Hole das erste Lead-Objekt\nconst leadData = $node[\"Find Lead\"].json.data[0];\n\n// 2) Hole die normalisierten Felder\nconst nd = $node[\"Transform into key:value\"].json.normalizedData;\n\n// 3) Baue den Payload zusammen\nconst payload = {\n  custom_activity_type_id: \"actitype_33BosVOs2pqvBAODprtK5x\",\n  lead_id: leadData.id,\n  \"custom.cf_oDM7pw5xifuA2oxLPktBLYFfvHJn6ROxE9ub1TIoiSl\": nd[\"Wieviel Umsatz konnte der Kunde der Kunde erzielen?\"],\n  \"custom.cf_vg344nTJwuzj2cpuUUCdI7RJeOPIDNu7L4p0oMvTOIJ\": nd[\" Wieviel Reichweite konnte der Kunde erzielen?\"],\n  \"custom.cf_WcncPqdIkKRCHkMDFmTutN4vyGTsetRx2pYVzeBgmMp\": nd[\"Wie viele Follower hatte der Kunde beim Start\"],\n  \"custom.cf_dynIG22WeZwEu3xc7SRXKqb84ky96dpCqecP1h63HmS\": nd[\"Wie viele Follower hat der Kunde heute?\"],\n  \"custom.cf_3q8I6bd6G4HLAgIOPaBaX2dKbvBF0vCR0flbbdDzbX5\": nd[\"Welches Paket hatte der Kunde?\"],\n  \"custom.cf_tmPH0ddd0PLom162XMxntrZp7HvARr99A2WhS0wmiC8\": nd[\"Was war die Ausgangssituation des Kunden?\"],\n  \"custom.cf_AbHTjuF62Zdg5uuDwRzlmfOmAj41gH2LSLTkgXzLreH\": nd[\"Was ist jetzt die IST-Situation?\"],\n  \"custom.cf_l4py2ugBHtdV2KKtubyENddGBRMf6qnZYmirbMcLYmy\": nd[\"Weitere sekundäre Erfolge die mit der Zusammenarbeit hereingehen?\"],\n  \"custom.cf_vaMHLXJDguyVKE1ad6TeN8AdWemaEzrNFbMZ4ua5Ta0\": nd[\"Was war das größte Problem?\"],\n  \"custom.cf_RUaziggElnbdTCGspvDtQw9V8CE2lAGHNFr9XBeirFX\": nd[\"Ziel des Kunden?\"],\n  \"custom.cf_QTaA4RZ04rA2rBfqNh1aTbfTyWDdzSEQGXUH8NfB9wg\": nd[\"Nische des Kunden?\"],\n  \"custom.cf_v3zSI8yCiy9geWgTcPKuzqcRgcGesdHI1NjNaU6JzFf\": nd[\"Mit welchen Zielen ist der Kunde gestartet?\"],\n  \"custom.cf_720Gjm1mlXDLZtHpcwZWwqI2cJUegqQqGdKhTOR2qd1\": nd[\"Hat sich das Ziel des Kunden während der Betreuung verändert?\"],\n  \"custom.cf_EVQ4W3vFd5pWiFcGBS00y8ThA50bQ9BTqWlVHzYZo61\": nd[\"Wenn ja, warum?\"],\n  \"custom.cf_1yaSnaUewuzpeqhZ7JDWtSFapcayv96tv7Ft0m7BQky\": nd[\"Was waren die 4 größten Probleme des Kunden, als der Kunde gestartet ist?\"],\n  \"custom.cf_ju9YNK6FA9oxBU6pqQXzkt6zBkir0t79DuGOLmKYUPn\": nd[\"Was waren die 4 größten Probleme des Kunden, während der Betreuung?\"],\n  \"custom.cf_2HMcrZYKHFTwR9O3Rj0N0ch2GJDSiFNFlv47kQrwZzF\": nd[\"Welche 4 Lösungspunkte haben dem Kunden geholfen, um tolle Ergebnisse zu bekommen?\"],\n  \"custom.cf_n1JEC8xSgt3jFt2PHjaSuEYGZdaTRrPRiLXjV9VP48t\": nd[\"Welche 4 Haupterfolge hat der Kunde, durch die Betreuung?\"],\n  \"custom.cf_vtaLr8OVzbTbj3905TSc2ejv66j7xz30PhXMNQBLrVt\": nd[\"Gibt es weitere (persönliche) Erfolge, die erwähnenswert sind?\"],\n  \"custom.cf_jmbXFthxbcrkdAhYvLCuu2tIrF5eybqFumO5bsHabTN\": nd[\"Welche weiteren Persönlichen Erfolge konnte der Kunde erzielen?\"],\n  \"custom.cf_eoRbOsGh6xgI7luI6gBQ42GAp9elmaG8GD7CJ9W9ukc\": nd[\"Welche Branche?\"],\n  \"custom.cf_uncliv2PkCgKCTiSSqTYU5c8IotNMaTI7AUseewgdzo\": nd[\"In welche Kategorie passt im Kern die Lösung für den Kunden, die zum Erfolg geführt hat?\"],\n  \"custom.cf_pdSDMyds54pVwlU7jghg30hwGC0k4jQUVub7lmeYc3m\": nd[\"Videotestimonial URL\"],\n  \"custom.cf_jAsKZsHo5B8IuuomIUUTCJoBid5xC7pwAsNygIKeaIb\": nd[\"Sonstige relevante Sachen?\"],\n  \"custom.cf_KCFYAVKhB8RkSRuGZmAWJhomxKlbYwvytcZfk8Z0Cmv\": nd[\"Gab es Übungen, die dem Kunden besonders weitergeholfen haben?\"],\n  \"custom.cf_ZmlDCj7GfWFEwKJNdS1UcQJLYh2j63ADdv8jbgFgdy1\": nd[\"Warum hat der Kunde eine Pause gemacht?\"],\n  \"custom.cf_TodAmLOpHaP2Ajo5hNZNJNSl7N8XiDwq0WtYFmYiRnM\": nd[\"Wer hat den Kunden betreut?\"],\n  \"custom.cf_cXp4MQX9MoN3MWEp6ybb7GusXUhKwDZ18Wq7FPfNuw0\": nd[\"Wann wurde die Zusammenarbeit beendet?\"]\n};\n\n// 4) Gib das fertige Objekt als einzigen Item zurück\nreturn [{ json: payload }];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2620,
-        560
-      ],
-      "id": "2c6fb89d-8e30-44ab-a69a-0988e90da825",
-      "name": "Assemble Custom Activity Payload"
     }
   ],
   "pinData": {
@@ -745,6 +745,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-30T16:47:47.238Z",
-  "versionId": "78985e82-8932-4fa6-afd5-6f459b1c8d14"
+  "updatedAt": "2025-06-30T17:44:55.591Z",
+  "versionId": "c2e582f7-3e35-462d-96d0-59c3d14f2663"
 }
