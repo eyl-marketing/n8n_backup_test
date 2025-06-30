@@ -571,7 +571,8 @@
         "name": "=Testimonial Kundenerfolgsseite Mymiapage: {{ $('Webhook').item.json.body.Vorname }} {{ $('Webhook').item.json.body.Nachname }}",
         "additionalFields": {
           "assignees": [
-            82508585
+            88767200,
+            94728724
           ],
           "content": "=## Neues Testimonial hinzufügen\n\n## Figma\nhttps://www.figma.com/design/gm6K8nEHobwFlxRItUiCDX/Testimonial-page?node-id=50-2&p=f&t=gnNvMjGMdZpi2vNq-0\n\n### Insights\n[Zur Insights-Seite]({{ $('Transform into key:value').item.json.normalizedData['Insights URL'] }})\n\n### Video Testimonial\n[Video ansehen]({{ $('Transform into key:value').item.json.normalizedData['Videotestimonial URL'] }})\n\n### Foto für Webseite\n[Foto herunterladen]({{ $('Transform into key:value').item.json.normalizedData['Foto URL'] }})\n\n## Vorschlag für Testimonial:\n{{ $json.output }}\n\n### Details im Airtable-Datensatz\n[Zum Datensatz in Airtable](https://airtable.com/app00WlzZtbAVQ20R/{{ $('Transform into key:value').item.json.normalizedData.tableId }}/{{ $('Transform into key:value').item.json.normalizedData.recordId }}?blocks=hide)\n\n---\n\n### Originaldaten (formatierte Ansicht)\n{{ $('Transform into key:value').item.json.normalizedData_formatted }}\n",
           "markdownContent": true
@@ -744,6 +745,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-04-23T12:24:29.811Z",
-  "versionId": "fdf1cc51-7916-4115-84f0-003c297fe137"
+  "updatedAt": "2025-06-30T16:47:47.238Z",
+  "versionId": "78985e82-8932-4fa6-afd5-6f459b1c8d14"
 }
