@@ -502,12 +502,11 @@
           "conditions": [
             {
               "id": "d9c8491f-2e17-4302-8313-00d25584d798",
-              "leftValue": "={{ $('Transform into key:value').item.json.normalizedData['Foto URL'] }}",
-              "rightValue": "",
+              "leftValue": "={{ $('Transform into key:value').item.json.normalizedData['check_testimonial'] }}",
+              "rightValue": "true",
               "operator": {
                 "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
+                "operation": "equals"
               }
             }
           ],
@@ -605,6 +604,21 @@
           "name": "ClickUp account"
         }
       }
+    },
+    {
+      "parameters": {
+        "content": "## Airtable Formulare\n\nhttps://airtable.com/app00WlzZtbAVQ20R/pagyA1rBL7j9wcaAa/edit\nhttps://airtable.com/app00WlzZtbAVQ20R/pagf45krvk8ZviqD7/edit",
+        "height": 120,
+        "width": 470
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        320
+      ],
+      "id": "d7add44a-6c1d-476a-bfbc-78f3e8180f82",
+      "name": "Sticky Note2"
     }
   ],
   "pinData": {
@@ -612,12 +626,12 @@
       {
         "json": {
           "headers": {
-            "x-forwarded-for": "13.218.145.18",
+            "x-forwarded-for": "54.235.1.38",
             "x-forwarded-proto": "https",
             "x-forwarded-port": "443",
             "host": "n8n.mymiapage.de",
-            "x-amzn-trace-id": "Root=1-67ffebbb-49a9e25c1dfc6e40068cb1ce",
-            "content-length": "8313",
+            "x-amzn-trace-id": "Root=1-686e8909-512f978d3693d01c0eb2ecbe",
+            "content-length": "2785",
             "content-type": "application/json",
             "user-agent": "Mozilla/5.0 (compatible; AirtableScripting; +https://airtable.com/developers/scripting;)",
             "x-airtable-source": "app00WlzZtbAVQ20R/wflIKatV4vlbgorji",
@@ -627,42 +641,42 @@
           "params": {},
           "query": {},
           "body": {
-            "Clickup Task ID": "86bxje2x7",
-            "Vorname": "Janka ",
-            "Nachname": "Dolezal ",
-            "E-Mail": "jankadolezal@gmail.com",
-            "Wieviel Umsatz konnte der Kunde der Kunde erzielen?": 0,
-            " Wieviel Reichweite konnte der Kunde erzielen?": 2531,
+            "Clickup Task ID": "86c1uu1r1",
+            "Vorname": "Daniel",
+            "Nachname": "Formanek",
+            "E-Mail": "daniel@eyl-marketing.de",
+            "Wieviel Umsatz konnte der Kunde der Kunde erzielen?": 1,
+            " Wieviel Reichweite konnte der Kunde erzielen?": 1,
             "Wie viele Follower hatte der Kunde beim Start": 1,
-            "Wie viele Follower hat der Kunde heute?": 5248,
+            "Wie viele Follower hat der Kunde heute?": 1,
             "Welches Paket hatte der Kunde?": {
-              "id": "seloSCPeGyLt5Oi26",
-              "name": "Social Chronicles VIP Diamond",
-              "color": "greenLight2"
+              "id": "sel5raVjHMwgvkuFR",
+              "name": "Social Chronicles",
+              "color": "blueLight2"
             },
-            "Was war die Ausgangssituation des Kunden?": "Unklare Positionierung (Geld, Göttinnen-Prinzip, Eleganz, Pinterest)\n\nViele Ideen, wenig Umsetzung\n\nEmotionsferner Content\n\nUnsicherheit im Storytelling\n\nKein klares Produkt oder Funnel",
-            "Was ist jetzt die IST-Situation?": "Konkrete Umsatzzahlen wurden nicht dokumentiert. Janka ist über ihre Finanzen sehr verschwiegen, Sie ist auch Investor, der einfach nicht über ihre Angelegenheiten spricht. Sie stellte daher nie einen Zusammenhang von Einnahmen über SC und ihren eigenen beruflichen Wegen her. Es gab einen Testkauf über Copecard.com, bei dem ein Produkt gegen E-Mail-Adresse für 0 € angeboten wurde. Monetarisierung über Pinterest ist im Aufbau gewesen, mit klarem Interesse an passivem Einkommen durch Affiliate-Programme und Network-Marketing.\nDie Pinterest-Reichweite stieg über den Betreuungszeitraum von ca. 4.000 auf bis zu 70.000 Impressionen. Auch TikTok und Instagram wurden bespielt, wobei Reels z. B. gesperrt wurden oder moderate Sichtbarkeit erzielten. Der größte Reichweitenanstieg fand auf Pinterest statt. Letzter Stand (Woche 48): Es wurde keine genaue Followerzahl dokumentiert, aber laut Verlauf wöchentlicher Zuwachs, darunter Aussagen wie: „100 Follower pro Tag“. Ein Pinterest-Zuwachs von 4.000 auf 70.000 zeigt signifikantes Wachstum.\n\nKlare Positionierung gefunden: „Ich helfe Coaches, die ein gutes Angebot haben, aber nie über ihr Einkommen hinauskommen.“\n\nErste Produkte bei Copecard hochgeladen\n\nPinterest stabil gewachsen, über 70.000 Views\n\nErste persönliche Reels veröffentlicht\n\nPersönliche Geschichte als Differenzierungsmerkmal akzeptiert und integriert\n\nDeutlich mehr Selbstvertrauen sichtbar",
-            "Weitere sekundäre Erfolge die mit der Zusammenarbeit hereingehen?": "Bio mehrfach überarbeitet und final konkretisiert\n\nNeue visuelle Identität durch Reise-Content und Lebensgeschichte\n\nKlarere Ausrichtung durch Kindheitserfahrungen (Adoptivkind, Heim, Jugendamt)\n\nTransformation: „Durchbruch“ durch das Erzählen ihrer echten Geschichte\n\nErster Ansatz zur Monetarisierung durch Copecard & Netzwerkstruktur",
-            "Was war das größte Problem?": "Die fehlende emotionale Sichtbarkeit. Janka hatte Schwierigkeiten, ihre persönliche Geschichte zu zeigen, was ihr Authentizität und Tiefe im Content verwehrte. Zusätzlich erschwerten viele Abwesenheiten (19+ Wochen) die Umsetzung.\n\nIst schon so lang im Business, dass sie das ganze nicht so Ernst nimmt und nicht gewusst hat, dass sie so abliefern soll. Mag es nicht bevormundet zu werden. Macht was sie will. \n\n",
-            "Ziel des Kunden?": "Monetarisierung mit einem eigenen Produkt\n\nPinterest noch besser als Plattform etablieren\n\nMehr Sichtbarkeit durch klare Message und Reels\n\nEmotionale Tiefe zulassen und nutzen\n\nAufbau von Reichweite und Positionierung im Bereich Geld & Fülle\n\nIst schon so lang im Business, dass sie das ganze nicht so Ernst nimmt und nicht gewusst hat, dass sie so abliefern soll. Mag es nicht bevormundet zu werden. Macht was sie will. ",
-            "Nische des Kunden?": "Money Mindset & Sichtbarkeit für Coaches, die emotional blockiert sind oder sich nicht erlauben, „reich“ zu sein. Zielgruppe: Frauen über 50 mit spiritueller Offenheit.",
-            "Mit welchen Zielen ist der Kunde gestartet?": "Content auf Pinterest und Instagram aufbauen\n\nMehr Verkäufe durch Content\n\nSpirituelles Wissen mit Business kombinieren\n\nGöttinnen-Prinzip, Geld und Fülle vermitteln",
+            "Was war die Ausgangssituation des Kunden?": "1",
+            "Was ist jetzt die IST-Situation?": "1",
+            "Weitere sekundäre Erfolge die mit der Zusammenarbeit hereingehen?": "1",
+            "Was war das größte Problem?": "1",
+            "Ziel des Kunden?": "1",
+            "Nische des Kunden?": "1",
+            "Mit welchen Zielen ist der Kunde gestartet?": "1",
             "Hat sich das Ziel des Kunden während der Betreuung verändert?": {
               "id": "sel4g1eWU8KuCardv",
               "name": "Ja",
               "color": "blueLight2"
             },
-            "Wenn ja, warum?": "Ja, stark:\nAnfangs war das Ziel diffus-spirituell. Am Ende stand eine klare Positionierung: Emotionale Geldblockaden lösen und Coaches helfen, finanziell zu wachsen.\n\n",
-            "Was waren die 4 größten Probleme des Kunden, als der Kunde gestartet ist?": "Keine klare Positionierung oder Zielgruppe\n\nViele Themen parallel (Geld, Pinterest, Göttinnen, Eleganz)\n\nWenig persönliche/emotionale Sichtbarkeit\n\nKeine Contentstruktur oder Funnel\n\n",
-            "Was waren die 4 größten Probleme des Kunden, während der Betreuung?": "Emotionale Zurückhaltung, persönliche Geschichte zu zeigen\n\nHohe Abwesenheitsrate (über 19 Wochen)\n\nUnsicherheit bei technischer Umsetzung (Copecard, Reels, Bio)\n\nPinterest-Erfolg ohne Monetarisierungsstruktur",
-            "Welche 4 Lösungspunkte haben dem Kunden geholfen, um tolle Ergebnisse zu bekommen?": "Konkrete Bio-Optimierung nach Kindheitserlebnissen\n\nPinterest als primäre Plattform mit Fokus & Erfolg\n\nKlarer Slogan: „Geld magnetisch empfangen“\n\nPersönliche Storys als Kern-Content akzeptiert und integriert",
-            "Welche 4 Haupterfolge hat der Kunde, durch die Betreuung?": "Pinterest von 4.000 auf 70.000 Views gesteigert\n\nPersönliches Reel veröffentlicht (nach Blockade)\n\nPositionierung als Geld-Coach für Coaches gefunden\n\nProdukt-Erstellung bei Copecard begonnen\n\n",
+            "Wenn ja, warum?": "1",
+            "Was waren die 4 größten Probleme des Kunden, als der Kunde gestartet ist?": "1",
+            "Was waren die 4 größten Probleme des Kunden, während der Betreuung?": "1",
+            "Welche 4 Lösungspunkte haben dem Kunden geholfen, um tolle Ergebnisse zu bekommen?": "1",
+            "Welche 4 Haupterfolge hat der Kunde, durch die Betreuung?": "1",
             "Gibt es weitere (persönliche) Erfolge, die erwähnenswert sind?": {
               "id": "selW9VkszwkyZmos5",
               "name": "Ja",
               "color": "blueLight2"
             },
-            "Welche weiteren Persönlichen Erfolge konnte der Kunde erzielen?": "anka hat sich emotional geöffnet und ihre Kindheitsgeschichte als Stärke erkannt\n\nSie formulierte erstmals öffentlich: „Ich hatte weder Mama noch Papa.“\n\nNach Reisen durch Afrika und Antarktis kehrte sie mit Klarheit und Tiefe zurück\n\nSie ist jetzt bereit, sichtbar zu sein und andere zu „entzünden“",
+            "Welche weiteren Persönlichen Erfolge konnte der Kunde erzielen?": "1",
             "Welche Branche?": {
               "id": "selsgL5WfznZGsQIB",
               "name": "Coaching",
@@ -674,11 +688,11 @@
               "color": "yellowLight2"
             },
             "Sind Insights vorhanden, die die Ergebnisse des Kunden zeigen?": {
-              "id": "selOhLDJ7SonZ17t8",
-              "name": "Ja",
-              "color": "redLight2"
+              "id": "selafCUuOmWMPsbg0",
+              "name": "Nein",
+              "color": "yellowLight2"
             },
-            "Insights URL": "https://drive.google.com/drive/folders/1qX_cRwHySqwqvuFZK2aq7zHK17k1woml",
+            "Insights URL": null,
             "Videotestimonial vorhanden?": {
               "id": "seldKHRtNtkNtUIxf",
               "name": "Nein",
@@ -686,13 +700,13 @@
             },
             "Videotestimonial URL": null,
             "Foto für Webseite vorhanden?": {
-              "id": "selh88Ux6LgZ4N4IP",
-              "name": "Angefordert",
-              "color": "greenLight2"
+              "id": "selLI1xVVG1fFrzbS",
+              "name": "Nein",
+              "color": "yellowLight2"
             },
             "Foto URL": null,
-            "Sonstige relevante Sachen?": "Transformation durch emotionale Sichtbarkeit + strategischer Plattformfokus (Pinterest) + klare Positionierung durch Biografie und „magnetisches Geld-Mindset“\n\n\nWoche\tStatus\tKernthema\n1\t✅\tEinstieg, Pinterest, Göttinnenprinzip\n2\t❌\tAuf Reisen\n3\t✅\tYouTube Shorts, Wunsch nach mehr Struktur\n4\t✅\t5 neue Kunden, erste Nähe zu Reelthemen\n5\t✅\tCopecard-Testprodukt & Background (Jugendamt, Heim)\n6–10\t❌\tAbwesend / Reisen\n11\t✅\tPinterest-Wachstum auf 8.000\n12\t✅\tStruktur durch Arschtritt-Call\n13\t✅\tTikTok-Reel gesperrt, Pinterest 11.000\n14\t✅\tEbook & Copecard-Problematik\n15\t❌\tAuf Reisen\n16\t✅\tKlare Nische gefunden (Money Coaches)\n17\t✅\tGeldmagnet-Message geboren\n18\t✅\t„Ich mache es jetzt wirklich!“\n19–22\t❌\tReisen & Auszeit\n23–27\t✅\tFeedback, persönliche Reels, alter Account reaktiviert\n28–36\t❌\tViele Calls gefehlt\n37–44\t❌\tIn Antarktis – Selbstfindung\n45–46\t✅\tRückkehr & Reflexion\n47\t❌\tFehlend\n48\t✅\tAbschlussgespräch: Monetarisierung, Dankbarkeit, Zukunftsstrategie",
-            "Gab es Übungen, die dem Kunden besonders weitergeholfen haben?": "Leuchtturm und emotionales Storytelling ",
+            "Sonstige relevante Sachen?": "1",
+            "Gab es Übungen, die dem Kunden besonders weitergeholfen haben?": "1",
             "Hat der Kunde eine Pause gemacht?": {
               "id": "selthkg3yTPkPMlLS",
               "name": "Nein",
@@ -704,11 +718,14 @@
               "name": "Stephanie Bareuther",
               "color": "redLight2"
             },
-            "Wann wurde die Zusammenarbeit beendet?": "2025-03-03",
-            "Datum": "2025-04-16T17:40:58.000Z",
-            "Erstellt": "2025-04-16T17:40:58.625Z",
+            "Wann wurde die Zusammenarbeit beendet?": "2025-06-09",
+            "Datum": "2025-07-09T15:21:42.000Z",
+            "Erstellt": "2025-07-09T15:21:42.407Z",
             "Zuletzt geändert": null,
-            "recordId": "recmZRsDpkFrOyXXY",
+            "Berechnung": "recWBIoC8H91QrQh2",
+            "check_testimonial": false,
+            "checkbox_hinweis": "Wenn du dieses Feld aktivierst, darf dein Bericht (mit Namen/Bild) als öffentliches Kunden-Testimonial genutzt werden.",
+            "recordId": "recWBIoC8H91QrQh2",
             "tableId": "app00WlzZtbAVQ20R/tblSgfncxdAoWdnR4"
           },
           "webhookUrl": "https://n8n.mymiapage.de/webhook/be54875f-5e7d-41f6-87b6-db4c99e7519a",
@@ -745,6 +762,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-30T17:44:55.591Z",
-  "versionId": "c2e582f7-3e35-462d-96d0-59c3d14f2663"
+  "updatedAt": "2025-07-09T16:08:05.841Z",
+  "versionId": "5e823498-06d3-4c5a-9af0-42413fd61899"
 }
