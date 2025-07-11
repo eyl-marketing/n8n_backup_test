@@ -507,7 +507,7 @@
           "conditions": [
             {
               "id": "d9c8491f-2e17-4302-8313-00d25584d798",
-              "leftValue": "={{ $('Transform into key:value').item.json.normalizedData['check_testimonial'] }}",
+              "leftValue": "={{ $('Transform into key:value').item.json.normalizedData['check_testimonial'].toString() }}",
               "rightValue": "true",
               "operator": {
                 "type": "string",
@@ -780,6 +780,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-07-11T10:55:30.917Z",
-  "versionId": "8e9da1cc-2723-4693-8623-0c5eabc28337"
+  "updatedAt": "2025-07-11T11:08:21.696Z",
+  "versionId": "a4391c64-04e1-4594-82c5-1f90966c97b2"
 }
