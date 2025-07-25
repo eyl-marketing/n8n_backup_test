@@ -1,0 +1,170 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-07-25T09:44:51.770Z",
+  "id": "mw2SOEQAkJhrfQZO",
+  "meta": null,
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "127fd73e-ef99-4d89-b0ed-bcf86a77ea49",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://api-cdn.myablefy.com/v1.1/cabinet/transfers",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "expand[]",
+              "value": [
+                "transferable.order.product.covers",
+                "'transferable.order.publisher'",
+                "'sender.user_profile'",
+                "'pricing_plan_ids'"
+              ]
+            },
+            {
+              "name": "page",
+              "value": "1"
+            },
+            {
+              "name": "query"
+            },
+            {
+              "name": "state[]",
+              "value": "successful"
+            },
+            {
+              "name": "per",
+              "value": "10"
+            },
+            {
+              "name": "sort_key",
+              "value": "id"
+            },
+            {
+              "name": "sort_dir",
+              "value": "desc"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json, text/plain, */*"
+            },
+            {
+              "name": "accept-language",
+              "value": "en"
+            },
+            {
+              "name": "authorization",
+              "value": "eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE3NTM0NzQ4MDUsImlzcyI6ImVsb3BhZ2UiLCJhdWQiOiJ1c2VyIiwidXNlcl9pZCI6MzYyNjc2OSwic2Vzc2lvbl9pZCI6NTk0NDczNDJ9.soIrf5Hrz1gAPIh48_jjkNahjNNq0xpEldClUIEcSA3UVR8Rcsw3oJEJ8oaWvQ2optS8eMnF0icMj7rHgXWdLrm4CcsRpK0kyFU2ocWJ9oGEdG8EEpDaDAY3TNa18ZNGLngkoR0BRJ-4jQSNyzjecWBVvw_rtCCLbG_r2kxic9rnmTIviE3_HOisK4EZ3xacGDmkh_KzB7GbLw39e9K0dtsz5JKnnKwrNvY6liwFu6iIyyimd4qtGRbSbKsjf6bbnbuPR0VBRLow4vxAl_sazPd5VAW87kIGXqzud1wNgd3Q1r-shkOSSyeutRX4TuHKRSkxtzk_hJ80A7cT_3IlYg"
+            },
+            {
+              "name": "content-language",
+              "value": "en"
+            },
+            {
+              "name": "if-none-match",
+              "value": "W/\"6ef029bcedd2b741435298115e63e584\""
+            },
+            {
+              "name": "newrelic",
+              "value": "eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkJyb3dzZXIiLCJhYyI6IjEyMzA5NzMiLCJhcCI6IjE1ODg5MDMyNDciLCJpZCI6ImIyMGRmYzA1NDMwNGVlOTYiLCJ0ciI6IjJlZTdmYjcxZjcyMjI1N2QyNzcyZDkyYTFkZWUwY2EwIiwidGkiOjE3NTM0MzY2MzI2OTh9fQ=="
+            },
+            {
+              "name": "origin",
+              "value": "https://myablefy.com"
+            },
+            {
+              "name": "priority",
+              "value": "u=1, i"
+            },
+            {
+              "name": "referer",
+              "value": "https://myablefy.com/"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Not)A;Brand\";v=\"8\", \"Chromium\";v=\"138\", \"Google Chrome\";v=\"138\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            },
+            {
+              "name": "sec-fetch-dest",
+              "value": "empty"
+            },
+            {
+              "name": "sec-fetch-mode",
+              "value": "cors"
+            },
+            {
+              "name": "sec-fetch-site",
+              "value": "same-site"
+            },
+            {
+              "name": "traceparent",
+              "value": "00-2ee7fb71f722257d2772d92a1dee0ca0-b20dfc054304ee96-01"
+            },
+            {
+              "name": "tracestate",
+              "value": "1230973@nr=0-1-1230973-1588903247-b20dfc054304ee96----1753436632698"
+            },
+            {
+              "name": "user-agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "cdcea4a6-e134-49f5-ac14-7e3d7d165bab",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-07-25T09:44:51.770Z",
+  "versionId": "6b3ae0b4-0bae-4ad8-be29-4e90c1084261"
+}
