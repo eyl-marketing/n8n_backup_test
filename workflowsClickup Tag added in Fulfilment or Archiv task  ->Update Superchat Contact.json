@@ -44,26 +44,45 @@
         ]
       ]
     },
-    "Switch": {
+    "Superchat Contact": {
       "main": [
         [
           {
-            "node": "Superchat Contact1",
+            "node": "If Tag was added",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Superchat Contact": {
+    "If Tag was added": {
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Switch Tags",
             "type": "main",
             "index": 0
           }
         ]
+      ]
+    },
+    "Switch Tags": {
+      "main": [
+        [
+          {
+            "node": "Superchat Contact Add Tag",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
       ]
     }
   },
@@ -186,70 +205,6 @@
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $('ClickUp Trigger').item.json.history_items?.[0]?.after ? true : false }}\n",
-                    "rightValue": "true",
-                    "operator": {
-                      "type": "string",
-                      "operation": "contains"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "Tag Added"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "8e294035-4cab-450c-9230-b58fd6bb79b5",
-                    "leftValue": "={{ $('ClickUp Trigger').item.json.history_items?.[0]?.before ? true : false }}\n",
-                    "rightValue": "true",
-                    "operator": {
-                      "type": "string",
-                      "operation": "contains"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "Tag Removed"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.2,
-      "position": [
-        140,
-        -240
-      ],
-      "id": "7442f0d2-9f3c-400b-a572-8a20416b556e",
-      "name": "Switch"
-    },
-    {
-      "parameters": {
         "method": "POST",
         "url": "https://api.superchat.com/v1.0/contacts/search",
         "sendHeaders": true,
@@ -286,7 +241,7 @@
     {
       "parameters": {
         "method": "PATCH",
-        "url": "https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -306,17 +261,300 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"query\": {\n    \"value\": [\n      {\n        \"operator\": \"=\",\n        \"field\": \"mail\",\n        \"value\": \"{{ $('ClickUp Get Task').item.json.custom_fields.find(f => f.name === 'E-Mail')?.value }}\"\n      }\n    ]\n  }\n}\n",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"name\": \"Tag\",\n      \"value\": [\"laufzeit abgelaufen\"]\n    }\n  ]\n}\n",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        400,
-        -560
+        760,
+        -600
       ],
       "id": "2f35fbe9-e06d-4804-999b-a5926d03b41f",
-      "name": "Superchat Contact1"
+      "name": "Superchat Contact Add Tag"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b28fc260-e7a1-4bbc-85f6-f771505a29e6",
+              "leftValue": "{{ $('ClickUp Trigger').item.json.history_items?.[0]?.after ? true : false }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "ba21ca9e-f2f1-466b-acbd-5f966d79648a",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        140,
+        -240
+      ],
+      "id": "3747349c-140a-41e8-8153-8e6f800052fd",
+      "name": "If Tag was added"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('ClickUp Trigger').item.json.history_items[0].after[0].name\n",
+                    "rightValue": "inaktiv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "inaktiv"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0e4119ea-d52e-4864-b29e-d59d7a92f77d",
+                    "leftValue": "{{ $('ClickUp Trigger').item.json.history_items[0].after[0].name",
+                    "rightValue": "Konflikt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Konflikt"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1b6d7064-2a6d-446f-be82-e6572d032ff9",
+                    "leftValue": "{{ $('ClickUp Trigger').item.json.history_items[0].after[0].name",
+                    "rightValue": "archiv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "archiv"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c1a945fc-fe78-433b-8df7-255add3659ce",
+                    "leftValue": "{{ $('ClickUp Trigger').item.json.history_items[0].after[0].name",
+                    "rightValue": "schwieriger Kunde",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "schwieriger Kunde"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "460a35db-1e35-4e18-a9ee-7072c8b3e3b9",
+                    "leftValue": "{{ $('ClickUp Trigger').item.json.history_items[0].after[0].name",
+                    "rightValue": "schwieriger Kunde!",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "schwieriger Kunde!"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0a15a7fa-ae26-41d8-bed2-174e1a27090b",
+                    "leftValue": "{{ $('ClickUp Trigger').item.json.history_items[0].after[0].name",
+                    "rightValue": "storno",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "storno"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "468b674d-b718-40d6-9f23-4c2acdf5790e",
+                    "leftValue": "{{ $('ClickUp Trigger').item.json.history_items[0].after[0].name",
+                    "rightValue": "w - beim Anwalt",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "w - beim Anwalt"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9d9f87fa-f1bb-437e-a3ce-fbe9b65818a4",
+                    "leftValue": "{{ $('ClickUp Trigger').item.json.history_items[0].after[0].name",
+                    "rightValue": "w - Chargeback",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "w - Chargeback"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "09b2b4e1-717e-4d05-acf5-b0b2c565ec07",
+                    "leftValue": "{{ $('ClickUp Trigger').item.json.history_items[0].after[0].name",
+                    "rightValue": "w - eingereicht",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "w - eingereicht"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        400,
+        -520
+      ],
+      "id": "7442f0d2-9f3c-400b-a572-8a20416b556e",
+      "name": "Switch Tags"
     }
   ],
   "pinData": {
@@ -326,10 +564,10 @@
           "event": "taskTagUpdated",
           "history_items": [
             {
-              "id": "4658274120370047303",
+              "id": "4658396919491282435",
               "type": 1,
-              "date": "1753450913839",
-              "field": "tag_removed",
+              "date": "1753458233236",
+              "field": "tag",
               "parent_id": "901502108774",
               "data": {},
               "source": null,
@@ -343,19 +581,19 @@
                 "role": 1,
                 "role_subtype": 0
               },
-              "before": [
+              "after": [
                 {
-                  "name": "laufzeit abgelaufen",
+                  "name": "inaktiv",
                   "project_id": "90150901171",
-                  "tag_fg": "#388d3c",
-                  "tag_bg": "#388d3c",
-                  "creator": 62512347
+                  "tag_fg": "#4466ff",
+                  "tag_bg": "#e5484d",
+                  "creator": 82611023
                 }
               ]
             }
           ],
           "task_id": "86c4q6jzc",
-          "webhook_id": "fbb03c53-5e4b-450e-92e9-06f32415514a"
+          "webhook_id": "4f6dc89e-e6c1-4a54-8d05-6efe2ae1d642"
         }
       }
     ]
@@ -366,6 +604,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-25T14:29:40.625Z",
-  "versionId": "e6668ccd-631f-41b0-9166-ad3d7417255a"
+  "updatedAt": "2025-07-25T16:02:17.624Z",
+  "versionId": "44b8054b-952e-41c2-8555-03aa0756ef3a"
 }
