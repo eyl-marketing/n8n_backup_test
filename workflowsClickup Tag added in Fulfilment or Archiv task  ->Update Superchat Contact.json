@@ -21,7 +21,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Superchat Contact",
             "type": "main",
             "index": 0
           }
@@ -38,6 +38,28 @@
           },
           {
             "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Superchat Contact1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Superchat Contact": {
+      "main": [
+        [
+          {
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -164,37 +186,137 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
+        "rules": {
+          "values": [
             {
-              "id": "5ee14f49-9a26-429d-afcc-83774641ed53",
-              "leftValue": "={{ $('ClickUp Trigger').item.json.history_items[0].before} }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('ClickUp Trigger').item.json.history_items?.[0]?.after ? true : false }}\n",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Tag Added"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8e294035-4cab-450c-9230-b58fd6bb79b5",
+                    "leftValue": "={{ $('ClickUp Trigger').item.json.history_items?.[0]?.before ? true : false }}\n",
+                    "rightValue": "true",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Tag Removed"
             }
-          ],
-          "combinator": "and"
+          ]
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
       "position": [
-        -120,
+        140,
         -240
       ],
-      "id": "7dd253fc-85a1-4b84-9069-8ef17cf615a8",
-      "name": "If"
+      "id": "7442f0d2-9f3c-400b-a572-8a20416b556e",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.superchat.com/v1.0/contacts/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": {\n    \"value\": [\n      {\n        \"operator\": \"=\",\n        \"field\": \"mail\",\n        \"value\": \"{{ $('ClickUp Get Task').item.json.custom_fields.find(f => f.name === 'E-Mail')?.value }}\"\n      }\n    ]\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -80,
+        -240
+      ],
+      "id": "da5664f0-a0d5-4375-8d8c-493bbbe86e84",
+      "name": "Superchat Contact"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"query\": {\n    \"value\": [\n      {\n        \"operator\": \"=\",\n        \"field\": \"mail\",\n        \"value\": \"{{ $('ClickUp Get Task').item.json.custom_fields.find(f => f.name === 'E-Mail')?.value }}\"\n      }\n    ]\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        -560
+      ],
+      "id": "2f35fbe9-e06d-4804-999b-a5926d03b41f",
+      "name": "Superchat Contact1"
     }
   ],
   "pinData": {
@@ -244,6 +366,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-25T13:58:39.344Z",
-  "versionId": "cdb6ae6e-9d8d-45ea-980e-20607543da84"
+  "updatedAt": "2025-07-25T14:29:40.625Z",
+  "versionId": "e6668ccd-631f-41b0-9166-ad3d7417255a"
 }
