@@ -1,6 +1,50 @@
 {
   "active": false,
-  "connections": {},
+  "connections": {
+    "ClickUp Trigger": {
+      "main": [
+        [
+          {
+            "node": "ClickUp Get Task",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution Data": {
+      "main": [
+        []
+      ]
+    },
+    "Check if Fulfillment or Archiv": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp Get Task": {
+      "main": [
+        [
+          {
+            "node": "Check if Fulfillment or Archiv",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2025-07-24T17:04:37.259Z",
   "id": "Jr3K2PbRuYvBMj31",
   "meta": null,
@@ -8,27 +52,198 @@
   "nodes": [
     {
       "parameters": {
-        "path": "0188be00-12f9-47cc-8c74-02f46cda8c74",
+        "authentication": "oAuth2",
+        "team": "9015284078",
+        "events": [
+          "taskTagUpdated"
+        ],
+        "filters": {
+          "spaceId": ""
+        }
+      },
+      "type": "n8n-nodes-base.clickUpTrigger",
+      "typeVersion": 1,
+      "position": [
+        -780,
+        -240
+      ],
+      "id": "85be0465-3a66-45f3-a1e9-df6de61bfe31",
+      "name": "ClickUp Trigger",
+      "webhookId": "e7750cd5-6b8d-4a3a-918d-24d5de0af839",
+      "credentials": {
+        "clickUpOAuth2Api": {
+          "id": "LspYar39p5opLqSn",
+          "name": "Clickup Mymiapage OAUTH"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "email",
+              "value": "={{ $('ClickUp Get Task').item.json.custom_fields.find(f => f.name === 'E-Mail')?.value }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1,
+      "position": [
+        -880,
+        -540
+      ],
+      "id": "c569429a-48d9-48cb-8669-a57162bb5997",
+      "name": "Execution Data"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "592f33fc-ffd5-4b98-9015-a6181ca6a844",
+              "leftValue": "={{ $('ClickUp Get Task').item.json.space.id }}",
+              "rightValue": "90150901171",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "eba24462-686b-42ec-9681-c70815db085c",
+              "leftValue": "={{ $('ClickUp Get Task').item.json.space.id }}\n",
+              "rightValue": "90150901462",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
         "options": {}
       },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2,
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -320,
+        -240
+      ],
+      "id": "d34a00bb-8be1-4671-bf97-a8ebe6128b75",
+      "name": "Check if Fulfillment or Archiv"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "get",
+        "id": "={{ $('ClickUp Trigger').item.json.task_id }}"
+      },
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
       "position": [
         -560,
-        -140
+        -240
       ],
-      "id": "6394255b-77e7-49a4-875b-c52f2eb24d3d",
-      "name": "Webhook",
-      "webhookId": "0188be00-12f9-47cc-8c74-02f46cda8c74"
+      "id": "045858b0-fce3-4aa7-9bad-f24218622d5c",
+      "name": "ClickUp Get Task",
+      "credentials": {
+        "clickUpOAuth2Api": {
+          "id": "LspYar39p5opLqSn",
+          "name": "Clickup Mymiapage OAUTH"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5ee14f49-9a26-429d-afcc-83774641ed53",
+              "leftValue": "={{ $('ClickUp Trigger').item.json.history_items[0].before} }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -120,
+        -240
+      ],
+      "id": "7dd253fc-85a1-4b84-9069-8ef17cf615a8",
+      "name": "If"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "ClickUp Trigger": [
+      {
+        "json": {
+          "event": "taskTagUpdated",
+          "history_items": [
+            {
+              "id": "4658274120370047303",
+              "type": 1,
+              "date": "1753450913839",
+              "field": "tag_removed",
+              "parent_id": "901502108774",
+              "data": {},
+              "source": null,
+              "user": {
+                "id": 62512347,
+                "username": "Tarek Port",
+                "email": "management@pagencymedia.com",
+                "color": "",
+                "initials": "TP",
+                "profilePicture": "https://attachments.clickup.com/profilePictures/62512347_Bkd.jpg",
+                "role": 1,
+                "role_subtype": 0
+              },
+              "before": [
+                {
+                  "name": "laufzeit abgelaufen",
+                  "project_id": "90150901171",
+                  "tag_fg": "#388d3c",
+                  "tag_bg": "#388d3c",
+                  "creator": 62512347
+                }
+              ]
+            }
+          ],
+          "task_id": "86c4q6jzc",
+          "webhook_id": "fbb03c53-5e4b-450e-92e9-06f32415514a"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-24T17:13:27.405Z",
-  "versionId": "9327c3da-6bba-4d19-bea9-14dea71a06a8"
+  "updatedAt": "2025-07-25T13:58:39.344Z",
+  "versionId": "cdb6ae6e-9d8d-45ea-980e-20607543da84"
 }
