@@ -59,7 +59,7 @@
       "main": [
         [
           {
-            "node": "Switch Tags",
+            "node": "Code",
             "type": "main",
             "index": 0
           }
@@ -68,20 +68,72 @@
     },
     "Switch Tags": {
       "main": [
+        [],
+        [
+          {
+            "node": "Superchat Contact Add Tag1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Superchat Contact Add Tag2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Superchat Contact Add Tag3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Superchat Contact Add Tag4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Superchat Contact Add Tag5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Superchat Contact Add Tag6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Superchat Contact Add Tag7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Code": {
+      "main": [
         [
           {
             "node": "Superchat Contact Add Tag",
             "type": "main",
             "index": 0
           }
-        ],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
+        ]
+      ]
+    },
+    "Superchat Contact Add Tag": {
+      "main": [
         []
       ]
     }
@@ -250,10 +302,6 @@
               "value": "0cdf445e-330f-4179-84a6-faab5838663e"
             },
             {
-              "name": "accept",
-              "value": "application/json"
-            },
-            {
               "name": "content-type",
               "value": "application/json"
             }
@@ -261,14 +309,14 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"name\": \"Tag\",\n      \"value\": [\"laufzeit abgelaufen\"]\n    }\n  ]\n}\n",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_OvoG4ueeNteLiEZUqfNg5\",\n      \"value\": {{ JSON.stringify($json.mappedTags) }}\n    }\n  ]\n}\n",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        760,
-        -600
+        660,
+        -840
       ],
       "id": "2f35fbe9-e06d-4804-999b-a5926d03b41f",
       "name": "Superchat Contact Add Tag"
@@ -550,11 +598,295 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        400,
-        -520
+        1100,
+        -220
       ],
       "id": "7442f0d2-9f3c-400b-a572-8a20416b556e",
       "name": "Switch Tags"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_OvoG4ueeNteLiEZUqfNg5\",\n      \"value\": [\"Konflikt\"]\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -1680
+      ],
+      "id": "54ec7d73-91bd-40c6-8f08-1d9e34612995",
+      "name": "Superchat Contact Add Tag1"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_OvoG4ueeNteLiEZUqfNg5\",\n      \"value\": [\"archiv\"]\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -1520
+      ],
+      "id": "95564b09-4b58-465f-ac59-f380fe2b6ee6",
+      "name": "Superchat Contact Add Tag2"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_OvoG4ueeNteLiEZUqfNg5\",\n      \"value\": [\"schwieriger kunde\"]\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -1340
+      ],
+      "id": "4429df1d-35dc-4452-97b5-da41513a4cf6",
+      "name": "Superchat Contact Add Tag3"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_OvoG4ueeNteLiEZUqfNg5\",\n      \"value\": [\"schwieriger kunde!\"]\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -1180
+      ],
+      "id": "8f61d539-dece-4944-aa30-3dc03efa5877",
+      "name": "Superchat Contact Add Tag4"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_OvoG4ueeNteLiEZUqfNg5\",\n      \"value\": [\"storno\"]\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -1020
+      ],
+      "id": "f63ba246-cb16-484f-bc87-d534e90838aa",
+      "name": "Superchat Contact Add Tag5"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_OvoG4ueeNteLiEZUqfNg5\",\n      \"value\": [\"w - beim Anwalt\"]\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -860
+      ],
+      "id": "ffc70dde-416b-43c4-bb87-5bfdfa6720a8",
+      "name": "Superchat Contact Add Tag6"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_OvoG4ueeNteLiEZUqfNg5\",\n      \"value\": [\"w - Chargeback\"]\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -680
+      ],
+      "id": "b4557cd7-53e8-4a99-8f23-6ce5e5274bff",
+      "name": "Superchat Contact Add Tag7"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://api.superchat.com/v1.0/contacts/{{ $('Superchat Contact').item.json.results[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-KEY",
+              "value": "0cdf445e-330f-4179-84a6-faab5838663e"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"custom_attributes\": [\n    {\n      \"id\": \"ca_OvoG4ueeNteLiEZUqfNg5\",\n      \"value\": [\"w - Chargeback\"]\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -500
+      ],
+      "id": "e57db487-90b5-48f7-a977-de79a2a37bc4",
+      "name": "Superchat Contact Add Tag8"
+    },
+    {
+      "parameters": {
+        "jsCode": "const clickupTags = $('ClickUp Trigger').item.json.history_items[0].after || [];\n\nconst tagMap = {\n  'konflikt': 'Konflikt',\n  'archiv': 'archiv',\n  'inaktiv': 'inaktiv',\n  'schwieriger Kunde': 'schwieriger kunde',\n  'schwieriger Kunde!': 'schwieriger kunde!',\n  'storno': 'storno',\n  'w - beim Anwalt': 'w - beim Anwalt',\n  'w - Chargeback': 'w - Chargeback',\n  'w - eingereicht': 'w - eingereicht'\n};\n\nconst mappedTags = clickupTags\n  .map(t => tagMap[t.name])\n  .filter(Boolean); // remove undefined values\n\nif (mappedTags.length === 0) {\n  throw new Error('No valid tags found to map.');\n}\n\nreturn [{ json: { mappedTags } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        460,
+        -840
+      ],
+      "id": "f6274a47-7d1b-435d-9093-f777e841849d",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ac4015e5-8c86-4961-b1b1-024b765e3f35",
+              "name": "custom_attributes",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        820,
+        -1160
+      ],
+      "id": "08c56475-2f73-49f2-8c8a-75cd6891b5b7",
+      "name": "Custom Attributes"
     }
   ],
   "pinData": {
@@ -564,9 +896,9 @@
           "event": "taskTagUpdated",
           "history_items": [
             {
-              "id": "4658396919491282435",
+              "id": "4658471789075979987",
               "type": 1,
-              "date": "1753458233236",
+              "date": "1753462695810",
               "field": "tag",
               "parent_id": "901502108774",
               "data": {},
@@ -583,17 +915,17 @@
               },
               "after": [
                 {
-                  "name": "inaktiv",
+                  "name": "konflikt",
                   "project_id": "90150901171",
-                  "tag_fg": "#4466ff",
-                  "tag_bg": "#e5484d",
-                  "creator": 82611023
+                  "tag_fg": "#304ffe",
+                  "tag_bg": "#304ffe",
+                  "creator": 88700515
                 }
               ]
             }
           ],
           "task_id": "86c4q6jzc",
-          "webhook_id": "4f6dc89e-e6c1-4a54-8d05-6efe2ae1d642"
+          "webhook_id": "169280fc-541d-46f9-8d75-0dcdd0014aea"
         }
       }
     ]
@@ -604,6 +936,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-07-25T16:02:17.624Z",
-  "versionId": "44b8054b-952e-41c2-8555-03aa0756ef3a"
+  "updatedAt": "2025-07-25T17:01:07.790Z",
+  "versionId": "3d6539a9-1f8d-43ee-a375-537612bb488a"
 }
